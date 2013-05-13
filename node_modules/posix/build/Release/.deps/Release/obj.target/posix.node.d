@@ -1,0 +1,1 @@
+cmd_Release/obj.target/posix.node := flock ./Release/linker.lock g++ -shared -pthread -rdynamic -m64  -Wl,-soname=posix.node -o Release/obj.target/posix.node -Wl,--start-group Release/obj.target/posix/src/posix.o -Wl,--end-group 
