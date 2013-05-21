@@ -7,6 +7,7 @@
 var express = require('express');
 var app = express();
 var ArticleProvider = require('./articleprovider-mongodb').ArticleProvider;
+var AnimalProvider = require('./animal_provider').AnimalProvider;
 var fs = require("fs");
 var url = require("url");
 var path = require("path");
@@ -35,7 +36,8 @@ app.configure('production', function(){
 });
 
 
-var articleProvider = new ArticleProvider('localhost', 27017);
+//var articleProvider = new ArticleProvider('localhost', 27017);
+var animalProvider = new AnimalProvider('localhost', 27017);
 var fileserver = new Fileserver();
 
 // routes
@@ -78,25 +80,32 @@ app.get('/img', function(req, res){
 	}
 });
 
+/*
+Render the HTML template index.jade for requests to "/".
+Get all documents in the zoo database to use them rendering the HTML data
+*/
 app.get('/', function(req, res){
-    articleProvider.findAll( function(error, docs){
+   animalProvider.findAllAnimals( function(error, docs){
         res.render('index.jade', { 
-                title: 'Blog',
+                title: 'Zoo',
                 articles:docs
         });
     })
 });
 
-app.get('/blog/new', function(req, res) {
-    res.render('blog_new.jade', { 
-        title: 'New Post'
+app.get('/animal/new', function(req, res) {
+    res.render('animal_new.jade', { 
+        title: 'New Animal'
     });
 });
 
-app.post('/blog/new', function(req, res){
-    articleProvider.save({
-        title: req.param('title'),
-        body: req.param('body')
+app.post('/animal/new', function(req, res){
+    animalProvider.save({
+        name: req.param('name'),
+        food: req.param('food'),
+        neighbors: req.param('neighbors'),
+        legs: req.param('legs'),
+        color: req.param('color')
     }, function( error, docs) {
         res.redirect('/')
     });
