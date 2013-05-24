@@ -11,7 +11,8 @@ var path = require("path");
 var passport = require('passport');
 var flash = require('connect-flash');
 var LocalStrategy = require('passport-local').Strategy;
-var AnimalProvider = require('./animal_provider').AnimalProvider;
+var DBHandler = require('./db_handler').DBHandler;
+var AuthProvider = require('./auth_provider').AuthProvider;
 var Fileserver = require('./static_file_server').Fileserver;
 
 var users = [
@@ -106,7 +107,8 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
-var animalProvider = new AnimalProvider('localhost', 27017);
+var animalProvider = new DBHandler('zoo', 'localhost', 27017);
+var authProvider = new AuthProvider('localhost', 27017);
 
 app.get('/account', ensureAuthenticated, function(req, res){
   res.render('account.jade', { user: req.user });
@@ -128,6 +130,26 @@ app.post('/login',
     res.redirect('/');
   });
   
+app.get('/sign', function(req, res){
+  res.render('sign.jade', { user: req.user, message: req.flash('error') });
+});
+
+app.post('/sign', function(req, res){
+	authProvider.addUser({
+		username: req.param('username'), 
+		email: req.param('email'), 
+		pass_1: req.param('pass_1'),
+		pass_2: req.param('pass_2')
+		}, 
+		function(error, user){
+			if(error){
+				res.redirect('/sign');
+			} else {
+	        	res.redirect('/');
+			}
+        });
+});
+
 app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
@@ -138,9 +160,9 @@ Render the HTML template startpage when a GET requests for "/" is received.
 Get all documents in the zoo database to use them rendering the HTML data
 */
 app.get('/', ensureAuthenticated, function(req, res){
-   animalProvider.findAllAnimals( function(error, docs){
+   animalProvider.findAllDocs('animals', function(error, docs){
         res.render('index.jade', { 
-                title: 'Zoo Blog',
+                title: 'Loose Node',
                 animals: docs
         });
     })
@@ -161,13 +183,13 @@ Add a new animal to the db when a POST request for "/animal/new" is received.
 NOTE: No validation of the input data is performed!!!
 */
 app.post('/animal/new', function(req, res){
-    animalProvider.save({
+    animalProvider.save('animals', {
         name: req.param('name'),
         food: req.param('food'),
         neighbors: req.param('neighbors'),
         legs: req.param('legs'),
         color: req.param('color')
-    }, function( error, docs) {
+    }, function(error, docs) {
         res.redirect('/')
     });
 });
@@ -178,7 +200,7 @@ request is received for "/animal/:id"
 NOTE: No validation of the input data is performed!!!
 */
 app.get('/animal/:id', function(req, res) {
-    animalProvider.findAnimalById(req.params.id, function(error, animal) {
+    animalProvider.findDocById('animals', req.params.id, function(error, animal) {
         res.render('show_animal.jade',
         { 
             title: animal.name,
@@ -192,7 +214,7 @@ Add a new comment to an animal when a POST request for "/animal/comment" is rece
 NOTE: No validation of the input data is performed!!!
 */
 app.post('/animal/comment', function(req, res) {
-    animalProvider.addComment(req.param('_id'), {
+    animalProvider.addComment('animals', req.param('_id'), {
         person: req.param('person'),
         comment: req.param('comment'),
         created_at: new Date()
