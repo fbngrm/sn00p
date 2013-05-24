@@ -1,0 +1,47 @@
+!!!
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+h1= title
+div.animal
+    table
+        thead
+        tbody
+          tr
+            td(class="even")!= 'Name'
+            td!= animal.name
+          tr
+            td(class="even")!= 'Favorite Food'
+            td!= animal.food
+          tr
+            td(class="even")!= 'Neighbors'
+            td!= animal.neighbors
+          tr
+            td(class="even")!= "Joined"
+            td= animal.created_at
+              
+    p Comments
+    - each comment in animal.comments
+      table
+        thead
+        tbody
+          tr
+            td(class="even")!= 'Name'
+            td!= comment.person
+          tr
+            td(class="even")!= 'Comment'
+            td!= comment.comment
+    div
+      form( method="post", action="/animal/comment")
+        input(type="hidden", name="_id", value=animal._id.toHexString())
+        div
+          span Author
+          br
+          input(type="text", name="person", id="comment_person")
+        div
+          span Comment
+          br
+          textarea( name="comment", rows=5, id="comment")
+        div#editArticleSubmit
+          input(type="submit", value="Send")

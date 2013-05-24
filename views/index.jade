@@ -5,10 +5,15 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
 
 h1= title
-#articles
-    - each article in articles
-      div.article
-        div.created_at= article.created_at
+#animals
+    - each animal in animals
+      div.animal
         div.title 
-            a(href="/blog/"+article._id.toHexString())!= article.title
-        div.body= article.body
+          a(href="/animal/"+animal._id.toHexString())= animal.name
+        div.comments
+          span= 'Comments: ' 
+          span= animal.comments.length
+        div.created_at
+          span= 'Created: '
+          span= animal.created_at
+          
