@@ -94,6 +94,30 @@ DBHandler.prototype.save = function(collection, docs, callback) {
 };
 
 /*
+Persist an new document in the collection 'collection' of this.db.
+@param collection: The name of the collection that shoul be accessed
+@param docs: A list of documents or one document
+@param callback: A callback function to call after savig the data or to handle the error
+*/
+DBHandler.prototype.saveUser = function(collection, docs, callback) {
+   this.getCollection(collection, function(error, res_collection) {
+      if(error) {
+         callback(error);
+      } else {
+         if(typeof(docs.length)=="undefined") {
+            docs = [docs];
+         }
+         for(var i=0; i<docs.length; i++) {
+            doc = docs[i];
+            doc.created_at = dateFormat();
+         }
+         res_collection.insert(docs, function() {
+            callback(null, docs);
+         });
+      }
+   });
+};
+/*
 Find a document in the db by the unique id.
 @param collection: The name of the collection that shoul be accessed
 @param id: Hexadecimal representation of the _id value

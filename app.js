@@ -135,11 +135,10 @@ app.get('/sign', function(req, res){
 });
 
 app.post('/sign', function(req, res){
-	authProvider.save('users', {
+	authProvider.saveUser('users', {
 			username: req.param('username'), 
 			email: req.param('email'), 
-			pass_1: req.param('pass_1'),
-			pass_2: req.param('pass_2')
+			pass_1: req.param('pass_1')
 		}, 
 		function(error, user){
 			if(error){
