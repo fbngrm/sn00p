@@ -1,4 +1,4 @@
-!!!
+!!! 5
 html
   head
     title= title
@@ -24,12 +24,12 @@ html
     div.node
       form( method="post", enctype="multipart/form-data")
         div
-            input(type="text", name="node-title", id="title-id")
+            input(type="text", name="node-title", id="title-id", placeholder="title")
         div
-            textarea( name="node-info", rows=5, id="node-info-id")
+            textarea( name="node-info", rows=5, id="node-info-id", placeholder="info")
         div
-          input(type="file", name="node-imgs", id="imgs-id")
+          input(type="file", name="node-imgs", id="imgs-id", placeholder="image")
         div
-            input(type="text", name="node-keywords", id="keywords-id")
+            input(type="text", name="node-keywords", id="keywords-id", placeholder="keywords")
         div
             input(type="submit", value="send").button
