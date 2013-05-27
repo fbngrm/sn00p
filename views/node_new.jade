@@ -20,16 +20,19 @@ html
       li 
         img(src="/images/account.gif" )
         a(href="/account")= ' account'
+      li 
+        img(src="/images/settings.gif" )
+        a(href="#")= ' settings'
   #nodes
     div.node-form
       form( method="post", enctype="multipart/form-data")
         div
-            input(type="text", name="node-title", id="title-id", placeholder="title")
+            input(type="text", name="node_title", id="title_id", placeholder="title")
         div
-            textarea( name="node-info", rows=5, id="node-info-id", placeholder="info")
+            textarea( name="node_info", rows=5, id="node_info_id", placeholder="info")
         div
           input(type="file", name="node_imgs", id="imgs_id", placeholder="images")
         div
-            input(type="text", name="node-keywords", id="keywords-id", placeholder="keywords")
+            input(type="text", name="node_keywords", id="keywords_id", placeholder="keywords")
         div
             input(type="submit", value="send").button

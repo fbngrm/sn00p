@@ -20,9 +20,13 @@ html
       li 
         img(src="/images/account.gif" )
         a(href="/account")= ' account'
+      li 
+        img(src="/images/settings.gif" )
+        a(href="#")= ' settings'
   #nodes
     div.node
         div.image
+          img(src="/uploads/"+node.imgs)
         div.left
           div.bold
             span!= node.title

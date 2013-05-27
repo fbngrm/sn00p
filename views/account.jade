@@ -4,6 +4,25 @@ html
     title= 'account'
     link(rel='stylesheet', href='/stylesheets/style.css')
 
-h1= 'account'
-  p username: user.username
-  p email: user.email
+#wrap
+  #menu
+    h2= account
+    ul 
+      li.active
+        img(src="/images/nodes.gif" )
+        span= ' nodes'
+      li
+        img(src="/images/node.gif" )
+        a(href="/node/new")= ' new node'
+      li 
+        img(src="/images/logout.gif" )
+        a(href="/logout")= ' logout'
+      li 
+        img(src="/images/account.gif" )
+        a(href="/account")= ' account'
+      li 
+        img(src="/images/settings.gif" )
+        a(href="#")= ' settings'
+  #nodes
+    p username: user.username
+    p email: user.email

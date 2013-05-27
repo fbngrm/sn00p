@@ -188,18 +188,18 @@ app.post('/node/new', ensureAuthenticated, function(req, res){
 		var newPath = __dirname + "/public/uploads/" + name;
 		fs.writeFile(newPath, data, function (error) {
 			if(error){
-			console.log('ERROR');
+			   res.redirect('back');
 			} else {
 			    animalProvider.save('nodes', {
-			        title: req.param('node-title'),
-			        info: req.param('node-info'),
-			        imgs: req.param('node_imgs'),
-			        keywords: req.param('node-keywords'),
+			        title: req.param('node_title'),
+			        info: req.param('node_info'),
+			        imgs: req.files.node_imgs.name,
+			        keywords: req.param('node_keywords'),
 			        username: req.user.username,
 			        user_id: req.user.id
 			    	}, 
 			    	function(error, docs) {
-			        	res.redirect('/')
+			        	res.redirect('/');
 			    });
 			}
 		});

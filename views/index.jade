@@ -21,10 +21,14 @@ html
       li 
         img(src="/images/account.gif" )
         a(href="/account")= ' account'
+      li 
+        img(src="/images/settings.gif" )
+        a(href="#")= ' settings'
   #nodes
     - each node in nodes
       div.node
         div.image
+          img(src="/uploads/"+node.imgs)
         div.left
           div.bold
             a(href="/node/"+node._id.toHexString())!= node.title
