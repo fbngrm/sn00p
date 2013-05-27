@@ -1,0 +1,40 @@
+!!!
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+#blackhead
+#wrap
+  #menu
+    h2= title
+    ul 
+      li
+        img(src="/images/nodes.gif" )
+        a(href="/")= ' nodes'
+      li
+        img(src="/images/node.gif" )
+        a(href="/node/new")= ' new node'
+      li 
+        img(src="/images/logout.gif" )
+        a(href="/logout")= ' logout'
+      li 
+        img(src="/images/account.gif" )
+        a(href="/account")= ' account'
+  #nodes
+    - each c in node.comments
+        div.comment
+          div.info
+            div.comment_head!= c.head
+            div.comment_info!= c.comment
+            br
+            div.comment_created_at!= c.created_at
+            div.comment_username.bold!= c.username
+    div.comment
+        form( method="post", action="/node/comment")
+          input(type="hidden", name="_id", value=node._id.toHexString())
+          div
+            input(type="text", name="head", id="comment_head")
+          div
+            textarea( name="comment", rows=5, id="comment")
+          div
+            input(type="submit", value="send").button

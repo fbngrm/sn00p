@@ -1,0 +1,35 @@
+!!!
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+#blackhead
+#wrap
+  #menu
+    h2= title
+    ul 
+      li
+        img(src="/images/nodes.gif" )
+        a(href="/")= ' nodes'
+      li.active
+        img(src="/images/node.gif" )
+        span= ' new node'
+      li 
+        img(src="/images/logout.gif" )
+        a(href="/logout")= ' logout'
+      li 
+        img(src="/images/account.gif" )
+        a(href="/account")= ' account'
+  #nodes
+    div.node
+      form( method="post", enctype="multipart/form-data")
+        div
+            input(type="text", name="node-title", id="title-id")
+        div
+            textarea( name="node-info", rows=5, id="node-info-id")
+        div
+          input(type="file", name="node-imgs", id="imgs-id")
+        div
+            input(type="text", name="node-keywords", id="keywords-id")
+        div
+            input(type="submit", value="send").button

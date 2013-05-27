@@ -1,21 +1,48 @@
-!!!
+!!! 5
 html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-
-div#header
-  div#headercolor
-  h1= title
-#animals
-    - each animal in animals
-      div.animal
-        div.title 
-          a(href="/animal/"+animal._id.toHexString())= animal.name
-        div.comments
-          span= 'Comments: ' 
-          span= animal.comments.length
-        div.created_at
-          span= 'Created: '
-          span= animal.created_at
-          
+#blackhead
+#wrap
+  #menu
+    h2= title
+    ul 
+      li.active
+        img(src="/images/nodes.gif" )
+        span= ' nodes'
+      li
+        img(src="/images/node.gif" )
+        a(href="/node/new")= ' new node'
+      li 
+        img(src="/images/logout.gif" )
+        a(href="/logout")= ' logout'
+      li 
+        img(src="/images/account.gif" )
+        a(href="/account")= ' account'
+  #nodes
+    - each node in nodes
+      div.node
+        div.image
+        div.left
+          div.bold
+            a(href="/node/"+node._id.toHexString())!= node.title
+        div.right
+          div.bold
+           span!= node.created_at
+        div.clear
+          div.info
+            br
+            span!= node.info
+          div.user
+            br
+            span.bold!= node.username
+          div.comments
+            span= 'comments '
+            span!= node.comments.length
+          br
+          div.keywords
+            - each word in node.keywords
+              span!= word+' '
+        div.clear
+  #clear

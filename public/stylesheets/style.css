@@ -3,10 +3,8 @@ html {
   padding: 0px;
 }
 body {
-  text-align: center;
   font-family: "Helvetica";
-  font-weight: light;
-  font-size: 13px;
+  font-size: 12px;
   text-stroke: 1px rgba(255,255,255,0.1);
   color: #343434;
   margin: 0px;
@@ -15,17 +13,14 @@ body {
 }
 h1,
 h2 {
-  text-align: center;
-  margin: 0;
-  font-size: 22px;
+  padding-left: 10px;
   color: #343434;
+  margin-top: 50px;
+  margin-bottom: 15px;
+  font-size: 30px;
 }
 h1 {
-  margin-top: 25px;
-  margin-bottom: 25px;
-  text-shadow: 1px 2px 2px #ddd;
   font-size: 50px;
-  font-weight: light;
 }
 a {
   color: #343434;
@@ -42,45 +37,135 @@ td {
   width: 150px;
   padding: 5px;
 }
-#animals {
+ul {
+  list-style-type: none;
+  padding: 0px;
+}
+ul a {
+  text-decoration: none;
+}
+li {
+  padding: 5px;
+  padding-left: 5px;
+  margin-right: 20px;
+  border-bottom: solid 2px #fff;
+  display: block;
+}
+li:hover {
+  background-color: #f0f5f1;
+}
+.active {
+  background-color: #f0f5f1;
+}
+ul li img {
+  vertical-align: middle;
+  height: 25px;
+}
+#wrap {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+#menu {
+  text-align: left;
+  margin-top: 20px;
+  float: left;
+  height: 300px;
+  width: 200px;
+  position: fixed;
+}
+#nodes {
+  float: right;
   text-align: left;
   margin-left: auto;
   margin-right: auto;
-  width: 350px;
+  margin-top: 70px;
+  width: 600px;
 }
-#animals .animal {
-  border-style: solid;
-  border-width: 1px;
-  border-color: #47f532;
-  margin: 20px;
+#nodes .node {
   padding: 20px;
+  margin-top: 50px;
+  background-color: #f0f5f1;
 }
-#animals .animal .title {
-  font-weight: bold;
+#nodes .node .image {
+  margin-bottom: 10px;
+  width: 560px;
+  height: 340px;
+  background-color: #f0f5f1;
+}
+#nodes .comment {
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #f0f5f1;
+}
+#nodes .comment .name {
+  background-color: #fff;
+  color: #343434;
+  border: none;
+  height: 25px;
+  width: 150px;
+}
+#nodes .comment .info {
+  padding: 10px;
+  background-color: #fff;
+  color: #343434;
+  width: 540px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: none;
+}
+#nodes input {
+  padding-left: 10px;
+  color: #343434;
+  border: none;
+  height: 25px;
+  width: 200px;
+  margin-top: 10px;
+}
+#nodes textarea {
+  color: #343434;
+  width: 560px;
+  border: none;
+  margin-top: 10px;
+}
+#nodes .button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #343434;
+  background-color: #fff;
+  color: #343434;
+  width: 60px;
+  padding-right: 10px;
+  margin-top: 10px;
+}
+.light {
+  color: #666;
+}
+.dark {
+  color: #343434;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+  text-align: right;
+}
+.clear {
+  clear: both;
 }
 .bold {
   font-weight: bold;
 }
-.animal input[type =text] {
-  width: 270px;
-  margin-left: 16px;
-}
-.animal input[type =button],
-.animal input[type =submit] {
-  text-align: left;
-  margin-left: 440px;
-}
-.animal textarea {
-  width: 270px;
-  height: 90px;
-}
 .even {
   width: 100px;
 }
-#headercolor {
+#blackhead {
   width: 100%;
-  height: 4px;
-  background: #343434;
+  height: 15px;
+  background: rgba(52,52,52,0.9);
+  position: fixed;
 }
 #header {
   top: 0px;

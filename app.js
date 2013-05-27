@@ -12,8 +12,8 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var LocalStrategy = require('passport-local').Strategy;
 var DBHandler = require('./db_handler').DBHandler;
-var AuthProvider = require('./auth_provider').AuthProvider;
 var Fileserver = require('./static_file_server').Fileserver;
+var dateFormat = require('dateformat');
 
 var users = [
     { id: 1, username: 'bob', password: 'secret', email: 'bob@example.com' }
@@ -107,15 +107,15 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
-var animalProvider = new DBHandler('zoo', 'localhost', 27017);
-var authProvider = new AuthProvider('localhost', 27017);
+var animalProvider = new DBHandler('loose-node', 'localhost', 27017);
+var authProvider = new DBHandler('auth', 'localhost', 27017);
 
 app.get('/account', ensureAuthenticated, function(req, res){
-  res.render('account.jade', { user: req.user });
+  res.render('account.jade', { user: req.user, title: 'account' });
 });
 
 app.get('/login', function(req, res){
-  res.render('login.jade', { user: req.user, message: req.flash('error') });
+  res.render('login.jade', { user: req.user, message: req.flash('error'), title: 'login' });
 });
 // POST /login
 //   Use passport.authenticate() as route middleware to authenticate the
@@ -131,15 +131,15 @@ app.post('/login',
   });
   
 app.get('/sign', function(req, res){
-  res.render('sign.jade', { user: req.user, message: req.flash('error') });
+  res.render('sign.jade', { user: req.user, message: req.flash('error'), title: 'sign' });
 });
 
 app.post('/sign', function(req, res){
-	authProvider.addUser({
-		username: req.param('username'), 
-		email: req.param('email'), 
-		pass_1: req.param('pass_1'),
-		pass_2: req.param('pass_2')
+	authProvider.save('users', {
+			username: req.param('username'), 
+			email: req.param('email'), 
+			pass_1: req.param('pass_1'),
+			pass_2: req.param('pass_2')
 		}, 
 		function(error, user){
 			if(error){
@@ -150,7 +150,7 @@ app.post('/sign', function(req, res){
         });
 });
 
-app.get('/logout', function(req, res){
+app.get('/logout', ensureAuthenticated, function(req, res){
   req.logout();
   res.redirect('/');
 });
@@ -160,10 +160,10 @@ Render the HTML template startpage when a GET requests for "/" is received.
 Get all documents in the zoo database to use them rendering the HTML data
 */
 app.get('/', ensureAuthenticated, function(req, res){
-   animalProvider.findAllDocs('animals', function(error, docs){
+   animalProvider.findAllDocs('nodes', function(error, docs){
         res.render('index.jade', { 
-                title: 'Loose Node',
-                animals: docs
+                title: 'nodes',
+                nodes: docs
         });
     })
 });
@@ -172,9 +172,9 @@ app.get('/', ensureAuthenticated, function(req, res){
 Render the form to add a new animal when an GET request 
 for "/animal/new" is received.
 */
-app.get('/animal/new', function(req, res) {
-    res.render('animal_new.jade', { 
-        title: 'New Animal'
+app.get('/node/new', ensureAuthenticated, function(req, res) {
+    res.render('node_new.jade', { 
+        title: 'new node'
     });
 });
 
@@ -182,15 +182,18 @@ app.get('/animal/new', function(req, res) {
 Add a new animal to the db when a POST request for "/animal/new" is received.
 NOTE: No validation of the input data is performed!!!
 */
-app.post('/animal/new', function(req, res){
-    animalProvider.save('animals', {
-        name: req.param('name'),
-        food: req.param('food'),
-        neighbors: req.param('neighbors'),
-        legs: req.param('legs'),
-        color: req.param('color')
-    }, function(error, docs) {
-        res.redirect('/')
+app.post('/node/new', ensureAuthenticated, function(req, res){
+    console.log(req.param);
+    animalProvider.save('nodes', {
+        title: req.param('node-title'),
+        info: req.param('node-info'),
+        imgs: req.param('node-imgs'),
+        keywords: req.param('node-keywords'),
+        username: req.user.username,
+        user_id: req.user.id
+    	}, 
+    	function(error, docs) {
+        	res.redirect('/')
     });
 });
 
@@ -199,12 +202,12 @@ Render the view for an specific animal in the db when a GET
 request is received for "/animal/:id"
 NOTE: No validation of the input data is performed!!!
 */
-app.get('/animal/:id', function(req, res) {
-    animalProvider.findDocById('animals', req.params.id, function(error, animal) {
-        res.render('show_animal.jade',
+app.get('/node/:id', ensureAuthenticated, function(req, res) {
+    animalProvider.findDocById('nodes', req.params.id, function(error, node) {
+        res.render('show_node.jade',
         { 
-            title: animal.name,
-            animal: animal
+            title: node.title,
+            node: node
         });
     });
 });
@@ -213,13 +216,16 @@ app.get('/animal/:id', function(req, res) {
 Add a new comment to an animal when a POST request for "/animal/comment" is received.
 NOTE: No validation of the input data is performed!!!
 */
-app.post('/animal/comment', function(req, res) {
-    animalProvider.addComment('animals', req.param('_id'), {
-        person: req.param('person'),
+app.post('/node/comment', ensureAuthenticated, function(req, res) {
+    var created_at = dateFormat();
+    animalProvider.addComment('nodes', req.param('_id'), {
+        head: req.param('head'),
         comment: req.param('comment'),
-        created_at: new Date()
+        created_at: created_at,
+        //username: req.user.username,
+        //user_id: req.user.id
        } , function( error, docs) {
-           res.redirect('/animal/' + req.param('_id'))
+           res.redirect('/node/' + req.param('_id'))
        });
 });
 

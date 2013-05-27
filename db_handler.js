@@ -69,7 +69,6 @@ DBHandler.prototype.save = function(collection, docs, callback) {
          if(typeof(docs.length)=="undefined") {
             docs = [docs];
          }
-
          for(var i=0; i<docs.length; i++) {
             doc = docs[i];
             doc.created_at = dateFormat();
@@ -77,6 +76,15 @@ DBHandler.prototype.save = function(collection, docs, callback) {
             for(var j=0; j<doc.comments.length; j++) {
                doc.comments[j].created_at = dt;
             }
+	        if(doc.keywords) {
+	           var keywords = doc.keywords.split(',');
+	           doc.keywords = [];
+	           for(var i=0; i<keywords.length; i++){
+	              doc.keywords[i] = keywords[i];
+	           }
+	        } else {
+	         doc.keywords = [];
+	        }
          }
          res_collection.insert(docs, function() {
             callback(null, docs);
