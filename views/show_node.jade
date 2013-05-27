@@ -21,20 +21,42 @@ html
         img(src="/images/account.gif" )
         a(href="/account")= ' account'
   #nodes
+    div.node
+        div.image
+        div.left
+          div.bold
+            span!= node.title
+        div.right
+          div.bold
+           span!= node.created_at
+        div.clear
+          div.info
+            br
+            span!= node.info
+          div.user
+            br
+            span.bold!= node.username
+          div.comments
+            span= 'comments '
+            span!= node.comments.length
+          br
+          div.keywords
+            - each word in node.keywords
+              span!= word+' '
+        div.clear
     - each c in node.comments
         div.comment
-          div.info
-            div.comment_head!= c.head
-            div.comment_info!= c.comment
-            br
-            div.comment_created_at!= c.created_at
-            div.comment_username.bold!= c.username
-    div.comment
-        form( method="post", action="/node/comment")
-          input(type="hidden", name="_id", value=node._id.toHexString())
-          div
-            input(type="text", name="head", id="comment_head", placeholder="headline")
-          div
-            textarea( name="comment", rows=5, id="comment", placeholder="comment")
-          div
-            input(type="submit", value="send").button
+          div.comment_head.bold!= c.head
+          div.comment_info!= c.comment
+          br
+          div.comment_created_at!= c.created_at
+          div.comment_username.bold!= c.username
+    div
+      form( method="post", action="/node/comment")
+        input(type="hidden", name="_id", value=node._id.toHexString())
+        div
+          input(type="text", name="head", id="comment_head", placeholder="headline")
+        div
+          textarea( name="comment", rows=5, id="comment", placeholder="comment")
+        div
+          input(type="submit", value="send").button

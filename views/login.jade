@@ -1,17 +1,12 @@
 !!! 5
 html
   head
-    title= 'Login'
+    title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-
-h1= 'login'
-form( method="post")
-    div
-        div
-            span username
-            input(type="text", name="username", placeholder="username")
-        div
-            span password
-            input(type="password", name="password", placeholder="password")
-        div
-            input(type="submit", value="Send")
+#bg
+#blackhead
+div.login
+  form( method="post")
+    input(type="text", name="username", placeholder="username")
+    input(type="password", name="password", placeholder="password")
+    input(type="submit", value="Send").button

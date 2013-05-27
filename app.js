@@ -183,18 +183,27 @@ Add a new animal to the db when a POST request for "/animal/new" is received.
 NOTE: No validation of the input data is performed!!!
 */
 app.post('/node/new', ensureAuthenticated, function(req, res){
-    console.log(req.param);
-    animalProvider.save('nodes', {
-        title: req.param('node-title'),
-        info: req.param('node-info'),
-        imgs: req.param('node-imgs'),
-        keywords: req.param('node-keywords'),
-        username: req.user.username,
-        user_id: req.user.id
-    	}, 
-    	function(error, docs) {
-        	res.redirect('/')
-    });
+    fs.readFile(req.files.node_imgs.path, function (err, data) {
+		var name = req.files.node_imgs.name; 
+		var newPath = __dirname + "/public/uploads/" + name;
+		fs.writeFile(newPath, data, function (error) {
+			if(error){
+			console.log('ERROR');
+			} else {
+			    animalProvider.save('nodes', {
+			        title: req.param('node-title'),
+			        info: req.param('node-info'),
+			        imgs: req.param('node_imgs'),
+			        keywords: req.param('node-keywords'),
+			        username: req.user.username,
+			        user_id: req.user.id
+			    	}, 
+			    	function(error, docs) {
+			        	res.redirect('/')
+			    });
+			}
+		});
+	});
 });
 
 /*
@@ -222,8 +231,8 @@ app.post('/node/comment', ensureAuthenticated, function(req, res) {
         head: req.param('head'),
         comment: req.param('comment'),
         created_at: created_at,
-        //username: req.user.username,
-        //user_id: req.user.id
+        username: req.user.username,
+        user_id: req.user.id
        } , function( error, docs) {
            res.redirect('/node/' + req.param('_id'))
        });

@@ -21,14 +21,14 @@ html
         img(src="/images/account.gif" )
         a(href="/account")= ' account'
   #nodes
-    div.node
+    div.node-form
       form( method="post", enctype="multipart/form-data")
         div
             input(type="text", name="node-title", id="title-id", placeholder="title")
         div
             textarea( name="node-info", rows=5, id="node-info-id", placeholder="info")
         div
-          input(type="file", name="node-imgs", id="imgs-id", placeholder="image")
+          input(type="file", name="node_imgs", id="imgs_id", placeholder="images")
         div
             input(type="text", name="node-keywords", id="keywords-id", placeholder="keywords")
         div
