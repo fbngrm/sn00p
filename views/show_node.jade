@@ -46,7 +46,7 @@ html
           br
           div.keywords
             - each word in node.keywords
-              span!= word+' '
+              a(href="/keyword/"+word)!= word+' '
         div.clear
     - each c in node.comments
         div.comment

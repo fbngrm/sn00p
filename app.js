@@ -203,7 +203,7 @@ NOTE: No validation of the input data is performed!!!
 */
 app.get('/node/:id', ensureAuthenticated, function(req, res) {
     dbHandler.findDocById('nodes', req.params.id, function(error, node) {
-    	if(error){
+    	if(error || !node){
     		res.render('404.jade');
     	} else {
 	        res.render('show_node.jade',
@@ -222,7 +222,7 @@ NOTE: No validation of the input data is performed!!!
 */
 app.get('/user/:name', ensureAuthenticated, function(req, res) {
     dbHandler.findDocs('nodes', {username: req.params.name}, function(error, nodes) {
-    	if(error){
+    	if(error || nodes.length == 0){
     		res.render('404.jade');
     	} else {
 	        res.render('user_nodes.jade',
@@ -233,7 +233,24 @@ app.get('/user/:name', ensureAuthenticated, function(req, res) {
 	    }
     });
 });
-
+/*
+Render the view for an specific user in the db when a GET 
+request is received for "/animal/:id"
+NOTE: No validation of the input data is performed!!!
+*/
+app.get('/keyword/:word', ensureAuthenticated, function(req, res) {
+    dbHandler.findDocs('nodes', {keywords: req.params.word}, function(error, nodes) {
+    	if(error || nodes.length == 0){
+    		res.render('404.jade');
+    	} else {
+	        res.render('keyword_nodes.jade',
+	        { 
+	            title: req.params.word,
+	            nodes: nodes
+	        });
+	    }
+    });
+});
 /*
 Add a new comment to an animal when a POST request for "/animal/comment" is received.
 NOTE: No validation of the input data is performed!!!

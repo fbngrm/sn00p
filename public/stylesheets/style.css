@@ -193,10 +193,9 @@ ul li img {
 }
 #blackhead {
   width: 100%;
-  height: 3px;
+  height: 4px;
   background: #343434;
   position: fixed;
-  display: none;
 }
 #header {
   top: 0px;
