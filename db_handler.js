@@ -102,7 +102,7 @@ Persist an new user in the collection specified by param collection in the the d
 DBHandler.prototype.saveUser = function(collection, user, callback) {
    this.getCollection(collection, function(error, users) {
       if(error) {
-         	    console.log(error);
+         console.log(error);
          callback(error);
       } else {
          if(user.pass_1 != user.pass_2) {
@@ -115,7 +115,7 @@ DBHandler.prototype.saveUser = function(collection, user, callback) {
 	         		callback(error);
 	         	}
 	            if(user_email) {
-	            console.log('Email already exists!');
+	               console.log('Email already exists!');
 	               callback('Email already exists!');
 	            } else {
 			        users.findOne({username: user.username}, {}, function(error, user_name) {
@@ -124,10 +124,9 @@ DBHandler.prototype.saveUser = function(collection, user, callback) {
 			         		callback(error);
 			         	}
 			            if(user_name) {
-			            console.log('Username already exists!');
+			               console.log('Username already exists!');
 			               callback('Username already exists!');
 			            } else {
-			            console.log('Alright');
 							var new_user = {};
 					        new_user.username = user.username;
 					        new_user.email = user.email;

@@ -1,15 +1,24 @@
+/*
+Class to validate all input data that the application is using.
+*/
+
 var InputValidator = function(conf){
 	this.conf = conf;
 };
 
+/*
+Convert a JavaScript-Object to lowercase. All keys and values of type "string" will be converted. 
+*/
 InputValidator.prototype.lower = function(data){
 	var lower = null;
+	
+    console.log(data);
 	
     if (typeof(data) == "number"){
         return data;
     } else if (typeof(data) == "string"){
     	return data.toLowerCase();
-    } else if (data.push) {
+    } else if (typeof(data.length)!="undefined") {
         lower = [];
     } else {
         lower = {};
@@ -20,10 +29,5 @@ InputValidator.prototype.lower = function(data){
     }
     return lower;
 }
-
-var l = new InputValidator(null);
-var r = l.lower({1:"UPPER", 2:"lower", 3:"CamelCase", "four":{1:"fourOne", "Two":2}, "five":["ONE", 2, {1:"THree"}]});
-console.log(r);
-
-
+// export module
 exports.InputValidator = InputValidator;

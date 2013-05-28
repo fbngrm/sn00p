@@ -84,6 +84,7 @@ app.configure('production', function(){
 
 var dbHandler = new DBHandler('loose-node', 'localhost', 27017);
 var authProvider = new DBHandler('auth', 'localhost', 27017);
+var inputValidator = new InputValidator(null);
 
 /*
 If the user is authenticated, render the account page
@@ -122,17 +123,17 @@ app.get('/sign', function(req, res){
 Add a user to the database - sign in.
 */
 app.post('/sign', function(req, res){
-	authProvider.saveUser('users', {
+	req.logout();
+	authProvider.saveUser('users', inputValidator.lower({
 			username: req.param('username'), 
 			email: req.param('email'), 
 			pass_1: req.param('pass_1'), 
 			pass_2: req.param('pass_2')
-		}, 
+		}), 
 		function(error, user){
 			if(error){
 				res.redirect('/sign');
 			} else {
-			    res.user
 	        	res.redirect('/');
 			}
         });
@@ -151,9 +152,6 @@ Render the HTML template startpage when a GET requests for "/" is received.
 Get all documents in the zoo database to use them rendering the HTML data
 */
 app.get('/', ensureAuthenticated, function(req, res){
-
-var l = new InputValidator(null);
-l.lower({1:"UPPER", 2:"lower", 3:"CamelCase", "four":{1:"fourOne", "Two":2}, "five":["ONE", 2, {1:"THree"}]});
    dbHandler.findDocs('nodes', {}, function(error, docs){
         res.render('index.jade', { 
                 title: 'nodes',
@@ -178,20 +176,20 @@ NOTE: No validation of the input data is performed!!!
 */
 app.post('/node/new', ensureAuthenticated, function(req, res){
     fs.readFile(req.files.node_imgs.path, function (err, data) {
-		var name = req.files.node_imgs.name; 
+		var name = inputValidator.lower(req.files.node_imgs.name); 
 		var newPath = __dirname + "/public/uploads/" + name;
 		fs.writeFile(newPath, data, function (error) {
 			if(error){
 			   res.redirect('back');
 			} else {
-			    dbHandler.save('nodes', {
+			    dbHandler.save('nodes', inputValidator.lower({
 			        title: req.param('node_title'),
 			        info: req.param('node_info'),
 			        imgs: req.files.node_imgs.name,
 			        keywords: req.param('node_keywords'),
 			        username: req.user.username,
 			        user_id: req.user._id
-			    	}, 
+			    	}), 
 			    	function(error, docs) {
 			        	res.redirect('/');
 			    });
@@ -225,7 +223,8 @@ request is received for "/animal/:id"
 NOTE: No validation of the input data is performed!!!
 */
 app.get('/user/:name', ensureAuthenticated, function(req, res) {
-    dbHandler.findDocs('nodes', {username: req.params.name}, function(error, nodes) {
+    dbHandler.findDocs('nodes', inputValidator.lower({username: req.params.name}), 
+    function(error, nodes) {
     	if(error || nodes.length == 0){
     		res.render('404.jade');
     	} else {
@@ -243,7 +242,8 @@ request is received for "/animal/:id"
 NOTE: No validation of the input data is performed!!!
 */
 app.get('/keyword/:word', ensureAuthenticated, function(req, res) {
-    dbHandler.findDocs('nodes', {keywords: req.params.word}, function(error, nodes) {
+    dbHandler.findDocs('nodes', inputValidator.lower({keywords: req.params.word}),
+    function(error, nodes) {
     	if(error || nodes.length == 0){
     		res.render('404.jade');
     	} else {
@@ -260,14 +260,17 @@ Add a new comment to an animal when a POST request for "/animal/comment" is rece
 NOTE: No validation of the input data is performed!!!
 */
 app.post('/node/comment', ensureAuthenticated, function(req, res) {
-    var created_at = dateFormat();
-    dbHandler.addComment('nodes', req.param('_id'), {
+    var created_at = inputValidator.lower(dateFormat());
+    console.log(req.user.id);
+    console.log(req.user);
+    dbHandler.addComment('nodes', req.param('_id'), 
+    inputValidator.lower({
         head: req.param('head'),
         comment: req.param('comment'),
         created_at: created_at,
         username: req.user.username,
-        user_id: req.user.id
-       } , function( error, docs) {
+        user_id: req.user._id
+       }) , function( error, docs) {
            res.redirect('/node/' + req.param('_id'))
        });
 });
