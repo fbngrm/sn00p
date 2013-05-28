@@ -39,12 +39,12 @@ into an array. Call the callback function with this array as argument.
 @param callback: A callback function to call after the query is finished
 @param collection: The name of the collection that shoul be accessed
 */
-DBHandler.prototype.findAllDocs = function(collection, callback) {
+DBHandler.prototype.findDocs = function(collection, query, callback) {
    this.getCollection(collection, function(error, res_collection) {
       if(error) {
          callback(error);
       } else {
-         res_collection.find().toArray(function(error, results) {
+         res_collection.find(query).toArray(function(error, results) {
             if(error) {
                callback(error);
             } else {
@@ -167,6 +167,7 @@ DBHandler.prototype.getUserByEmail = function(collection, email, callback) {
       }
    });
 };
+
 /*
 Find a document in the db by the unique id.
 @param collection: The name of the collection that shoul be accessed

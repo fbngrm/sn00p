@@ -39,7 +39,7 @@ html
             span!= node.info
           div.user
             br
-            span.bold!= node.username
+            a(href="/user/"+node.username)!= node.username
           div.comments
             span= 'comments '
             span!= node.comments.length
@@ -54,7 +54,9 @@ html
           div.comment_info!= c.comment
           br
           div.comment_created_at!= c.created_at
-          div.comment_username.bold!= c.username
+          div.comment_username.bold
+          br
+          a(href="/user/"+node.username)!= c.username
     div
       form( method="post", action="/node/comment")
         input(type="hidden", name="_id", value=node._id.toHexString())

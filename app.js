@@ -38,7 +38,6 @@ passport.deserializeUser(function(id, done) {
 //   however, in this example we are using a baked-in set of users.
 passport.use(new LocalStrategy( function(email, password, done) {
 		authProvider.getUserByEmail('users', email, function(error, user){
-				console.log('callback');
 				if(error) {
 					return done(error);
 				}
@@ -151,7 +150,7 @@ Render the HTML template startpage when a GET requests for "/" is received.
 Get all documents in the zoo database to use them rendering the HTML data
 */
 app.get('/', ensureAuthenticated, function(req, res){
-   dbHandler.findAllDocs('nodes', function(error, docs){
+   dbHandler.findDocs('nodes', {}, function(error, docs){
         res.render('index.jade', { 
                 title: 'nodes',
                 nodes: docs
@@ -187,7 +186,7 @@ app.post('/node/new', ensureAuthenticated, function(req, res){
 			        imgs: req.files.node_imgs.name,
 			        keywords: req.param('node_keywords'),
 			        username: req.user.username,
-			        user_id: req.user.id
+			        user_id: req.user._id
 			    	}, 
 			    	function(error, docs) {
 			        	res.redirect('/');
@@ -198,17 +197,40 @@ app.post('/node/new', ensureAuthenticated, function(req, res){
 });
 
 /*
-Render the view for an specific animal in the db when a GET 
+Render the view for an specific node in the db when a GET 
 request is received for "/animal/:id"
 NOTE: No validation of the input data is performed!!!
 */
 app.get('/node/:id', ensureAuthenticated, function(req, res) {
     dbHandler.findDocById('nodes', req.params.id, function(error, node) {
-        res.render('show_node.jade',
-        { 
-            title: node.title,
-            node: node
-        });
+    	if(error){
+    		res.render('404.jade');
+    	} else {
+	        res.render('show_node.jade',
+	        { 
+	            title: node.title,
+	            node: node
+	        });
+	   }
+    });
+});
+
+/*
+Render the view for an specific user in the db when a GET 
+request is received for "/animal/:id"
+NOTE: No validation of the input data is performed!!!
+*/
+app.get('/user/:name', ensureAuthenticated, function(req, res) {
+    dbHandler.findDocs('nodes', {username: req.params.name}, function(error, nodes) {
+    	if(error){
+    		res.render('404.jade');
+    	} else {
+	        res.render('user_nodes.jade',
+	        { 
+	            title: req.params.name,
+	            nodes: nodes
+	        });
+	    }
     });
 });
 
