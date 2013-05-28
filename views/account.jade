@@ -6,11 +6,11 @@ html
 
 #wrap
   #menu
-    h2= account
+    h2= 'account'
     ul 
       li.active
         img(src="/images/nodes.gif" )
-        span= ' nodes'
+        a(href="/")= ' nodes'
       li
         img(src="/images/node.gif" )
         a(href="/node/new")= ' new node'
@@ -19,7 +19,7 @@ html
         a(href="/logout")= ' logout'
       li 
         img(src="/images/account.gif" )
-        a(href="/account")= ' account'
+        span= ' account'
       li 
         img(src="/images/settings.gif" )
         a(href="#")= ' settings'

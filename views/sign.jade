@@ -4,20 +4,12 @@ html
     title= 'Sign'
     link(rel='stylesheet', href='/stylesheets/style.css')
 
-h1= 'sign'
-form( method="post")
-    div
-        div
-            span username
-            input(type="text", name="username", placeholder="username")
-        div
-            span email
-            input(type="text", name="email", placeholder=""email")
-        div
-            span password
-            input(type="password", name="pass_1", placeholder="password")
-        div
-            span password
-            input(type="password", name="pass_2", placeholder="repeat password")
-        div
-            input(type="submit", value="Send")
+#bg
+#blackhead
+div.login
+  form( method="post")
+    input(type="text", name="username", placeholder="username")
+    input(type="text", name="email", placeholder="email")
+    input(type="password", name="pass_1", placeholder="password")
+    input(type="password", name="pass_2", placeholder="repeat password")
+    input(type="submit", value="Send").button

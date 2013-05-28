@@ -39,10 +39,9 @@ function findByUsername(username, fn) {
   return fn(null, null);
 }
 
-
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
-//   serialize users into and deserialize users out of the session.  Typically,
+//   serialize users into and deserialize users out of the session. Typically,
 //   this will be as simple as storing the user ID when serializing, and finding
 //   the user by ID when deserializing.
 passport.serializeUser(function(user, done) {
@@ -86,7 +85,7 @@ app.configure(function(){
   app.use(express.cookieParser());
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(express.session({ secret: 'keyboard cat' }));
+  app.use(express.session({ secret: 'keyboard dog' }));
   app.use(flash());
   // Initialize Passport!  Also use passport.session() middleware, to support
   // persistent login sessions (recommended).
@@ -107,13 +106,19 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
-var animalProvider = new DBHandler('loose-node', 'localhost', 27017);
+var dbHandler = new DBHandler('loose-node', 'localhost', 27017);
 var authProvider = new DBHandler('auth', 'localhost', 27017);
 
+/*
+If the user is authenticated, render the account page
+*/
 app.get('/account', ensureAuthenticated, function(req, res){
   res.render('account.jade', { user: req.user, title: 'account' });
 });
 
+/*
+Render the login page
+*/
 app.get('/login', function(req, res){
   res.render('login.jade', { user: req.user, message: req.flash('error'), title: 'login' });
 });
@@ -130,10 +135,16 @@ app.post('/login',
     res.redirect('/');
   });
   
+/*
+Render the sign in page.
+*/
 app.get('/sign', function(req, res){
   res.render('sign.jade', { user: req.user, message: req.flash('error'), title: 'sign' });
 });
 
+/*
+Add a user to the database - sign in.
+*/
 app.post('/sign', function(req, res){
 	authProvider.saveUser('users', {
 			username: req.param('username'), 
@@ -144,11 +155,15 @@ app.post('/sign', function(req, res){
 			if(error){
 				res.redirect('/sign');
 			} else {
+			    res.user
 	        	res.redirect('/');
 			}
         });
 });
 
+/*
+Log the user out and kill the session.
+*/
 app.get('/logout', ensureAuthenticated, function(req, res){
   req.logout();
   res.redirect('/');
@@ -159,7 +174,7 @@ Render the HTML template startpage when a GET requests for "/" is received.
 Get all documents in the zoo database to use them rendering the HTML data
 */
 app.get('/', ensureAuthenticated, function(req, res){
-   animalProvider.findAllDocs('nodes', function(error, docs){
+   dbHandler.findAllDocs('nodes', function(error, docs){
         res.render('index.jade', { 
                 title: 'nodes',
                 nodes: docs
@@ -189,7 +204,7 @@ app.post('/node/new', ensureAuthenticated, function(req, res){
 			if(error){
 			   res.redirect('back');
 			} else {
-			    animalProvider.save('nodes', {
+			    dbHandler.save('nodes', {
 			        title: req.param('node_title'),
 			        info: req.param('node_info'),
 			        imgs: req.files.node_imgs.name,
@@ -211,7 +226,7 @@ request is received for "/animal/:id"
 NOTE: No validation of the input data is performed!!!
 */
 app.get('/node/:id', ensureAuthenticated, function(req, res) {
-    animalProvider.findDocById('nodes', req.params.id, function(error, node) {
+    dbHandler.findDocById('nodes', req.params.id, function(error, node) {
         res.render('show_node.jade',
         { 
             title: node.title,
@@ -226,7 +241,7 @@ NOTE: No validation of the input data is performed!!!
 */
 app.post('/node/comment', ensureAuthenticated, function(req, res) {
     var created_at = dateFormat();
-    animalProvider.addComment('nodes', req.param('_id'), {
+    dbHandler.addComment('nodes', req.param('_id'), {
         head: req.param('head'),
         comment: req.param('comment'),
         created_at: created_at,
