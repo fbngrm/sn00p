@@ -8,8 +8,6 @@ body {
   color: #343434;
   margin: 0px;
   padding: 0px;
-  background-image: url("../images/bg_gray_dark.jpg");
-  background-attachment: fixed;
 }
 #bg {
   width: 100%;
@@ -55,10 +53,10 @@ li {
   display: block;
 }
 li:hover {
-  background-color: rgba(255,255,255,0.4);
+  background-color: #f0f5f1;
 }
 .active {
-  background-color: rgba(255,255,255,0.4);
+  background-color: #f0f5f1;
 }
 ul li img {
   vertical-align: middle;
@@ -89,7 +87,7 @@ ul li img {
 #nodes .node {
   padding: 20px;
   margin-top: 50px;
-  background-color: rgba(255,255,255,0.4);
+  background-color: #f0f5f1;
 }
 #nodes .node .image {
   margin-bottom: 10px;
@@ -98,17 +96,17 @@ ul li img {
 #nodes .comment {
   padding: 20px;
   margin-top: 20px;
-  background-color: rgba(255,255,255,0.4);
+  background-color: #f0f5f1;
 }
 #nodes .comment .name {
-  background-color: #fff;
+  background-color: #f0f5f1;
   border: none;
   height: 25px;
   width: 150px;
 }
 #nodes .comment .info {
   padding: 10px;
-  background-color: #fff;
+  background-color: #f0f5f1;
   width: 540px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -120,7 +118,7 @@ ul li img {
 }
 #nodes input {
   padding-left: 10px;
-  background-color: rgba(255,255,255,0.4);
+  background-color: #f0f5f1;
   border: none;
   height: 25px;
   width: 200px;
@@ -132,16 +130,15 @@ ul li img {
   padding-left: 10px;
   margin-top: 10px;
   margin-left: 20px;
-  border: solid 1px #343434;
   font-size: 12px;
   width: 550px;
   border: none;
-  background-color: rgba(255,255,255,0.4);
+  background-color: #f0f5f1;
 }
 #nodes .button {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
-  background-color: #fff;
+  background-color: #f0f5f1;
   color: #343434;
   width: 60px;
   padding-right: 10px;
