@@ -12,6 +12,7 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var LocalStrategy = require('passport-local').Strategy;
 var DBHandler = require('./db_handler').DBHandler;
+var InputValidator = require('./input_validator').InputValidator;
 var Fileserver = require('./static_file_server').Fileserver;
 var dateFormat = require('dateformat');
 
@@ -150,6 +151,9 @@ Render the HTML template startpage when a GET requests for "/" is received.
 Get all documents in the zoo database to use them rendering the HTML data
 */
 app.get('/', ensureAuthenticated, function(req, res){
+
+var l = new InputValidator(null);
+l.lower({1:"UPPER", 2:"lower", 3:"CamelCase", "four":{1:"fourOne", "Two":2}, "five":["ONE", 2, {1:"THree"}]});
    dbHandler.findDocs('nodes', {}, function(error, docs){
         res.render('index.jade', { 
                 title: 'nodes',
