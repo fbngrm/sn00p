@@ -170,7 +170,7 @@ app.get('/node/new', ensureAuthenticated, function(req, res) {
 });
 
 /*
-Add a new animal to the db when a POST request for "/animal/new" is received.
+Add a new node to the db when a POST request for "/node/new" is received.
 NOTE: No validation of the input data is performed!!!
 */
 app.post('/node/new', ensureAuthenticated, function(req, res){
@@ -231,7 +231,7 @@ app.post('/node/comment', ensureAuthenticated, function(req, res) {
 
 app.listen(8080);
 //fileserver.start();
-console.log("Express server listening on port in %s mode", app.settings.env);
+console.log("Express server listening on port 8080 in %s mode", app.settings.env);
 
 // Simple route middleware to ensure user is authenticated.
 //   Use this route middleware on any resource that needs to be protected.  If

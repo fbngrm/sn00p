@@ -8,7 +8,7 @@ html
   #menu
     h2= 'account'
     ul 
-      li.active
+      li
         img(src="/images/nodes.gif" )
         a(href="/")= ' nodes'
       li
@@ -17,12 +17,13 @@ html
       li 
         img(src="/images/logout.gif" )
         a(href="/logout")= ' logout'
-      li 
+      li.active
         img(src="/images/account.gif" )
         span= ' account'
       li 
         img(src="/images/settings.gif" )
         a(href="#")= ' settings'
   #nodes
-    p username: user.username
-    p email: user.email
+    span!= user.username
+    br
+    span!= user.email
