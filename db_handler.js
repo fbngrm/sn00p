@@ -56,7 +56,7 @@ DBHandler.prototype.findAllDocs = function(collection, callback) {
 };
 
 /*
-Persist an new document in the collection 'collection' of this.db.
+Persist an new document in the collection specified by param collection in the the db-connection bound to "this" context.
 @param collection: The name of the collection that shoul be accessed
 @param docs: A list of documents or one document
 @param callback: A callback function to call after savig the data or to handle the error
@@ -94,51 +94,76 @@ DBHandler.prototype.save = function(collection, docs, callback) {
 };
 
 /*
-Persist an new user in the collection 'collection' of this.db.
+Persist an new user in the collection specified by param collection in the the db-connection bound to "this" context.
 @param collection: The name of the collection that shoul be accessed
 @param docs: A list of users or one document
 @param callback: A callback function to call after savig the data or to handle the error
 */
-DBHandler.prototype.saveUser = function(collection, users, callback) {
-   this.getCollection(collection, function(error, res_collection) {
+DBHandler.prototype.saveUser = function(collection, user, callback) {
+   this.getCollection(collection, function(error, users) {
       if(error) {
+         	    console.log(error);
          callback(error);
       } else {
-         if(typeof(users.length)=="undefined") {
-            users = [users];
-         }
-         for(var i=0; i<users.length; i++) {
-            user = users[i];
-            user.created_at = dateFormat();
-         }
-         res_collection.insert(users, function() {
-            callback(null, users);
-         });
+         if(user.pass_1 != user.pass_2) {
+            console.log('Passwords does not match!');
+         	callback('Passwords does not match!');
+         } else {
+	         users.findOne({email: user.email}, {}, function(error, user_email) {
+	         	if(error) {
+	         	    console.log(error);
+	         		callback(error);
+	         	}
+	            if(user_email) {
+	            console.log('Email already exists!');
+	               callback('Email already exists!');
+	            } else {
+			        users.findOne({username: user.username}, {}, function(error, user_name) {
+				        if(error) {
+	         	    console.log(error);
+			         		callback(error);
+			         	}
+			            if(user_name) {
+			            console.log('Username already exists!');
+			               callback('Username already exists!');
+			            } else {
+			            console.log('Alright');
+							var new_user = {};
+					        new_user.username = user.username;
+					        new_user.email = user.email;
+					        new_user.password = user.pass_1;
+					        new_user.created_at = dateFormat();
+					        console.log(new_user);
+					        users.insert(new_user, function() {
+					           callback(null, new_user);
+					        });
+					    }
+					});
+			    }
+			});
+		}
       }
    });
 };
 
 /*
-Persist an new user in the collection 'collection' of this.db.
+Search for a user in the collection specified by param collection in the the db-connection bound to "this" context.
 @param collection: The name of the collection that shoul be accessed
-@param docs: A list of users or one document
+@param email: The email address of the user to search for
 @param callback: A callback function to call after savig the data or to handle the error
 */
-DBHandler.prototype.getUser = function(collection, user, callback) {
-   this.getCollection(collection, function(error, res_collection) {
+DBHandler.prototype.getUserByEmail = function(collection, email, callback) {
+   this.getCollection(collection, function(error, users) {
       if(error) {
-         callback(error);
+         return callback(error);
       } else {
-         if(typeof(users.length)=="undefined") {
-            users = [users];
-         }
-         for(var i=0; i<users.length; i++) {
-            user = users[i];
-            user.created_at = dateFormat();
-         }
-         res_collection.insert(users, function() {
-            callback(null, users);
-         });
+         users.findOne({email: email}, {}, function(error, user) {
+            if(error) {
+               return callback(error);
+            } else {
+		        return callback(null, user);
+		    }
+		});
       }
    });
 };

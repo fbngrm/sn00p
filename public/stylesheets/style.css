@@ -152,7 +152,7 @@ ul li img {
 }
 .login input {
   padding-left: 10px;
-  background-color: rgba(255,255,255,0.6);
+  background-color: #f0f5f1;
   border: none;
   height: 25px;
   width: 200px;
@@ -167,7 +167,7 @@ ul li img {
   width: 60px;
   padding-right: 10px;
   margin-top: 10px;
-  background-color: rgba(255,255,255,0.6);
+  background-color: #f0f5f1;
 }
 .light {
   color: #666;
