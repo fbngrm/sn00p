@@ -56,7 +56,7 @@ html
           div.comment_created_at!= c.created_at
           div.comment_username.bold
           br
-          a(href="/user/"+node.username)!= c.username
+          a(href="/user/"+c.username)!= c.username
     div
       form( method="post", action="/node/comment")
         input(type="hidden", name="_id", value=node._id.toHexString())
