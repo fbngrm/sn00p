@@ -8,6 +8,9 @@ html
 #wrap
   div.login
     form( method="post")
-      input(type="text", name="username", placeholder="email")
+      if (message != '')
+        input(type="email", name="username", value=message)
+      else 
+        input(type="email", name="username", placeholder="email")
       input(type="password", name="password", placeholder="password")
       input(type="submit", value="Send").button

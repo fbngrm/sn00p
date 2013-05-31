@@ -26,7 +26,6 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  console.log(id);
   authProvider.findDocById('users', id, function (err, user) {
     done(err, user);
   });
@@ -43,10 +42,10 @@ passport.use(new LocalStrategy( function(email, password, done) {
 					return done(error);
 				}
 	        	if (!user) {
-	        		return done(null, false, { message: 'Unknown user ' + email }); 
+	        		return done(null, false, { message: '' }); 
 	        	}
 	        	if (user.password != password) { 
-	        		return done(null, false, { message: 'Invalid password' }); 
+	        		return done(null, false, { message: user.email }); 
 	        	}
 	        	return done(null, user);
 		});
@@ -116,9 +115,10 @@ app.post('/login',
 Render the sign in page.
 */
 app.get('/sign', function(req, res){
-  res.render('sign.jade', { user: req.user, message: req.flash('error'), title: 'sign' });
+  res.render('sign.jade', { user: req.user, email: req.flash('email'), 
+  	user: req.flash('user'), title: 'sign' });
 });
-
+  
 /*
 Add a user to the database - sign in.
 */
@@ -127,14 +127,16 @@ app.post('/sign', function(req, res){
 	authProvider.saveUser('users', inputValidator.lower({
 			username: req.param('username'), 
 			email: req.param('email'), 
-			pass_1: req.param('pass_1'), 
+			pass_1: req.param('password'), 
 			pass_2: req.param('pass_2')
 		}), 
 		function(error, user){
 			if(error){
+  				req.flash('user', error.user);
+  				req.flash('email', error.email);
 				res.redirect('/sign');
 			} else {
-	        	res.redirect('/');
+                res.redirect('/account');
 			}
         });
 });
@@ -261,8 +263,6 @@ NOTE: No validation of the input data is performed!!!
 */
 app.post('/node/comment', ensureAuthenticated, function(req, res) {
     var created_at = inputValidator.lower(dateFormat());
-    console.log(req.user.id);
-    console.log(req.user);
     dbHandler.addComment('nodes', req.param('_id'), 
     inputValidator.lower({
         head: req.param('head'),

@@ -6,11 +6,18 @@ html
 
 #bg
 #blackhead
-#wrap
-  div.login
+#wrap      
+  #div.login
     form( method="post")
-      input(type="text", name="username", placeholder="username")
-      input(type="text", name="email", placeholder="email")
-      input(type="password", name="pass_1", placeholder="password")
+      if (user != '') 
+        input(type="text", name="username", value=user)
+      else
+        input(type="text", name="username", placeholder="username")
+        
+      if (email != '')
+        input(type="email", name="email", value=email)
+      else
+        input(type="email", name="email", placeholder="email")
+      input(type="password", name="password", placeholder="password")
       input(type="password", name="pass_2", placeholder="repeat password")
-      input(type="submit", value="Send").button
+      input(type="submit", value="send").button
