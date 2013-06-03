@@ -109,7 +109,7 @@ DBHandler.prototype.saveUser = function(collection, user, callback) {
          } else {
 	         users.findOne({email: user.email}, {}, function(error, user_email) {
 	         	if(error) {
-	         	    console.log(error);
+	         	    console.log('ERROR: ' + error);
 	         		callback(error);
 	         	}
 	            if(user_email) {
@@ -117,7 +117,7 @@ DBHandler.prototype.saveUser = function(collection, user, callback) {
 	            } else {
 			        users.findOne({username: user.username}, {}, function(error, user_name) {
 				        if(error) {
-	         	    console.log(error);
+	         	    console.log('ERROR: ' + error);
 			         		callback(error);
 			         	}
 			            if(user_name) {

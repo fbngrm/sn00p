@@ -12,7 +12,6 @@ Convert a JavaScript-Object to lowercase. All keys and values of type "string" w
 InputValidator.prototype.lower = function(data){
 	var lower = null;
 	
-    console.log(data);
 	
     if (typeof(data) == "number"){
         return data;

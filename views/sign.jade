@@ -10,14 +10,14 @@ html
   #div.login
     form( method="post")
       if (user != '') 
-        input(type="text", name="username", value=user)
+        input(type="text", name="user", value=user)
       else
-        input(type="text", name="username", placeholder="username")
+        input(type="text", name="user", placeholder="username")
         
       if (email != '')
-        input(type="email", name="email", value=email)
+        input(type="email", name="username", value=email)
       else
-        input(type="email", name="email", placeholder="email")
+        input(type="email", name="username", placeholder="email")
       input(type="password", name="password", placeholder="password")
       input(type="password", name="pass_2", placeholder="repeat password")
       input(type="submit", value="send").button

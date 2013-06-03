@@ -60,7 +60,7 @@ app.configure(function(){
   app.use(express.cookieParser());
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(express.session({ secret: 'keyboard dog' }));
+  app.use(express.session({cookie:{httpOnly: false}, secret: 'keyboard dog' }));
   app.use(flash());
   // Initialize Passport!  Also use passport.session() middleware, to support
   // persistent login sessions (recommended).
@@ -125,8 +125,8 @@ Add a user to the database - sign in.
 app.post('/sign', function(req, res){
 	req.logout();
 	authProvider.saveUser('users', inputValidator.lower({
-			username: req.param('username'), 
-			email: req.param('email'), 
+			username: req.param('user'), 
+			email: req.param('username'), 
 			pass_1: req.param('password'), 
 			pass_2: req.param('pass_2')
 		}), 
@@ -136,8 +136,10 @@ app.post('/sign', function(req, res){
   				req.flash('email', error.email);
 				res.redirect('/sign');
 			} else {
-                res.redirect('/account');
-			}
+	          	passport.authenticate('local')(req, res, function () {
+	                res.redirect('/');
+	            })
+	        }
         });
 });
 
@@ -160,6 +162,14 @@ app.get('/', ensureAuthenticated, function(req, res){
                 nodes: docs
         });
     })
+});
+
+/*
+Render the HTML template startpage when a GET requests for "/" is received.
+Get all documents in the zoo database to use them rendering the HTML data
+*/
+app.get('/cookie/:value', function(req, res) {
+    console.log(req.params.value);
 });
 
 /*
