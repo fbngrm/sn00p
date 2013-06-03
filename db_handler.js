@@ -104,17 +104,19 @@ DBHandler.prototype.saveUser = function(collection, user, callback) {
       if(error) {
          callback(error);
       } else {
+         // check if passwords match
          if(user.pass_1 != user.pass_2) {
          	callback({user: user.username, email: user.email});
          } else {
+	         // check if email already exists
 	         users.findOne({email: user.email}, {}, function(error, user_email) {
 	         	if(error) {
 	         	    console.log('ERROR: ' + error);
 	         		callback(error);
-	         	}
-	            if(user_email) {
+	         	} else if(user_email) {
 	               callback({user: user.username, email: ''});
 	            } else {
+	            	// check if username already exists
 			        users.findOne({username: user.username}, {}, function(error, user_name) {
 				        if(error) {
 	         	    console.log('ERROR: ' + error);

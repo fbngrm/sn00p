@@ -17,7 +17,7 @@ InputValidator.prototype.lower = function(data){
         return data;
     } else if (typeof(data) == "string"){
     	return data.toLowerCase();
-    } else if (typeof(data.length)!="undefined") {
+    } else if (data && typeof(data.length) != "undefined") {
         lower = [];
     } else {
         lower = {};

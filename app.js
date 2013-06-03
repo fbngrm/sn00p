@@ -24,12 +24,12 @@ var dateFormat = require('dateformat');
 //   this will be as simple as storing the user ID when serializing, and finding
 //   the user by ID when deserializing.
 passport.serializeUser(function(user, done) {
-  done(null, user._id);
+  done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
-  authProvider.findDocById('users', id, function (err, user) {
-    done(err, user);
+  mySqlHandler.getUserById(id, function (err, user) {
+    done(err, user[0]);
   });
 });
 
@@ -39,17 +39,17 @@ passport.deserializeUser(function(id, done) {
 //   with a user object.  In the real world, this would query a database;
 //   however, in this example we are using a baked-in set of users.
 passport.use(new LocalStrategy( function(email, password, done) {
-		authProvider.getUserByEmail('users', email, function(error, user){
+		mySqlHandler.getUserByEmail(email, function(error, user){
 				if(error) {
 					return done(error);
 				}
-	        	if (!user) {
+	        	if (!user[0].password) {
 	        		return done(null, false, { message: '' }); 
 	        	}
-	        	if (user.password != password) { 
-	        		return done(null, false, { message: user.email }); 
+	        	if (user[0].password && user[0].password != password) { 
+	        		return done(null, false, { message: user[0].email }); 
 	        	}
-	        	return done(null, user);
+	        	return done(null, user[0]);
 		});
     }
 ));
@@ -128,7 +128,7 @@ Add a user to the database - sign in.
 */
 app.post('/sign', function(req, res){
 	req.logout();
-	authProvider.saveUser('users', inputValidator.lower({
+	mySqlHandler.addUser(inputValidator.lower({
 			username: req.param('user'), 
 			email: req.param('username'), 
 			pass_1: req.param('password'), 
@@ -203,8 +203,7 @@ app.post('/node/new', ensureAuthenticated, function(req, res){
 			        info: req.param('node_info'),
 			        imgs: req.files.node_imgs.name,
 			        keywords: req.param('node_keywords'),
-			        username: req.user.username,
-			        user_id: req.user._id
+			        username: req.user.username
 			    	}), 
 			    	function(error, docs) {
 			        	res.redirect('/');
@@ -282,8 +281,7 @@ app.post('/node/comment', ensureAuthenticated, function(req, res) {
         head: req.param('head'),
         comment: req.param('comment'),
         created_at: created_at,
-        username: req.user.username,
-        user_id: req.user._id
+        username: req.user.username
        }) , function( error, docs) {
            res.redirect('/node/' + req.param('_id'))
        });
