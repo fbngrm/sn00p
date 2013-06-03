@@ -32,7 +32,7 @@ passport.deserializeUser(function(id, done) {
     done(err, user[0]);
   });
 });
-
+/*
 // Use the LocalStrategy within Passport.
 //   Strategies in passport require a `verify` function, which accept
 //   credentials (in this case, a username and password), and invoke a callback
@@ -43,12 +43,25 @@ passport.use(new LocalStrategy( function(email, password, done) {
 				if(error) {
 					return done(error);
 				}
-	        	if (!user[0].password) {
-	        		return done(null, false, { message: '' }); 
+	        	if (!user.password) {
+	        		return done(null, false, { message: '' });
 	        	}
-	        	if (user[0].password && user[0].password != password) { 
-	        		return done(null, false, { message: user[0].email }); 
+	        	if (user[0].password && user.password != password) { 
+	        		return done(null, false, { message: user.email }); 
 	        	}
+	        	return done(null, user);
+		});
+    }
+));
+*/
+/*
+Strategy to simulate sql injection flaw.
+*/
+passport.use(new LocalStrategy( function(email, password, done) {
+		mySqlHandler.getUserByEmail(email, password, function(error, user){
+				if(error) {
+					return done(error);
+				}
 	        	return done(null, user[0]);
 		});
     }
