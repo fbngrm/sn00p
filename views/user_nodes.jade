@@ -28,7 +28,7 @@ html
     - each node in nodes
       div.node
         div.image
-          img(src="/uploads/"+node.imgs).image
+          img(src="/uploads/"+node.imgs)
         div.left
           div.bold
             a(href="/node/"+node._id.toHexString())!= node.title

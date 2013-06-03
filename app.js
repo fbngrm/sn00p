@@ -128,7 +128,7 @@ app.post('/sign', function(req, res){
 			username: req.param('user'), 
 			email: req.param('username'), 
 			pass_1: req.param('password'), 
-			pass_2: req.param('pass_2')
+			pass_2: req.param('password2')
 		}), 
 		function(error, user){
 			if(error){
