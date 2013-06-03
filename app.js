@@ -12,9 +12,11 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var LocalStrategy = require('passport-local').Strategy;
 var DBHandler = require('./db_handler').DBHandler;
+var MySqlHandler = require('./mysql_handler').MySqlHandler;
 var InputValidator = require('./input_validator').InputValidator;
 var Fileserver = require('./static_file_server').Fileserver;
 var dateFormat = require('dateformat');
+
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -83,6 +85,8 @@ app.configure('production', function(){
 
 var dbHandler = new DBHandler('loose-node', 'localhost', 27017);
 var authProvider = new DBHandler('auth', 'localhost', 27017);
+// BUGFIX: Do not run database as root!!! 
+var mySqlHandler = new MySqlHandler('localhost', 'auth', 'root', 'root');
 var inputValidator = new InputValidator(null);
 
 /*
