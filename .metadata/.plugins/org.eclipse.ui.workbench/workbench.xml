@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench progressCount="23" version="2.0">
+<workbenchAdvisor/>
+<window height="1055" maximized="true" width="1385" x="0" y="25">
+<fastViewData fastViewLocation="1024"/>
+<perspectiveBar>
+<itemSize x="160"/>
+</perspectiveBar>
+<coolbarLayout>
+<coolItem id="group.file" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="122" y="27"/>
+<coolItem id="additions" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="146" y="27"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="44" y="27"/>
+<coolItem id="org.eclipse.team.ui.actionSet" itemType="typeToolBarContribution" x="44" y="27"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="62" y="26"/>
+<coolItem id="group.nav" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="172" y="27"/>
+<coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.nodeclipse.ui.editors.NodeEditor" itemType="typeToolBarContribution" x="65" y="27"/>
+<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="group.help" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
+</coolbarLayout>
+<page aggregateWorkingSetId="Aggregate for window 1368005674758" focus="true" label="Workspace - Node">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="9"/>
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
+<part id="7"/>
+<part id="8"/>
+<part id="10"/>
+<part id="11"/>
+</presentation>
+</folder>
+</info>
+</editorArea>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="sign.jade" partName="sign.jade" path="/home/f/work/mixd/ba_scripts/blog/views/sign.jade" title="sign.jade" tooltip="blog/views/sign.jade" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/views/sign.jade"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="672" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="show_node.jade" partName="show_node.jade" path="/home/f/work/mixd/ba_scripts/blog/views/show_node.jade" title="show_node.jade" tooltip="blog/views/show_node.jade" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/views/show_node.jade"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="586" selectionTopPixel="353"/>
+</editor>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="node_new.jade" partName="node_new.jade" path="/home/f/work/mixd/ba_scripts/blog/views/node_new.jade" title="node_new.jade" tooltip="blog/views/node_new.jade" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/views/node_new.jade"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="554" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="account.jade" partName="account.jade" path="/home/f/work/mixd/ba_scripts/blog/views/account.jade" title="account.jade" tooltip="blog/views/account.jade" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/views/account.jade"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="629" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="login.jade" partName="login.jade" path="/home/f/work/mixd/ba_scripts/blog/views/login.jade" title="login.jade" tooltip="blog/views/login.jade" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/views/login.jade"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="200" selectionTopPixel="0"/>
+</editor>
+<editor id="org.nodeclipse.ui.editors.NodeEditor" name="input_validator.js" partName="input_validator.js" path="/home/f/work/mixd/ba_scripts/blog/input_validator.js" title="input_validator.js" tooltip="blog/input_validator.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/input_validator.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="461" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="style.styl" partName="style.styl" path="/home/f/work/mixd/ba_scripts/blog/public/stylesheets/style.styl" title="style.styl" tooltip="blog/public/stylesheets/style.styl" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/public/stylesheets/style.styl"/>
+<editorState selectionHorizontalPixel="0" selectionLength="6" selectionOffset="1046" selectionTopPixel="777"/>
+</editor>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="user_nodes.jade" partName="user_nodes.jade" path="/home/f/work/mixd/ba_scripts/blog/views/user_nodes.jade" title="user_nodes.jade" tooltip="blog/views/user_nodes.jade" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/views/user_nodes.jade"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="674" selectionTopPixel="0"/>
+</editor>
+<editor id="org.nodeclipse.ui.editors.NodeEditor" name="mysql_handler.js" partName="mysql_handler.js" path="/home/f/work/mixd/ba_scripts/blog/mysql_handler.js" title="mysql_handler.js" tooltip="blog/mysql_handler.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/mysql_handler.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="17" selectionOffset="2615" selectionTopPixel="668"/>
+</editor>
+<editor id="org.nodeclipse.ui.editors.NodeEditor" name="app.js" partName="app.js" path="/home/f/work/mixd/ba_scripts/blog/app.js" title="app.js" tooltip="blog/app.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/app.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="704" selectionTopPixel="1580"/>
+</editor>
+<editor activePart="true" focus="true" id="org.nodeclipse.ui.editors.NodeEditor" name="main.js" partName="main.js" path="/home/f/work/mixd/ba_scripts/firewall/main.js" title="main.js" tooltip="firewall/main.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/main.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="901" selectionTopPixel="176"/>
+</editor>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="blacklist" partName="blacklist" path="/home/f/work/mixd/ba_scripts/firewall/conf/blacklist" title="blacklist" tooltip="firewall/conf/blacklist" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/conf/blacklist"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="13" selectionTopPixel="0"/>
+</editor>
+</editors>
+<views>
+<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
+<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
+</view>
+<view id="org.eclipse.search.ui.views.SearchView" partName="Search">
+<viewState isPinned="false">
+<view IMemento.internal.id="" org.eclipse.search.lastActivation="0"/>
+<view IMemento.internal.id="org.eclipse.search.text.FileSearchResultPage" org.eclipse.search.lastActivation="1" org.eclipse.search.resultpage.layout="2" org.eclipse.search.resultpage.limit="1000" org.eclipse.search.resultpage.sorting="2"/>
+</viewState>
+</view>
+<view id="org.eclipse.ui.views.ProblemView" partName="Problems">
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<expanded>
+<category IMemento.internal.id="Warnings (6 items)"/>
+</expanded>
+<columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="1058" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
+</viewState>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.views.TaskList" partName="Tasks">
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.completionField" categoryGroup="none" markerContentGenerator="org.eclipse.ui.ide.tasksGenerator" partName="Tasks">
+<columnWidths org.eclipse.ui.ide.completionField="40" org.eclipse.ui.ide.descriptionField="300" org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="971" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.priorityField="30" org.eclipse.ui.ide.resourceField="90"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.completionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.priorityField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.descriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
+</viewState>
+</view>
+<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
+<viewState/>
+</view>
+</views>
+<perspectives activePart="org.eclipse.search.ui.views.SearchView" activePerspective="org.nodeclipse.ui.perspectives.NodePerspective">
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.eclipse.ui.internal.ide.application.ResourcePerspective" id="org.eclipse.ui.resourcePerspective" label="Resource"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<alwaysOnActionSet id="org.chromium.debug.ui.actionSets"/>
+<show_view_action id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<show_view_action id="org.eclipse.ui.views.BookmarkView"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.views.PropertySheet"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<show_view_action id="org.eclipse.ui.views.ProgressView"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<show_view_action id="org.eclipse.ant.ui.views.AntView"/>
+<show_view_action id="org.eclipse.pde.runtime.LogView"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.folder"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.file"/>
+<new_wizard_action id="org.eclipse.ui.editors.wizards.UntitledTextFileWizard"/>
+<perspective_action id="org.eclipse.jdt.ui.JavaPerspective"/>
+<perspective_action id="org.eclipse.jdt.ui.JavaBrowsingPerspective"/>
+<perspective_action id="org.eclipse.team.cvs.ui.cvsPerspective"/>
+<perspective_action id="org.eclipse.team.ui.TeamSynchronizingPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="org.eclipse.ui.views.TaskList"/>
+<fastViewBars/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="topLeft">&#x0A;<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
+<page content="org.eclipse.team.ccvs.ui.RepositoriesView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@2f6e4ddd" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="topLeft">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.25940594" ratioLeft="262" ratioRight="748" relationship="2" relative="topLeft"/>
+<info folder="true" part="bottomRight" ratio="0.6594761" ratioLeft="428" ratioRight="221" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.views.TaskList" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
+<page content="org.eclipse.team.ui.GenericHistoryView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="bottomLeft" ratio="0.49922958" ratioLeft="324" ratioRight="325" relationship="4" relative="topLeft">&#x0A;<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.nodeclipse.ui.perspectives.NodePerspective" id="org.nodeclipse.ui.perspectives.NodePerspective" label="Node"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.chromium.debug.ui.actionSets"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.debugActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.profileActionSet"/>
+<alwaysOnActionSet id="org.eclipse.team.ui.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<show_view_action id="org.eclipse.team.ui.GenericHistoryView"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<show_view_action id="org.eclipse.ui.views.ResourceNavigator"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<new_wizard_action id="org.nodeclipse.ui.wizards.ExpressProjectWizard"/>
+<new_wizard_action id="org.nodeclipse.ui.wizards.NodeProjectWizard"/>
+<new_wizard_action id="org.nodeclipse.ui.wizards.NodeFileWizard"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.folder"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.file"/>
+<perspective_action id="org.eclipse.team.ui.TeamSynchronizingPerspective"/>
+<perspective_action id="org.eclipse.ui.resourcePerspective"/>
+<perspective_action id="org.eclipse.debug.ui.DebugPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="org.eclipse.ui.views.ProblemView"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.search.ui.views.SearchView"/>
+<fastViewBars/>
+<layout>
+<mainWindow>
+<info folder="true" part="left">
+<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">
+<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="left">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.12833944" ratioLeft="245" ratioRight="1664" relationship="2" relative="left"/>
+<info folder="true" part="rightTopRight" ratio="0.7496513" ratioLeft="1075" ratioRight="359" relationship="2" relative="org.eclipse.ui.editorss">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.TaskList" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@69dbb4d1" ratio="0.9351648" ratioLeft="851" ratioRight="59" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.search.ui.views.SearchView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.search.ui.views.SearchView" label="Search"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@5cc47680" ratio="0.74550617" ratioLeft="788" ratioRight="269" relationship="4" relative="left">
+<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<workingSets/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/blog/app.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/blog/mysql_handler.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/blog/views/sign.jade"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/blog/input_validator.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/blog/views/login.jade"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/hello-world-server.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/blog/db_handler.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/blog/app.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/blog/views/login.jade"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/conf/blacklist.json"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/conf/blacklist"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/blog/app.js"/>
+</editors>
+<item historyLabel="mysql_handler.js" index="1">
+<position info="not_deleted" x="3807" y="11"/>
+</item>
+<item historyLabel="app.js" index="0">
+<position info="not_deleted" x="3302" y="36"/>
+</item>
+<item historyLabel="mysql_handler.js" index="1">
+<position info="not_deleted" x="3043" y="31"/>
+</item>
+<item historyLabel="app.js" index="0">
+<position info="not_deleted" x="1674" y="0"/>
+</item>
+<item historyLabel="mysql_handler.js" index="1">
+<position info="not_deleted" x="3043" y="31"/>
+</item>
+<item historyLabel="app.js" index="0">
+<position/>
+</item>
+<item historyLabel="mysql_handler.js" index="1">
+<position info="not_deleted" x="3073" y="0"/>
+</item>
+<item historyLabel="app.js" index="0">
+<position info="not_deleted" x="2002" y="0"/>
+</item>
+<item historyLabel="mysql_handler.js" index="1">
+<position/>
+</item>
+<item historyLabel="app.js" index="0">
+<position/>
+</item>
+<item historyLabel="mysql_handler.js" index="1">
+<position/>
+</item>
+<item historyLabel="app.js" index="0">
+<position/>
+</item>
+<item historyLabel="mysql_handler.js" index="1">
+<position/>
+</item>
+<item historyLabel="app.js" index="0">
+<position info="not_deleted" x="1858" y="0"/>
+</item>
+<item historyLabel="mysql_handler.js" index="1">
+<position info="not_deleted" x="3071" y="0"/>
+</item>
+<item historyLabel="app.js" index="0">
+<position info="not_deleted" x="1935" y="0"/>
+</item>
+<item historyLabel="input_validator.js" index="3">
+<position info="not_deleted" x="461" y="0"/>
+</item>
+<item historyLabel="app.js" index="0">
+<position info="not_deleted" x="1177" y="0"/>
+</item>
+<item historyLabel="mysql_handler.js" index="1">
+<position info="not_deleted" x="546" y="0"/>
+</item>
+<item historyLabel="app.js" index="0">
+<position info="not_deleted" x="9953" y="0"/>
+</item>
+<item historyLabel="sign.jade" index="2">
+<position info="not_deleted" x="672" y="0"/>
+</item>
+<item historyLabel="login.jade" index="4">
+<position info="not_deleted" x="200" y="0"/>
+</item>
+<item historyLabel="app.js" index="0">
+<position info="not_deleted" x="1668" y="4"/>
+</item>
+<item historyLabel="mysql_handler.js" index="1">
+<position info="not_deleted" x="546" y="0"/>
+</item>
+<item historyLabel="app.js" index="0">
+<position info="not_deleted" x="2012" y="0"/>
+</item>
+<item historyLabel="mysql_handler.js" index="1">
+<position info="not_deleted" x="546" y="0"/>
+</item>
+<item historyLabel="hello-world-server.js" index="5">
+<position info="not_deleted" x="740" y="0"/>
+</item>
+<item historyLabel="main.js" index="6">
+<position info="not_deleted" x="1568" y="0"/>
+</item>
+<item historyLabel="mysql_handler.js" index="1">
+<position info="not_deleted" x="2920" y="0"/>
+</item>
+<item historyLabel="db_handler.js" index="7">
+<position info="not_deleted" x="6348" y="0"/>
+</item>
+<item historyLabel="main.js" index="6">
+<position info="not_deleted" x="325" y="0"/>
+</item>
+<item historyLabel="app.js" index="8">
+<position info="not_deleted" x="704" y="0"/>
+</item>
+<item historyLabel="main.js" index="6">
+<position info="not_deleted" x="1089" y="0"/>
+</item>
+<item historyLabel="login.jade" index="9">
+<position info="not_deleted" x="200" y="0"/>
+</item>
+<item historyLabel="app.js" index="8">
+<position info="not_deleted" x="704" y="0"/>
+</item>
+<item historyLabel="mysql_handler.js" index="1">
+<position info="not_deleted" x="1397" y="0"/>
+</item>
+<item historyLabel="main.js" index="6">
+<position info="not_deleted" x="382" y="0"/>
+</item>
+<item historyLabel="mysql_handler.js" index="1">
+<position info="not_deleted" x="2615" y="17"/>
+</item>
+<item historyLabel="main.js" index="6">
+<position info="not_deleted" x="382" y="0"/>
+</item>
+<item historyLabel="blacklist.json" index="10">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="blacklist" index="11">
+<position info="not_deleted" x="13" y="0"/>
+</item>
+<item historyLabel="app.js" index="12">
+<position info="not_deleted" x="704" y="0"/>
+</item>
+<item historyLabel="main.js" index="6">
+<position info="not_deleted" x="619" y="0"/>
+</item>
+<item historyLabel="main.js" index="6">
+<position info="not_deleted" x="560" y="6"/>
+</item>
+<item historyLabel="app.js" index="12">
+<position info="not_deleted" x="704" y="0"/>
+</item>
+<item historyLabel="main.js" index="6">
+<position info="not_deleted" x="497" y="0"/>
+</item>
+<item historyLabel="blacklist" index="11">
+<position info="not_deleted" x="13" y="0"/>
+</item>
+<item historyLabel="main.js" index="6">
+<position info="not_deleted" x="901" y="0"/>
+</item>
+<item historyLabel="blacklist" index="11">
+<position info="not_deleted" x="13" y="0"/>
+</item>
+<item active="true" historyLabel="main.js" index="6">
+<position info="not_deleted" x="901" y="0"/>
+</item>
+</navigationHistory>
+<input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+<trimLayout>
+<trimArea IMemento.internal.id="128">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
+</trimArea>
+<trimArea IMemento.internal.id="1024">
+<trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
+<trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+</trimArea>
+</trimLayout>
+</window>
+<mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="blacklist.json" tooltip="firewall/conf/blacklist.json">
+<persistable path="/firewall/conf/blacklist.json"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" name="hello-world-server.js" tooltip="firewall/hello-world-server.js">
+<persistable path="/firewall/hello-world-server.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" name="mysql_handler.js" tooltip="blog/mysql_handler.js">
+<persistable path="/blog/mysql_handler.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="user_nodes.jade" tooltip="blog/views/user_nodes.jade">
+<persistable path="/blog/views/user_nodes.jade"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="index.jade" tooltip="blog/views/index.jade">
+<persistable path="/blog/views/index.jade"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="keyword_nodes.jade" tooltip="blog/views/keyword_nodes.jade">
+<persistable path="/blog/views/keyword_nodes.jade"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="style.styl" tooltip="blog/public/stylesheets/style.styl">
+<persistable path="/blog/public/stylesheets/style.styl"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="README.md" tooltip="blog/README.md">
+<persistable path="/blog/README.md"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" name="input_validator.js" tooltip="blog/input_validator.js">
+<persistable path="/blog/input_validator.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="500.jade" tooltip="blog/views/500.jade">
+<persistable path="/blog/views/500.jade"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="404.jade" tooltip="blog/views/404.jade">
+<persistable path="/blog/views/404.jade"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="show_user.jade" tooltip="blog/views/show_user.jade">
+<persistable path="/blog/views/show_user.jade"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="node_new.jade" tooltip="blog/views/node_new.jade">
+<persistable path="/blog/views/node_new.jade"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="show_node.jade" tooltip="blog/views/show_node.jade">
+<persistable path="/blog/views/show_node.jade"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="style.css" tooltip="blog/public/stylesheets/style.css">
+<persistable path="/blog/public/stylesheets/style.css"/>
+</file>
+</mruList>
+</workbench>

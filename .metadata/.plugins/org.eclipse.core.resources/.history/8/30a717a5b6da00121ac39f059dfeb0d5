@@ -1,0 +1,62 @@
+/*var http = require('http');
+http.createServer(function (request, response) {
+    if (request.method === 'GET') {
+        var data = {"symbol" : "AMZN"};
+        request.addListener('data', function(chunk) { 
+            data += chunk; 
+        });
+        request.addListener('end', function() {
+            var stockQuery = eval("(" + data + ")");
+             console.log(stockQuery.symbol);
+         });
+     }
+}).listen(8123);
+
+var query = {"symbol" : "AMZN"};
+var test = 'response.end(\'success\')';
+*/
+// Include http module, 
+var http = require("http"), 
+// And url module, which is very helpful in parsing request parameters. 
+url = require("url"); 
+
+// Create the server. 
+http.createServer(function (request, response) { 
+    if (request.method === 'GET') {
+       // Attach listener on end event. 
+       request.on('end', function () { 
+          // Parse the request for arguments and store them in _get variable. 
+          // This function parses the url from request and returns object representation. 
+          var _get = url.parse(request.url, true).query; 
+          // Write headers to the response. 
+          response.writeHead(200, { 
+             'Content-Type': 'text/plain'
+          }); 
+          // Send data and end response. 
+          // evil eval
+          var stockQuery = eval("(" + _get['data'] + ")");
+          response.end('Here is your data: ' + stockQuery); 
+       }); 
+    }
+// Listen on the 8080 port.
+}).listen(8080);'response.end(\'success\')';
+
+// {"stock":"HELLO WORLD!"}
+// response.end('success')
+// while(1)
+// process.exit()
+// process.kill(process.pid)
+// response.end(require('fs').readdirSync('.').toString())
+// response.end(require('fs').readdirSync('..').toString())
+// response.end(require('fs').readFileSync(filename))
+
+// Retrieve
+var MongoClient = require('mongodb').MongoClient;
+
+// Connect to the db
+MongoClient.connect("mongodb://localhost:27017/exampleDb", function(err, db) {
+  if(!err) {
+    console.log("We are connected");
+    db.collection('test', function(err, collection) {});
+  }
+});

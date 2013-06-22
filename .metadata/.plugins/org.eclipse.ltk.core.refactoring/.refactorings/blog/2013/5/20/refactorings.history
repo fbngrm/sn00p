@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;blog/articleprovider-memory.js&apos; to &apos;articleprovider-mongodb.js&apos;" description="Rename resource &apos;articleprovider-memory.js&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="articleprovider-memory.js" name="articleprovider-mongodb.js" stamp="1368437312897" updateReferences="true"/>
+</session>
