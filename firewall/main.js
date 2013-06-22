@@ -2,9 +2,13 @@ var http = require('http');
 var sys  = require('sys');
 var fs   = require('fs');
 
+// list all ip addresses that should be blocked
 var blacklist = [];
+// list all ip addresses that should be allowed
 var whitelist = [];
 
+// watch the config files for black- and whitelist
+// if a file changes update the list at runtime - no restart required
 try {
 	fs.watchFile('./conf/blacklist', function(c,p) { updatePermissions(); });
 	fs.watchFile('./conf/whitelist', function(c,p) { updatePermissions(); });
@@ -12,6 +16,8 @@ try {
 	sys.log(err);
 }
 
+// read the allowed and blocked ip addresses from the config files
+// triggered once when server starts & and everytime the config changes
 function updatePermissions() {
 	sys.log("Updating permissions");
 	try {
@@ -24,6 +30,8 @@ function updatePermissions() {
 	}
 }
 
+// check if the ip is blacklisted/banned
+// @param ip: the ip address to check
 function isBanned(ip){
 	for (i in blacklist) {
 		if (blacklist[i] == ip) {
@@ -33,6 +41,8 @@ function isBanned(ip){
 	return false;
 }
 
+// if the config file is not empty check if the ip is whitelisted/allowed
+// @param ip: the ip address to check
 function isAllowed(ip) {
 	if (whitelist.length == 0) return true;
 	for (i in whitelist) {
@@ -43,15 +53,18 @@ function isAllowed(ip) {
 	return false;
 }
 
+// when invalid client deny the response
 function deny(response, msg) {
   response.writeHead(403);
   response.write(msg);
   response.end();
 }
 
+// create the proxy server
 http.createServer(function(request, response) {
 	sys.log(request.connection.remoteAddress + ": " + request.method + " " + request.url);
 	
+	// check the incoming requests against black- & whitelist
 	var ip = request.connection.remoteAddress;
 	if (isBanned(ip)) {
 		msg = "IP " + ip + " is banned!";
@@ -66,6 +79,7 @@ http.createServer(function(request, response) {
 		return;
 	}
   
+	// options for the proxy request
 	request.headers.host = '';
 	var options = {
 		hostname: 'localhost',
@@ -75,8 +89,9 @@ http.createServer(function(request, response) {
 		headers: request.headers
 	};
   
-	var proxy_request = http.request(options);  
-  
+	// create the proxy request object
+	var proxy_request = http.request(options); 
+	// add listeners to the proxy request 
 	proxy_request.addListener('response', function (proxy_response) {
 
 		proxy_response.addListener('data', function(chunk) {
@@ -93,7 +108,8 @@ http.createServer(function(request, response) {
 		
 		response.writeHead(proxy_response.statusCode, proxy_response.headers);
 	});
-	 
+	
+	// add the listeners for the requests
 	request.addListener('data', function(chunk) {
 		proxy_request.write(chunk, 'binary');
 	});
