@@ -2,9 +2,12 @@
   "name": "firewall",
   "version": "0.1.0",
   "description": "firewall",
-  "main": "hello-world-server.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
+  },
+  "dependencies": {
+    "winston": "0.7.2"
   },
   "repository": "",
   "keywords": [

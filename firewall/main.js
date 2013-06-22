@@ -1,64 +1,8 @@
 var http = require('http');
 var sys  = require('sys');
-var fs   = require('fs');
+var PermissionController = require('./controller/permissionController').PermissionController;
 
-// list all ip addresses that should be blocked
-var blacklist = [];
-// list all ip addresses that should be allowed
-var whitelist = [];
-
-// watch the config files for black- and whitelist
-// if a file changes update the list at runtime - no restart required
-try {
-	fs.watchFile('./conf/blacklist', function(c,p) { updatePermissions(); });
-	fs.watchFile('./conf/whitelist', function(c,p) { updatePermissions(); });
-} catch (err){
-	sys.log(err);
-}
-
-// read the allowed and blocked ip addresses from the config files
-// triggered once when server starts & and everytime the config changes
-function updatePermissions() {
-	sys.log("Updating permissions");
-	try {
-		blacklist = fs.readFileSync('./conf/blacklist', encoding='utf8').split('\n')
-						.filter(function(ip) { return ip.length });
-		whitelist = fs.readFileSync('./conf/whitelist', encoding='utf8').split('\n')
-						.filter(function(ip) { return ip.length });
-	} catch (err) {
-		sys.log(err);
-	}
-}
-
-// check if the ip is blacklisted/banned
-// @param ip: the ip address to check
-function isBanned(ip){
-	for (i in blacklist) {
-		if (blacklist[i] == ip) {
-			return true;
-		}
-	} 
-	return false;
-}
-
-// if the config file is not empty check if the ip is whitelisted/allowed
-// @param ip: the ip address to check
-function isAllowed(ip) {
-	if (whitelist.length == 0) return true;
-	for (i in whitelist) {
-		if (whitelist[i] == ip) {
-			return true;
-		}
-	}
-	return false;
-}
-
-// when invalid client deny the response
-function deny(response, msg) {
-  response.writeHead(403);
-  response.write(msg);
-  response.end();
-}
+var permContr = new PermissionController();
 
 // create the proxy server
 http.createServer(function(request, response) {
@@ -66,15 +10,15 @@ http.createServer(function(request, response) {
 	
 	// check the incoming requests against black- & whitelist
 	var ip = request.connection.remoteAddress;
-	if (isBanned(ip)) {
+	if (permContr.isBanned(ip)) {
 		msg = "IP " + ip + " is banned!";
-		deny(response, msg);
+		permContr.deny(response, msg);
 		sys.log(msg);
 		return;
 	}
-	if (!isAllowed(ip)) {
+	if (!permContr.isAllowed(ip)) {
 		msg = "IP " + ip + " is not allowed to use this proxy";
-		deny(response, msg);
+		permContr.deny(response, msg);
 		sys.log(msg);
 		return;
 	}
@@ -94,15 +38,15 @@ http.createServer(function(request, response) {
 	// add listeners to the proxy request 
 	proxy_request.addListener('response', function (proxy_response) {
 
-		proxy_response.addListener('data', function(chunk) {
+		proxy_response.on('data', function(chunk) {
 			response.write(chunk, 'binary');
 		});
 
-		proxy_response.addListener('end', function() {
+		proxy_response.on('end', function() {
 			response.end();
 		});
 
-		proxy_response.addListener('error', function(error) {
+		proxy_response.on('error', function(error) {
 			sys.log('request.listener - error: ' + error);
 		});
 		
@@ -110,17 +54,17 @@ http.createServer(function(request, response) {
 	});
 	
 	// add the listeners for the requests
-	request.addListener('data', function(chunk) {
+	request.on('data', function(chunk) {
 		proxy_request.write(chunk, 'binary');
 	});
 
-	request.addListener('end', function() {
+	request.on('end', function() {
 		proxy_request.end();
 	});
  
-	request.addListener('error', function(error) {
+	request.on('error', function(error) {
 	});
 	
 }).listen(8081);
 
-updatePermissions();
+permContr.updatePermissions();
