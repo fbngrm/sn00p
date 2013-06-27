@@ -5,14 +5,24 @@ BruteForce = function() {
 	var _time = 10;
 	var _max_tries = 10;
 	var _connections = {};
-	/*
+	
 	var _resetConnections = function(){
-		setTimeout(function(){
-			now = Date.now();
-			for (i in _conections)
-		}, 120);
+		sys.log('Reset _connections');
+		now = Date.now();
+		for (i in _connections) {
+			if (_connections[i]['timestamp'] + _time*1000 < now) {
+				sys.log('Reset IP: ' + i);
+				delete _connections[i]['tries'];
+				delete _connections[i]['timestamp'];
+			}
+		}
+		_startTimer();
 	};
-	*/
+	
+	var _startTimer = function(){
+		setTimeout(_resetConnections, 10000);
+	};
+	
 	var _reset = function(ip){
 		_connections[ip]['tries'] = 1;
 		_connections[ip]['timestamp'] = Date.now();
@@ -52,5 +62,7 @@ BruteForce = function() {
 			_addConnection(ip);
 		}
 	};
+	
+	_startTimer();
 };
 exports.BruteForce = BruteForce;
