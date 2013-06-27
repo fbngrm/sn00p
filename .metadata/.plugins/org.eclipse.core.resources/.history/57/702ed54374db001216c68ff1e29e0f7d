@@ -1,0 +1,21 @@
+# The shell to use for script execution
+SHELL := /bin/bash
+
+# The project's root directory
+ROOT_DIR := $(shell echo ${PWD})
+
+################# TARGETS ######################################################
+
+# Forces the installation of the dependencies
+install-deps-clean:
+	$(VERBOSE)rm -f install-deps
+	$(VERBOSE)make install-deps
+
+# Installs the dependencies unless they have been installed before
+install-deps:
+	$(VERBOSE)fab install_required:$(PROJECT_NAME)
+	$(VERBOSE)touch install-deps
+
+include project.inc
+
+.PHONY: install-deps-clean

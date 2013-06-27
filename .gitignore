@@ -1,1 +1,6 @@
-uploads*
+*.gif
+*.jpg
+*.png
+*.log
+/firewall/node_modules
+/blog/node_modules

@@ -1,0 +1,11 @@
+
+BruteForce = function() {
+	var _time = 30;
+	var _maxTries = 5;
+	var _connections = {};
+	
+};
+
+BruteForce.prototype.addConnection = function(ip){
+	_connections[ip] +=1 ? _connections[ip] != 'undefined' : 1; 
+};

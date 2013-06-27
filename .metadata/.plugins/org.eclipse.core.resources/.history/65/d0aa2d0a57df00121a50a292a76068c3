@@ -1,0 +1,5 @@
+
+BruteForce = function() {
+	var _time = 30;
+	var _connections = {};
+};

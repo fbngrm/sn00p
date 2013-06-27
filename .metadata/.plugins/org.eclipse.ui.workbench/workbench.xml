@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="23" version="2.0">
+<workbench progressCount="22" version="2.0">
 <workbenchAdvisor/>
-<window height="1055" maximized="true" width="1385" x="0" y="25">
+<window height="1050" width="1379" x="0" y="25">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -28,7 +28,6 @@
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="9"/>
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
@@ -38,59 +37,45 @@
 <part id="6"/>
 <part id="7"/>
 <part id="8"/>
-<part id="10"/>
-<part id="11"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="sign.jade" partName="sign.jade" path="/home/f/work/mixd/ba_scripts/blog/views/sign.jade" title="sign.jade" tooltip="blog/views/sign.jade" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/views/sign.jade"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="672" selectionTopPixel="0"/>
+<editor id="org.nodeclipse.ui.editors.NodeEditor" name="main.js" partName="main.js" path="/home/f/work/mixd/ba_scripts/firewall/main/src/main.js" title="main.js" tooltip="firewall/main/src/main.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/main/src/main.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="181" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="show_node.jade" partName="show_node.jade" path="/home/f/work/mixd/ba_scripts/blog/views/show_node.jade" title="show_node.jade" tooltip="blog/views/show_node.jade" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/views/show_node.jade"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="586" selectionTopPixel="353"/>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="whitelist" partName="whitelist" path="/home/f/work/mixd/ba_scripts/firewall/main/src/conf/whitelist" title="whitelist" tooltip="firewall/main/src/conf/whitelist" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/main/src/conf/whitelist"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="9" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="node_new.jade" partName="node_new.jade" path="/home/f/work/mixd/ba_scripts/blog/views/node_new.jade" title="node_new.jade" tooltip="blog/views/node_new.jade" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/views/node_new.jade"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="554" selectionTopPixel="0"/>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="blacklist" partName="blacklist" path="/home/f/work/mixd/ba_scripts/firewall/main/src/conf/blacklist" title="blacklist" tooltip="firewall/main/src/conf/blacklist" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/main/src/conf/blacklist"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="account.jade" partName="account.jade" path="/home/f/work/mixd/ba_scripts/blog/views/account.jade" title="account.jade" tooltip="blog/views/account.jade" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/views/account.jade"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="629" selectionTopPixel="0"/>
+<editor id="org.nodeclipse.ui.editors.NodeEditor" name="permissionController.js" partName="permissionController.js" path="/home/f/work/mixd/ba_scripts/firewall/main/src/controller/permissionController.js" title="permissionController.js" tooltip="firewall/main/src/controller/permissionController.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/main/src/controller/permissionController.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="790" selectionTopPixel="280"/>
 </editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="login.jade" partName="login.jade" path="/home/f/work/mixd/ba_scripts/blog/views/login.jade" title="login.jade" tooltip="blog/views/login.jade" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/views/login.jade"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="200" selectionTopPixel="0"/>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="Makefile" partName="Makefile" title="Makefile" tooltip="/home/f/work/mixd/ba_scripts/Makefile" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/f/work/mixd/ba_scripts/Makefile"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="475" selectionTopPixel="0"/>
 </editor>
-<editor id="org.nodeclipse.ui.editors.NodeEditor" name="input_validator.js" partName="input_validator.js" path="/home/f/work/mixd/ba_scripts/blog/input_validator.js" title="input_validator.js" tooltip="blog/input_validator.js" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/input_validator.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="461" selectionTopPixel="0"/>
+<editor id="org.nodeclipse.ui.editors.NodeEditor" name="logging.js" partName="logging.js" path="/home/f/work/mixd/ba_scripts/firewall/main/src/controller/logging.js" title="logging.js" tooltip="firewall/main/src/controller/logging.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/main/src/controller/logging.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="75" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="style.styl" partName="style.styl" path="/home/f/work/mixd/ba_scripts/blog/public/stylesheets/style.styl" title="style.styl" tooltip="blog/public/stylesheets/style.styl" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/public/stylesheets/style.styl"/>
-<editorState selectionHorizontalPixel="0" selectionLength="6" selectionOffset="1046" selectionTopPixel="777"/>
-</editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="user_nodes.jade" partName="user_nodes.jade" path="/home/f/work/mixd/ba_scripts/blog/views/user_nodes.jade" title="user_nodes.jade" tooltip="blog/views/user_nodes.jade" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/views/user_nodes.jade"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="674" selectionTopPixel="0"/>
-</editor>
-<editor id="org.nodeclipse.ui.editors.NodeEditor" name="mysql_handler.js" partName="mysql_handler.js" path="/home/f/work/mixd/ba_scripts/blog/mysql_handler.js" title="mysql_handler.js" tooltip="blog/mysql_handler.js" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/mysql_handler.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="17" selectionOffset="2615" selectionTopPixel="668"/>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="server.log" partName="server.log" path="/home/f/work/mixd/ba_scripts/firewall/log/server.log" title="server.log" tooltip="firewall/log/server.log" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/log/server.log"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="592" selectionTopPixel="0"/>
 </editor>
 <editor id="org.nodeclipse.ui.editors.NodeEditor" name="app.js" partName="app.js" path="/home/f/work/mixd/ba_scripts/blog/app.js" title="app.js" tooltip="blog/app.js" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/app.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="704" selectionTopPixel="1580"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4481" selectionTopPixel="1664"/>
 </editor>
-<editor activePart="true" focus="true" id="org.nodeclipse.ui.editors.NodeEditor" name="main.js" partName="main.js" path="/home/f/work/mixd/ba_scripts/firewall/main.js" title="main.js" tooltip="firewall/main.js" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/main.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="901" selectionTopPixel="176"/>
-</editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="blacklist" partName="blacklist" path="/home/f/work/mixd/ba_scripts/firewall/conf/blacklist" title="blacklist" tooltip="firewall/conf/blacklist" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/conf/blacklist"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="13" selectionTopPixel="0"/>
+<editor activePart="true" focus="true" id="org.nodeclipse.ui.editors.NodeEditor" name="config.js" partName="config.js" path="/home/f/work/mixd/ba_scripts/firewall/main/src/conf/config.js" title="config.js" tooltip="firewall/main/src/conf/config.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/main/src/conf/config.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -100,14 +85,10 @@
 <view id="org.eclipse.search.ui.views.SearchView" partName="Search">
 <viewState isPinned="false">
 <view IMemento.internal.id="" org.eclipse.search.lastActivation="0"/>
-<view IMemento.internal.id="org.eclipse.search.text.FileSearchResultPage" org.eclipse.search.lastActivation="1" org.eclipse.search.resultpage.layout="2" org.eclipse.search.resultpage.limit="1000" org.eclipse.search.resultpage.sorting="2"/>
 </viewState>
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>
-<category IMemento.internal.id="Warnings (6 items)"/>
-</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="1058" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -135,7 +116,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.search.ui.views.SearchView" activePerspective="org.nodeclipse.ui.perspectives.NodePerspective">
+<perspectives activePart="org.nodeclipse.ui.editors.NodeEditor" activePerspective="org.nodeclipse.ui.perspectives.NodePerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.ui.internal.ide.application.ResourcePerspective" id="org.eclipse.ui.resourcePerspective" label="Resource"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -289,168 +270,178 @@
 <navigationHistory>
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/blog/app.js"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/blog/mysql_handler.js"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/blog/views/sign.jade"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/blog/input_validator.js"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/blog/views/login.jade"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/hello-world-server.js"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main.js"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/blog/db_handler.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/blog/package.json"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/package.json"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/Makefile"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/project.inc"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/main/src/conf/whitelist"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/main/src/conf/blacklist"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/controller/permissionController.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/main/src/controller/logging.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/main.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/Makefile"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" uri="file:/home/f/work/mixd/ba_scripts/Makefile"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/controller/logging.js"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" uri="file:/home/f/work/mixd/development/api-b2/lib/loggingmain.js"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" uri="file:/home/f/work/mixd/development/api-b2/lib/common/logging.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/conf/config.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/log/server.log"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/controller/logging.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/controller/permissionController.js"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/blog/app.js"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/blog/views/login.jade"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/conf/blacklist.json"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/conf/blacklist"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/blog/app.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/log/server.log"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/controller/logging.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/conf/config.js"/>
 </editors>
-<item historyLabel="mysql_handler.js" index="1">
-<position info="not_deleted" x="3807" y="11"/>
+<item historyLabel="project.inc" index="4">
+<position info="not_deleted" x="112" y="0"/>
 </item>
-<item historyLabel="app.js" index="0">
-<position info="not_deleted" x="3302" y="36"/>
+<item historyLabel="Makefile" index="3">
+<position info="not_deleted" x="610" y="0"/>
 </item>
-<item historyLabel="mysql_handler.js" index="1">
-<position info="not_deleted" x="3043" y="31"/>
+<item historyLabel="whitelist" index="5">
+<position info="not_deleted" x="9" y="0"/>
 </item>
-<item historyLabel="app.js" index="0">
-<position info="not_deleted" x="1674" y="0"/>
-</item>
-<item historyLabel="mysql_handler.js" index="1">
-<position info="not_deleted" x="3043" y="31"/>
-</item>
-<item historyLabel="app.js" index="0">
-<position/>
-</item>
-<item historyLabel="mysql_handler.js" index="1">
-<position info="not_deleted" x="3073" y="0"/>
-</item>
-<item historyLabel="app.js" index="0">
-<position info="not_deleted" x="2002" y="0"/>
-</item>
-<item historyLabel="mysql_handler.js" index="1">
-<position/>
-</item>
-<item historyLabel="app.js" index="0">
-<position/>
-</item>
-<item historyLabel="mysql_handler.js" index="1">
-<position/>
-</item>
-<item historyLabel="app.js" index="0">
-<position/>
-</item>
-<item historyLabel="mysql_handler.js" index="1">
-<position/>
-</item>
-<item historyLabel="app.js" index="0">
-<position info="not_deleted" x="1858" y="0"/>
-</item>
-<item historyLabel="mysql_handler.js" index="1">
-<position info="not_deleted" x="3071" y="0"/>
-</item>
-<item historyLabel="app.js" index="0">
-<position info="not_deleted" x="1935" y="0"/>
-</item>
-<item historyLabel="input_validator.js" index="3">
-<position info="not_deleted" x="461" y="0"/>
-</item>
-<item historyLabel="app.js" index="0">
-<position info="not_deleted" x="1177" y="0"/>
-</item>
-<item historyLabel="mysql_handler.js" index="1">
-<position info="not_deleted" x="546" y="0"/>
-</item>
-<item historyLabel="app.js" index="0">
-<position info="not_deleted" x="9953" y="0"/>
-</item>
-<item historyLabel="sign.jade" index="2">
-<position info="not_deleted" x="672" y="0"/>
-</item>
-<item historyLabel="login.jade" index="4">
-<position info="not_deleted" x="200" y="0"/>
-</item>
-<item historyLabel="app.js" index="0">
-<position info="not_deleted" x="1668" y="4"/>
-</item>
-<item historyLabel="mysql_handler.js" index="1">
-<position info="not_deleted" x="546" y="0"/>
-</item>
-<item historyLabel="app.js" index="0">
-<position info="not_deleted" x="2012" y="0"/>
-</item>
-<item historyLabel="mysql_handler.js" index="1">
-<position info="not_deleted" x="546" y="0"/>
-</item>
-<item historyLabel="hello-world-server.js" index="5">
-<position info="not_deleted" x="740" y="0"/>
-</item>
-<item historyLabel="main.js" index="6">
-<position info="not_deleted" x="1568" y="0"/>
-</item>
-<item historyLabel="mysql_handler.js" index="1">
-<position info="not_deleted" x="2920" y="0"/>
-</item>
-<item historyLabel="db_handler.js" index="7">
-<position info="not_deleted" x="6348" y="0"/>
-</item>
-<item historyLabel="main.js" index="6">
-<position info="not_deleted" x="325" y="0"/>
-</item>
-<item historyLabel="app.js" index="8">
-<position info="not_deleted" x="704" y="0"/>
-</item>
-<item historyLabel="main.js" index="6">
-<position info="not_deleted" x="1089" y="0"/>
-</item>
-<item historyLabel="login.jade" index="9">
-<position info="not_deleted" x="200" y="0"/>
-</item>
-<item historyLabel="app.js" index="8">
-<position info="not_deleted" x="704" y="0"/>
-</item>
-<item historyLabel="mysql_handler.js" index="1">
-<position info="not_deleted" x="1397" y="0"/>
-</item>
-<item historyLabel="main.js" index="6">
-<position info="not_deleted" x="382" y="0"/>
-</item>
-<item historyLabel="mysql_handler.js" index="1">
-<position info="not_deleted" x="2615" y="17"/>
-</item>
-<item historyLabel="main.js" index="6">
-<position info="not_deleted" x="382" y="0"/>
-</item>
-<item historyLabel="blacklist.json" index="10">
+<item historyLabel="blacklist" index="6">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="blacklist" index="11">
-<position info="not_deleted" x="13" y="0"/>
+<item historyLabel="permissionController.js" index="7">
+<position info="not_deleted" x="519" y="0"/>
 </item>
-<item historyLabel="app.js" index="12">
-<position info="not_deleted" x="704" y="0"/>
+<item historyLabel="logging.js" index="8">
+<position info="not_deleted" x="14" y="0"/>
 </item>
-<item historyLabel="main.js" index="6">
-<position info="not_deleted" x="619" y="0"/>
+<item historyLabel="main.js" index="9">
+<position info="not_deleted" x="116" y="0"/>
 </item>
-<item historyLabel="main.js" index="6">
-<position info="not_deleted" x="560" y="6"/>
+<item historyLabel="Makefile" index="10">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="app.js" index="12">
-<position info="not_deleted" x="704" y="0"/>
+<item historyLabel="main.js" index="9">
+<position info="not_deleted" x="116" y="0"/>
 </item>
-<item historyLabel="main.js" index="6">
-<position info="not_deleted" x="497" y="0"/>
+<item historyLabel="Makefile" index="11">
+<position info="not_deleted" x="475" y="0"/>
 </item>
-<item historyLabel="blacklist" index="11">
-<position info="not_deleted" x="13" y="0"/>
+<item historyLabel="package.json" index="1">
+<position info="not_deleted" x="418" y="0"/>
 </item>
-<item historyLabel="main.js" index="6">
-<position info="not_deleted" x="901" y="0"/>
+<item historyLabel="logging.js" index="8">
+<position info="not_deleted" x="14" y="0"/>
 </item>
-<item historyLabel="blacklist" index="11">
-<position info="not_deleted" x="13" y="0"/>
+<item historyLabel="package.json" index="1">
+<position info="not_deleted" x="418" y="0"/>
 </item>
-<item active="true" historyLabel="main.js" index="6">
-<position info="not_deleted" x="901" y="0"/>
+<item historyLabel="logging.js" index="12">
+<position info="not_deleted" x="74" y="0"/>
+</item>
+<item historyLabel="loggingmain.js" index="13">
+<position/>
+</item>
+<item historyLabel="logging.js" index="12">
+<position info="not_deleted" x="74" y="0"/>
+</item>
+<item historyLabel="logging.js" index="14">
+<position/>
+</item>
+<item historyLabel="logging.js" index="12">
+<position info="not_deleted" x="71" y="0"/>
+</item>
+<item historyLabel="config.js" index="15">
+<position info="not_deleted" x="248" y="0"/>
+</item>
+<item historyLabel="logging.js" index="12">
+<position/>
+</item>
+<item historyLabel="config.js" index="15">
+<position/>
+</item>
+<item historyLabel="logging.js" index="12">
+<position/>
+</item>
+<item historyLabel="config.js" index="15">
+<position info="not_deleted" x="152" y="0"/>
+</item>
+<item historyLabel="logging.js" index="12">
+<position/>
+</item>
+<item historyLabel="config.js" index="15">
+<position info="not_deleted" x="202" y="0"/>
+</item>
+<item historyLabel="logging.js" index="12">
+<position info="not_deleted" x="181" y="0"/>
+</item>
+<item historyLabel="config.js" index="15">
+<position info="not_deleted" x="202" y="0"/>
+</item>
+<item historyLabel="logging.js" index="12">
+<position info="not_deleted" x="474" y="0"/>
+</item>
+<item historyLabel="package.json" index="2">
+<position info="not_deleted" x="242" y="0"/>
+</item>
+<item historyLabel="logging.js" index="12">
+<position info="not_deleted" x="474" y="0"/>
+</item>
+<item historyLabel="app.js" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="logging.js" index="12">
+<position info="not_deleted" x="474" y="0"/>
+</item>
+<item historyLabel="main.js" index="9">
+<position info="not_deleted" x="181" y="0"/>
+</item>
+<item historyLabel="config.js" index="15">
+<position info="not_deleted" x="202" y="0"/>
+</item>
+<item historyLabel="logging.js" index="12">
+<position info="not_deleted" x="474" y="0"/>
+</item>
+<item historyLabel="config.js" index="15">
+<position info="not_deleted" x="254" y="0"/>
+</item>
+<item historyLabel="logging.js" index="12">
+<position info="not_deleted" x="151" y="0"/>
+</item>
+<item historyLabel="config.js" index="15">
+<position info="not_deleted" x="254" y="0"/>
+</item>
+<item historyLabel="logging.js" index="12">
+<position info="not_deleted" x="75" y="0"/>
+</item>
+<item historyLabel="server.log" index="16">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="config.js" index="15">
+<position info="not_deleted" x="254" y="0"/>
+</item>
+<item historyLabel="logging.js" index="12">
+<position info="not_deleted" x="75" y="0"/>
+</item>
+<item historyLabel="server.log" index="16">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="logging.js" index="17">
+<position info="not_deleted" x="75" y="0"/>
+</item>
+<item historyLabel="permissionController.js" index="18">
+<position info="not_deleted" x="519" y="0"/>
+</item>
+<item historyLabel="app.js" index="19">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="server.log" index="20">
+<position info="not_deleted" x="592" y="0"/>
+</item>
+<item historyLabel="logging.js" index="21">
+<position info="not_deleted" x="75" y="0"/>
+</item>
+<item historyLabel="server.log" index="20">
+<position info="not_deleted" x="592" y="0"/>
+</item>
+<item active="true" historyLabel="config.js" index="22">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -469,50 +460,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="blacklist.json" tooltip="firewall/conf/blacklist.json">
-<persistable path="/firewall/conf/blacklist.json"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" name="config.js" tooltip="firewall/main/src/conf/config.js">
+<persistable path="/firewall/main/src/conf/config.js"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" name="hello-world-server.js" tooltip="firewall/hello-world-server.js">
-<persistable path="/firewall/hello-world-server.js"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" name="app.js" tooltip="blog/app.js">
+<persistable path="/blog/app.js"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" name="mysql_handler.js" tooltip="blog/mysql_handler.js">
-<persistable path="/blog/mysql_handler.js"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="server.log" tooltip="firewall/log/server.log">
+<persistable path="/firewall/log/server.log"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="user_nodes.jade" tooltip="blog/views/user_nodes.jade">
-<persistable path="/blog/views/user_nodes.jade"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" name="logging.js" tooltip="/home/f/work/mixd/development/api-b2/lib/common/logging.js">
+<persistable uri="file:/home/f/work/mixd/development/api-b2/lib/common/logging.js"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="index.jade" tooltip="blog/views/index.jade">
-<persistable path="/blog/views/index.jade"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" name="loggingmain.js" tooltip="/home/f/work/mixd/development/api-b2/lib/loggingmain.js">
+<persistable uri="file:/home/f/work/mixd/development/api-b2/lib/loggingmain.js"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="keyword_nodes.jade" tooltip="blog/views/keyword_nodes.jade">
-<persistable path="/blog/views/keyword_nodes.jade"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" name="logging.js" tooltip="firewall/main/src/controller/logging.js">
+<persistable path="/firewall/main/src/controller/logging.js"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="style.styl" tooltip="blog/public/stylesheets/style.styl">
-<persistable path="/blog/public/stylesheets/style.styl"/>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="Makefile" tooltip="/home/f/work/mixd/ba_scripts/Makefile">
+<persistable uri="file:/home/f/work/mixd/ba_scripts/Makefile"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="README.md" tooltip="blog/README.md">
-<persistable path="/blog/README.md"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="Makefile" tooltip="firewall/Makefile">
+<persistable path="/firewall/Makefile"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" name="input_validator.js" tooltip="blog/input_validator.js">
-<persistable path="/blog/input_validator.js"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="project.inc" tooltip="firewall/project.inc">
+<persistable path="/firewall/project.inc"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="500.jade" tooltip="blog/views/500.jade">
-<persistable path="/blog/views/500.jade"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="package.json" tooltip="blog/package.json">
+<persistable path="/blog/package.json"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="404.jade" tooltip="blog/views/404.jade">
-<persistable path="/blog/views/404.jade"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="package.json" tooltip="firewall/package.json">
+<persistable path="/firewall/package.json"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="show_user.jade" tooltip="blog/views/show_user.jade">
-<persistable path="/blog/views/show_user.jade"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="logging" tooltip="firewall/controller/logging">
+<persistable path="/firewall/controller/logging"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="node_new.jade" tooltip="blog/views/node_new.jade">
-<persistable path="/blog/views/node_new.jade"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" name="db_handler.js" tooltip="blog/db_handler.js">
+<persistable path="/blog/db_handler.js"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="show_node.jade" tooltip="blog/views/show_node.jade">
-<persistable path="/blog/views/show_node.jade"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" name="permissionController.js" tooltip="firewall/controller/permissionController.js">
+<persistable path="/firewall/controller/permissionController.js"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="style.css" tooltip="blog/public/stylesheets/style.css">
-<persistable path="/blog/public/stylesheets/style.css"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="blacklist" tooltip="firewall/conf/blacklist">
+<persistable path="/firewall/conf/blacklist"/>
 </file>
 </mruList>
 </workbench>

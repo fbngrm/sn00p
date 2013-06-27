@@ -1,0 +1,19 @@
+var winston = require('winston');
+var conf = require('../conf/config.js');
+
+var default_ = {console:{level:"info"},file:{level:"debug"}} 
+var logging  = conf.logging || default_
+
+var logger = new (winston.Logger)({
+    transports: [
+      new (winston.transports.Console)(),
+      new (winston.transports.File)(conf.logging.transports.file)
+    ]
+});
+
+logger.info('info');
+logger.warn('warn');
+logger.debug('debug');
+logger.error('error');
+
+exports.logger = logger;

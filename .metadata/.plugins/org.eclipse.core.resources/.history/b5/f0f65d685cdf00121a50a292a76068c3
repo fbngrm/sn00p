@@ -1,0 +1,25 @@
+var sys  = require('sys');
+
+BruteForce = function() {
+	var _this = this;
+	var _time = 30;
+	var _maxTries = 5;
+	var _connections = {};
+
+	var addConnection = function(ip){
+		sys.log('Adding ' + ip + 'to connecitons');
+		_connections[ip] +=1 ? _connections[ip] != 'undefined' : 1; 
+	};
+	
+	this.check = function(ip){
+		sys.log('BruteForce check ...');
+		if (_this._connections[ip] && _connections[ip] >= _maxTries) {
+			sys.log('Brute-Force detected - Culprit: ' + ip);
+			return true;
+		} else {
+			_this.addConnection(ip);
+			return false;
+		}
+	};
+};
+exports.BruteForce = BruteForce;

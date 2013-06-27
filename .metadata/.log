@@ -653,3 +653,62 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64
 
 !ENTRY org.eclipse.debug.ui 4 120 2013-06-22 15:44:30.416
 !MESSAGE org.eclipse.debug.ui.toggleBreakpointsTargetFactory extension failed to load breakpoint toggle target because the specified id is already registered.  Specified ID is: org.chromium.debug.ui.ChromiumToggleBreakpointTargetFactory
+!SESSION 2013-06-23 11:51:11.203 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.6.0_27
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.debug.ui 4 120 2013-06-23 11:54:12.877
+!MESSAGE org.eclipse.debug.ui.toggleBreakpointsTargetFactory extension failed to load breakpoint toggle target because the specified id is already registered.  Specified ID is: org.chromium.debug.ui.ChromiumToggleBreakpointTargetFactory
+
+!ENTRY org.nodeclipse.ui 4 4 2013-06-23 11:55:28.054
+!MESSAGE Unexpected Exception
+!STACK 0
+java.lang.reflect.InvocationTargetException
+	at org.nodeclipse.ui.util.ProcessUtils.exec(ProcessUtils.java:91)
+	at org.nodeclipse.ui.wizards.ExpressProjectWizard.generateExpressApplication(ExpressProjectWizard.java:210)
+	at org.nodeclipse.ui.wizards.ExpressProjectWizard.access$1(ExpressProjectWizard.java:185)
+	at org.nodeclipse.ui.wizards.ExpressProjectWizard$2.run(ExpressProjectWizard.java:115)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: java.io.IOException: Cannot run program "" (in directory "/tmp/express-work/1371981327931"): java.io.IOException: error=2, No such file or directory
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:488)
+	at org.nodeclipse.ui.util.ProcessUtils.exec(ProcessUtils.java:73)
+	... 4 more
+Caused by: java.io.IOException: java.io.IOException: error=2, No such file or directory
+	at java.lang.UNIXProcess.<init>(UNIXProcess.java:164)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:81)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:470)
+	... 5 more
+Root exception:
+java.io.IOException: Cannot run program "" (in directory "/tmp/express-work/1371981327931"): java.io.IOException: error=2, No such file or directory
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:488)
+	at org.nodeclipse.ui.util.ProcessUtils.exec(ProcessUtils.java:73)
+	at org.nodeclipse.ui.wizards.ExpressProjectWizard.generateExpressApplication(ExpressProjectWizard.java:210)
+	at org.nodeclipse.ui.wizards.ExpressProjectWizard.access$1(ExpressProjectWizard.java:185)
+	at org.nodeclipse.ui.wizards.ExpressProjectWizard$2.run(ExpressProjectWizard.java:115)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: java.io.IOException: java.io.IOException: error=2, No such file or directory
+	at java.lang.UNIXProcess.<init>(UNIXProcess.java:164)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:81)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:470)
+	... 5 more
+!SESSION 2013-06-23 11:58:26.529 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.6.0_27
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.debug.ui 4 120 2013-06-23 12:00:27.325
+!MESSAGE org.eclipse.debug.ui.toggleBreakpointsTargetFactory extension failed to load breakpoint toggle target because the specified id is already registered.  Specified ID is: org.chromium.debug.ui.ChromiumToggleBreakpointTargetFactory
+!SESSION 2013-06-27 20:05:43.297 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.6.0_27
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -data /home/f/work/mixd/ba_scripts -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.debug.ui 4 120 2013-06-27 20:08:40.130
+!MESSAGE org.eclipse.debug.ui.toggleBreakpointsTargetFactory extension failed to load breakpoint toggle target because the specified id is already registered.  Specified ID is: org.chromium.debug.ui.ChromiumToggleBreakpointTargetFactory

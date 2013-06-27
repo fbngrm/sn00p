@@ -1,0 +1,16 @@
+# The shell to use for script execution
+SHELL := /bin/bash
+
+# The project's root directory
+ROOT_DIR := $(shell echo ${PWD})
+NODE_MODULES := ROOT_DIR/node_modules
+
+################# TARGETS ######################################################
+
+# Forces the installation of the dependencies
+install-deps-clean:
+	$(VERBOSE)rm -R -f NODE_MODULES
+	$(VERBOSE)touch NODE_MODULES
+	$(VERBOSE)(cd NODE_MODULES && npm-install)
+
+.PHONY: install-deps-clean
