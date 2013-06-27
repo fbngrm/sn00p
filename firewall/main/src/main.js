@@ -28,7 +28,7 @@ http.createServer(function(request, response) {
 	}
 	// check the request for brute-force attacks
 	if (bruteForce.check(ip)) {
-		msg = "IP " + ip + " is blocked due to too many requests";
+		msg = "IP " + ip + " is blocked because of too many requests";
 		permContr.deny(response, msg);
 		sys.log(msg);
 		return;
