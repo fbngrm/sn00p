@@ -11,7 +11,7 @@ BruteForce = function(permContr) {
 	
 	// Collect the garbage to release memory
 	var _releaseMem = function(){
-		sys.log('Delete old connections');
+		sys.log('Reset _connections');
 		now = Date.now();
 		for (i in _connections) {
 			if (_connections[i]['timestamp'] + _TIME*1000 < now) {
@@ -20,6 +20,10 @@ BruteForce = function(permContr) {
 				delete _connections[i]['timestamp'];
 			}
 		}
+		_startTimer();
+	};
+	
+	var _startTimer = function(){
 		setTimeout(_releaseMem, _CLEAN*1000);
 	};
 	
@@ -71,6 +75,6 @@ BruteForce = function(permContr) {
 		return false;
 	};
 	
-	_releaseMem();
+	_startTimer();
 };
 exports.BruteForce = BruteForce;

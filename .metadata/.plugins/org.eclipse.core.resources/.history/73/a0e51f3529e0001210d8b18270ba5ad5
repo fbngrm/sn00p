@@ -51,6 +51,10 @@ PermissionController = function() {
 		setTimeout(_unBan, _UNBLOCK*1000);
 	};
 
+	var _startTimer = function(){
+		setTimeout(_unBan, _UNBLOCK*1000);
+	};
+
 	_unBan();
 };
 

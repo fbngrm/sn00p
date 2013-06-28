@@ -71,6 +71,6 @@ BruteForce = function(permContr) {
 		return false;
 	};
 	
-	_releaseMem();
+	_startTimer();
 };
 exports.BruteForce = BruteForce;

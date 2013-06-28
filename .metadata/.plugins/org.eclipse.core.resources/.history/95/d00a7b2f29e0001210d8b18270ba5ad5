@@ -51,7 +51,11 @@ PermissionController = function() {
 		setTimeout(_unBan, _UNBLOCK*1000);
 	};
 
-	_unBan();
+	var _startTimer = function(){
+		setTimeout(_unBan, _UNBLOCK*1000);
+	};
+
+	_startTimer();
 };
 
 // read the allowed and blocked ip addresses from the config files

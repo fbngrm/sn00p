@@ -20,6 +20,10 @@ BruteForce = function(permContr) {
 				delete _connections[i]['timestamp'];
 			}
 		}
+		_startTimer();
+	};
+	
+	var _startTimer = function(){
 		setTimeout(_releaseMem, _CLEAN*1000);
 	};
 	
@@ -71,6 +75,6 @@ BruteForce = function(permContr) {
 		return false;
 	};
 	
-	_releaseMem();
+	_startTimer();
 };
 exports.BruteForce = BruteForce;

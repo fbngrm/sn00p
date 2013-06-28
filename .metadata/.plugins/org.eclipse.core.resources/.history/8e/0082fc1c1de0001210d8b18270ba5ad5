@@ -11,8 +11,6 @@ PermissionController = function() {
 	var _black_path = './conf/blacklist';
 	var _white_path = './conf/whitelist';
 	
-	var _UNBLOCK = 60; 
-	
 	// watch the config files for black- and whitelist
 	// if a file changes update the list at runtime - no restart required
 	try {
@@ -31,27 +29,12 @@ PermissionController = function() {
 				return;
 			}
 		}
-		_blacklist.push(ip);
-		// add ip to blacklist - file & memory
-		fs.appendFile(_black_path , ip + nl, encoding='utf8', function (err) {
+		// add ip to blacklist
+		fs.appendFileSync(_black_path , ip + nl, encoding='utf8', function (err) {
 			if(err) sys.log('Error in updating blacklist [' + err + ']');
 		});
+		_blacklist.push(ip);
 	};
-	
-	var _unBan = function() {
-		_blacklist = [];
-		fs.writeFile(_black_path, '', function(err){
-			if (err) {
-				console.log(err);
-			} else {
-				sys.log('Deleting blacklist');			
-			}
-		});
-		_blacklist = [];
-		setTimeout(_unBan, _UNBLOCK*1000);
-	};
-
-	_unBan();
 };
 
 // read the allowed and blocked ip addresses from the config files
