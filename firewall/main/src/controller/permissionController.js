@@ -8,14 +8,28 @@ PermissionController = function() {
 	// list all ip addresses that should be allowed
 	var _whitelist = [];
 	
+	var _black_path = './conf/blacklist';
+	var _white_path = './conf/whitelist';
+	
 	// watch the config files for black- and whitelist
 	// if a file changes update the list at runtime - no restart required
 	try {
-		fs.watchFile('./conf/blacklist', function(c,p) { _this.updatePermissions(); });
-		fs.watchFile('./conf/whitelist', function(c,p) { _this.updatePermissions(); });
+		fs.watchFile(_black_path, function(c,p) { _this.updatePermissions(); });
+		fs.watchFile(_white_path, function(c,p) { _this.updatePermissions(); });
 	} catch (err){
 		sys.log(err);
 	}
+
+	this.ban = function(ip){
+		// determine linebreak of the current platform
+		var nl = process.platform === 'win32' ? '\r\n' : '\n';
+		
+		fs.appendFileSync(_black_path , ip + nl, encoding='utf8', function (err) {
+			if(err) sys.log('Error in updating blacklist [' + err + ']');
+		});
+		_blacklist.push(ip);
+		sys.log(_blacklist);
+	};
 };
 
 // read the allowed and blocked ip addresses from the config files

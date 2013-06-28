@@ -1,0 +1,10 @@
+va fs = require.resolve('fs');
+
+fs.appendFile('message.txt', 'data to append', function (err) {
+
+});
+
+var BlicklistController = function(){
+	var _path = './conf/blicklist'
+
+};

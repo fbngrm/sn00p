@@ -1,11 +1,11 @@
 var http = require('http');
 var sys  = require('sys');
 var PermContr = require('./controller/permissionController').PermissionController;
-var BruteForce = require('./controller/bruteForce').BruteForce;
+var BruteForce = require('./detectives/bruteForce').BruteForce;
 var logging = require('./controller/logging');
 
 var permContr = new PermContr();
-var bruteForce = new BruteForce();
+var bruteForce = new BruteForce(permContr);
 var logger = logging.logger;
 
 // create the proxy server
@@ -14,6 +14,7 @@ http.createServer(function(request, response) {
 	
 	// check the requests against black- & whitelist
 	var ip = request.connection.remoteAddress;
+	//ip = '1.1.9';
 	if (permContr.isBanned(ip)) {
 		msg = "IP " + ip + " is banned!";
 		permContr.deny(response, msg);
@@ -27,7 +28,7 @@ http.createServer(function(request, response) {
 		return;
 	}
 	// check the request for brute-force attacks
-	if (bruteForce.check(ip)) {
+	if (bruteForce.check(ip, request.url)) {
 		msg = "IP " + ip + " is blocked because of too many requests";
 		permContr.deny(response, msg);
 		sys.log(msg);
@@ -77,5 +78,6 @@ http.createServer(function(request, response) {
 	});
 	
 }).listen(8081);
+sys.log('Starting proxy firewall on port 8081');
 
 permContr.updatePermissions();

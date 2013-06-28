@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="22" version="2.0">
 <workbenchAdvisor/>
-<window height="1050" width="1379" x="0" y="25">
+<window height="1050" maximized="true" width="1379" x="0" y="25">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -18,7 +18,7 @@
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="172" y="27"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
 <coolItem id="org.nodeclipse.ui.editors.NodeEditor" itemType="typeToolBarContribution" x="65" y="27"/>
-<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -29,25 +29,20 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
+<part id="7"/>
 <part id="2"/>
+<part id="1"/>
 <part id="3"/>
 <part id="4"/>
 <part id="5"/>
 <part id="6"/>
-<part id="7"/>
-<part id="8"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor id="org.nodeclipse.ui.editors.NodeEditor" name="main.js" partName="main.js" path="/home/f/work/mixd/ba_scripts/firewall/main/src/main.js" title="main.js" tooltip="firewall/main/src/main.js" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/main/src/main.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="181" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="whitelist" partName="whitelist" path="/home/f/work/mixd/ba_scripts/firewall/main/src/conf/whitelist" title="whitelist" tooltip="firewall/main/src/conf/whitelist" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/main/src/conf/whitelist"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="9" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1008" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.ui.DefaultTextEditor" name="blacklist" partName="blacklist" path="/home/f/work/mixd/ba_scripts/firewall/main/src/conf/blacklist" title="blacklist" tooltip="firewall/main/src/conf/blacklist" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/main/src/conf/blacklist"/>
@@ -55,7 +50,7 @@
 </editor>
 <editor id="org.nodeclipse.ui.editors.NodeEditor" name="permissionController.js" partName="permissionController.js" path="/home/f/work/mixd/ba_scripts/firewall/main/src/controller/permissionController.js" title="permissionController.js" tooltip="firewall/main/src/controller/permissionController.js" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/main/src/controller/permissionController.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="790" selectionTopPixel="280"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="844" selectionTopPixel="22"/>
 </editor>
 <editor id="org.eclipse.ui.DefaultTextEditor" name="Makefile" partName="Makefile" title="Makefile" tooltip="/home/f/work/mixd/ba_scripts/Makefile" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/f/work/mixd/ba_scripts/Makefile"/>
@@ -63,19 +58,19 @@
 </editor>
 <editor id="org.nodeclipse.ui.editors.NodeEditor" name="logging.js" partName="logging.js" path="/home/f/work/mixd/ba_scripts/firewall/main/src/controller/logging.js" title="logging.js" tooltip="firewall/main/src/controller/logging.js" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/main/src/controller/logging.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="75" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="server.log" partName="server.log" path="/home/f/work/mixd/ba_scripts/firewall/log/server.log" title="server.log" tooltip="firewall/log/server.log" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/log/server.log"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="592" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="385" selectionTopPixel="0"/>
 </editor>
 <editor id="org.nodeclipse.ui.editors.NodeEditor" name="app.js" partName="app.js" path="/home/f/work/mixd/ba_scripts/blog/app.js" title="app.js" tooltip="blog/app.js" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/blog/app.js"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4481" selectionTopPixel="1664"/>
 </editor>
-<editor activePart="true" focus="true" id="org.nodeclipse.ui.editors.NodeEditor" name="config.js" partName="config.js" path="/home/f/work/mixd/ba_scripts/firewall/main/src/conf/config.js" title="config.js" tooltip="firewall/main/src/conf/config.js" workbook="DefaultEditorWorkbook">
+<editor id="org.nodeclipse.ui.editors.NodeEditor" name="config.js" partName="config.js" path="/home/f/work/mixd/ba_scripts/firewall/main/src/conf/config.js" title="config.js" tooltip="firewall/main/src/conf/config.js" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/main/src/conf/config.js"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="org.nodeclipse.ui.editors.NodeEditor" name="bruteForce.js" partName="bruteForce.js" path="/home/f/work/mixd/ba_scripts/firewall/main/src/controller/bruteForce.js" title="bruteForce.js" tooltip="firewall/main/src/controller/bruteForce.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/firewall/main/src/controller/bruteForce.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="179" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -89,6 +84,9 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<expanded>
+<category IMemento.internal.id="Warnings (9 items)"/>
+</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="1058" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -269,179 +267,161 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/blog/app.js"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/blog/package.json"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/package.json"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/Makefile"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/project.inc"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/main/src/conf/whitelist"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/main/src/conf/blacklist"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/controller/permissionController.js"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/main/src/controller/logging.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/conf/config.js"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/main.js"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/Makefile"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" uri="file:/home/f/work/mixd/ba_scripts/Makefile"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/controller/logging.js"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" uri="file:/home/f/work/mixd/development/api-b2/lib/loggingmain.js"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" uri="file:/home/f/work/mixd/development/api-b2/lib/common/logging.js"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/conf/config.js"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/log/server.log"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/controller/logging.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/controller/bruteForce.js"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/controller/permissionController.js"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/blog/app.js"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/firewall/log/server.log"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/controller/logging.js"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" path="/firewall/main/src/conf/config.js"/>
 </editors>
-<item historyLabel="project.inc" index="4">
-<position info="not_deleted" x="112" y="0"/>
-</item>
-<item historyLabel="Makefile" index="3">
-<position info="not_deleted" x="610" y="0"/>
-</item>
-<item historyLabel="whitelist" index="5">
-<position info="not_deleted" x="9" y="0"/>
-</item>
-<item historyLabel="blacklist" index="6">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="permissionController.js" index="7">
-<position info="not_deleted" x="519" y="0"/>
-</item>
-<item historyLabel="logging.js" index="8">
-<position info="not_deleted" x="14" y="0"/>
-</item>
-<item historyLabel="main.js" index="9">
-<position info="not_deleted" x="116" y="0"/>
-</item>
-<item historyLabel="Makefile" index="10">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="main.js" index="9">
-<position info="not_deleted" x="116" y="0"/>
-</item>
-<item historyLabel="Makefile" index="11">
-<position info="not_deleted" x="475" y="0"/>
-</item>
-<item historyLabel="package.json" index="1">
-<position info="not_deleted" x="418" y="0"/>
-</item>
-<item historyLabel="logging.js" index="8">
-<position info="not_deleted" x="14" y="0"/>
-</item>
-<item historyLabel="package.json" index="1">
-<position info="not_deleted" x="418" y="0"/>
-</item>
-<item historyLabel="logging.js" index="12">
-<position info="not_deleted" x="74" y="0"/>
-</item>
-<item historyLabel="loggingmain.js" index="13">
+<item historyLabel="bruteForce.js" index="2">
 <position/>
 </item>
-<item historyLabel="logging.js" index="12">
-<position info="not_deleted" x="74" y="0"/>
+<item historyLabel="main.js" index="1">
+<position info="not_deleted" x="200" y="0"/>
 </item>
-<item historyLabel="logging.js" index="14">
+<item historyLabel="bruteForce.js" index="2">
+<position info="not_deleted" x="1016" y="0"/>
+</item>
+<item historyLabel="main.js" index="1">
+<position info="not_deleted" x="1092" y="0"/>
+</item>
+<item historyLabel="permissionController.js" index="3">
+<position info="not_deleted" x="1307" y="0"/>
+</item>
+<item historyLabel="main.js" index="1">
+<position info="not_deleted" x="20" y="0"/>
+</item>
+<item historyLabel="bruteForce.js" index="2">
 <position/>
 </item>
-<item historyLabel="logging.js" index="12">
-<position info="not_deleted" x="71" y="0"/>
+<item historyLabel="main.js" index="1">
+<position info="not_deleted" x="1026" y="0"/>
 </item>
-<item historyLabel="config.js" index="15">
-<position info="not_deleted" x="248" y="0"/>
+<item historyLabel="permissionController.js" index="3">
+<position info="not_deleted" x="1669" y="174"/>
 </item>
-<item historyLabel="logging.js" index="12">
+<item historyLabel="main.js" index="1">
+<position info="not_deleted" x="1196" y="0"/>
+</item>
+<item historyLabel="config.js" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="permissionController.js" index="3">
+<position info="not_deleted" x="1669" y="174"/>
+</item>
+<item historyLabel="main.js" index="1">
+<position info="not_deleted" x="1196" y="0"/>
+</item>
+<item historyLabel="bruteForce.js" index="2">
 <position/>
 </item>
-<item historyLabel="config.js" index="15">
+<item historyLabel="permissionController.js" index="3">
+<position info="not_deleted" x="1669" y="174"/>
+</item>
+<item historyLabel="bruteForce.js" index="2">
 <position/>
 </item>
-<item historyLabel="logging.js" index="12">
+<item historyLabel="permissionController.js" index="3">
+<position info="not_deleted" x="1669" y="174"/>
+</item>
+<item historyLabel="bruteForce.js" index="2">
+<position info="not_deleted" x="1525" y="0"/>
+</item>
+<item historyLabel="permissionController.js" index="3">
+<position info="not_deleted" x="1669" y="174"/>
+</item>
+<item historyLabel="bruteForce.js" index="2">
+<position info="not_deleted" x="27" y="0"/>
+</item>
+<item historyLabel="main.js" index="1">
+<position info="not_deleted" x="28" y="27"/>
+</item>
+<item historyLabel="bruteForce.js" index="2">
+<position info="not_deleted" x="684" y="0"/>
+</item>
+<item historyLabel="main.js" index="1">
+<position info="not_deleted" x="28" y="27"/>
+</item>
+<item historyLabel="bruteForce.js" index="2">
+<position info="not_deleted" x="684" y="0"/>
+</item>
+<item historyLabel="permissionController.js" index="3">
+<position info="not_deleted" x="1163" y="0"/>
+</item>
+<item historyLabel="bruteForce.js" index="2">
+<position info="not_deleted" x="1543" y="0"/>
+</item>
+<item historyLabel="main.js" index="1">
+<position info="not_deleted" x="28" y="27"/>
+</item>
+<item historyLabel="bruteForce.js" index="2">
+<position info="not_deleted" x="1062" y="0"/>
+</item>
+<item historyLabel="permissionController.js" index="3">
+<position info="not_deleted" x="1163" y="0"/>
+</item>
+<item historyLabel="bruteForce.js" index="2">
+<position info="not_deleted" x="1062" y="0"/>
+</item>
+<item historyLabel="permissionController.js" index="3">
+<position info="not_deleted" x="1163" y="0"/>
+</item>
+<item historyLabel="bruteForce.js" index="2">
+<position info="not_deleted" x="1062" y="0"/>
+</item>
+<item historyLabel="permissionController.js" index="3">
+<position info="not_deleted" x="1163" y="0"/>
+</item>
+<item historyLabel="main.js" index="1">
 <position/>
 </item>
-<item historyLabel="config.js" index="15">
-<position info="not_deleted" x="152" y="0"/>
-</item>
-<item historyLabel="logging.js" index="12">
+<item historyLabel="bruteForce.js" index="2">
 <position/>
 </item>
-<item historyLabel="config.js" index="15">
-<position info="not_deleted" x="202" y="0"/>
+<item historyLabel="main.js" index="1">
+<position info="not_deleted" x="934" y="0"/>
 </item>
-<item historyLabel="logging.js" index="12">
-<position info="not_deleted" x="181" y="0"/>
+<item historyLabel="bruteForce.js" index="2">
+<position info="not_deleted" x="59" y="0"/>
 </item>
-<item historyLabel="config.js" index="15">
-<position info="not_deleted" x="202" y="0"/>
+<item historyLabel="permissionController.js" index="3">
+<position info="not_deleted" x="1277" y="0"/>
 </item>
-<item historyLabel="logging.js" index="12">
-<position info="not_deleted" x="474" y="0"/>
+<item historyLabel="bruteForce.js" index="2">
+<position/>
 </item>
-<item historyLabel="package.json" index="2">
-<position info="not_deleted" x="242" y="0"/>
+<item historyLabel="permissionController.js" index="3">
+<position info="not_deleted" x="831" y="0"/>
 </item>
-<item historyLabel="logging.js" index="12">
-<position info="not_deleted" x="474" y="0"/>
+<item historyLabel="bruteForce.js" index="2">
+<position/>
 </item>
-<item historyLabel="app.js" index="0">
+<item historyLabel="main.js" index="1">
+<position info="not_deleted" x="934" y="0"/>
+</item>
+<item historyLabel="bruteForce.js" index="2">
+<position info="not_deleted" x="845" y="0"/>
+</item>
+<item historyLabel="permissionController.js" index="3">
+<position info="not_deleted" x="844" y="0"/>
+</item>
+<item historyLabel="bruteForce.js" index="2">
+<position info="not_deleted" x="1257" y="0"/>
+</item>
+<item historyLabel="server.log" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="logging.js" index="12">
-<position info="not_deleted" x="474" y="0"/>
-</item>
-<item historyLabel="main.js" index="9">
-<position info="not_deleted" x="181" y="0"/>
-</item>
-<item historyLabel="config.js" index="15">
-<position info="not_deleted" x="202" y="0"/>
-</item>
-<item historyLabel="logging.js" index="12">
-<position info="not_deleted" x="474" y="0"/>
-</item>
-<item historyLabel="config.js" index="15">
-<position info="not_deleted" x="254" y="0"/>
-</item>
-<item historyLabel="logging.js" index="12">
-<position info="not_deleted" x="151" y="0"/>
-</item>
-<item historyLabel="config.js" index="15">
-<position info="not_deleted" x="254" y="0"/>
-</item>
-<item historyLabel="logging.js" index="12">
-<position info="not_deleted" x="75" y="0"/>
-</item>
-<item historyLabel="server.log" index="16">
+<item historyLabel="server.log" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="config.js" index="15">
-<position info="not_deleted" x="254" y="0"/>
+<item historyLabel="bruteForce.js" index="2">
+<position info="not_deleted" x="1233" y="0"/>
 </item>
-<item historyLabel="logging.js" index="12">
-<position info="not_deleted" x="75" y="0"/>
+<item historyLabel="main.js" index="1">
+<position info="not_deleted" x="1008" y="0"/>
 </item>
-<item historyLabel="server.log" index="16">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="logging.js" index="17">
-<position info="not_deleted" x="75" y="0"/>
-</item>
-<item historyLabel="permissionController.js" index="18">
-<position info="not_deleted" x="519" y="0"/>
-</item>
-<item historyLabel="app.js" index="19">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="server.log" index="20">
-<position info="not_deleted" x="592" y="0"/>
-</item>
-<item historyLabel="logging.js" index="21">
-<position info="not_deleted" x="75" y="0"/>
-</item>
-<item historyLabel="server.log" index="20">
-<position info="not_deleted" x="592" y="0"/>
-</item>
-<item active="true" historyLabel="config.js" index="22">
-<position info="not_deleted" x="0" y="0"/>
+<item active="true" historyLabel="bruteForce.js" index="2">
+<position info="not_deleted" x="1233" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -449,6 +429,9 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="org.eclipse.ui.editorss"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -456,10 +439,15 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@5cc47680"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@69dbb4d1"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" name="bruteForce.js" tooltip="firewall/main/src/controller/bruteForce.js">
+<persistable path="/firewall/main/src/controller/bruteForce.js"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" name="config.js" tooltip="firewall/main/src/conf/config.js">
 <persistable path="/firewall/main/src/conf/config.js"/>
 </file>
@@ -501,9 +489,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.nodeclipse.ui.editors.NodeEditor" name="permissionController.js" tooltip="firewall/controller/permissionController.js">
 <persistable path="/firewall/controller/permissionController.js"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="blacklist" tooltip="firewall/conf/blacklist">
-<persistable path="/firewall/conf/blacklist"/>
 </file>
 </mruList>
 </workbench>
