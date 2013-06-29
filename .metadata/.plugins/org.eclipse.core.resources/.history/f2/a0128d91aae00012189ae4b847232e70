@@ -14,14 +14,13 @@ var logger = new Logger();
 http.createServer(function(request, response) {
 	sys.log(request.connection.remoteAddress + ": " + request.method + " " + request.url);
 	
-	// check the requests against blacklist
+	// check the requests against black- & whitelist
 	var ip = request.connection.remoteAddress;
 	if (permissions.isBanned(ip)) {
 		router.drop(response);
 		sys.log(msg);
 		return;
 	}
-	// check the requests against whitelist
 	if (!permissions.isAllowed(ip)) {
 		msg = "IP " + ip + " is not allowed to use this proxy";
 		router.deny(response, msg);

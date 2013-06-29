@@ -17,10 +17,6 @@ var Router = function(){
 	this.forward = function(response, msg){
 	
 	}
-	
-	this.allow = function(response, msg){
-	
-	}
 }
 
 exports.Router = Router;
