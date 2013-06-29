@@ -28,25 +28,25 @@ Insert user data into the users table.
 Rely on properly escaped input data to prevent sql-injection flaws!!!
 The password should be a salted hash - never use plaintext to store a pasword!!!
 */
-MySqlHandler.prototype.addUser = function(user, callback){
+MySqlHandler.prototype.addUser = function(user, callback) {
   // check if passwords match
-  if(user.pass_1 != user.pass_2 ){
+  if (user.pass_1 != user.pass_2 ) {
     callback({user: user.username, email: user.email});
   } else {
     // check if email exists
     _this.getUserByEmail(user.email, null, function(error, user_mail){
       if(error){
         callback(error);
-      } else if(user_mail != '') {
+      } else if (user_mail != '') {
         callback({user: user.username, email: ''});
       } else {
         // check if username exists
         _this.getUserByName(user.username, function(error, user_name){
-          if(error){
+          if (error) {
             callback(error);
-          }else if(user_name != ''){
+          } else if (user_name != ''){
             callback({user: '', email: user.email});
-          }else{
+          } else {
             // everything is fine - add user
             _this.saveUser(user, callback);
           }

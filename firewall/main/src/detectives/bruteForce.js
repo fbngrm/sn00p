@@ -1,13 +1,13 @@
 var sys  = require('sys');
 
-BruteForce = function(permContr) {
+BruteForce = function(permissions) {
 	var _this = this;
 	var _TIME = 30;
 	var _MAX_TRIES = 10;
-	var _CLEAN = 15;
+	var _CLEAN = 60;
 	var _connections = {};
 	var _URLS = ['/login', '/sign'];
-	var _permContr = permContr;
+	var _permissions = permissions;
 	
 	// Collect the garbage to release memory
 	var _releaseMem = function(){
@@ -15,7 +15,7 @@ BruteForce = function(permContr) {
 		now = Date.now();
 		for (i in _connections) {
 			if (_connections[i]['timestamp'] + _TIME*1000 < now) {
-				sys.log('Reset IP: ' + i);
+				sys.log('Remove IP: ' + i);
 				delete _connections[i]['tries'];
 				delete _connections[i]['timestamp'];
 			}
@@ -57,7 +57,7 @@ BruteForce = function(permContr) {
 			
 			if (too_much && in_time){
 				sys.log('IP: ' + ip + ' blocked');
-				_permContr.ban(ip);
+				_permissions.ban(ip);
 				return true;
 			} else if (!in_time) {
 				sys.log('Reset counter for IP: ' + ip);
