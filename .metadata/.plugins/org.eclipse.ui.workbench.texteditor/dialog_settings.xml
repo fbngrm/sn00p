@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="304" key="DIALOG_WIDTH"/>
+		<item value="306" key="DIALOG_WIDTH"/>
 		<item value="298" key="DIALOG_Y_ORIGIN"/>
+		<item value="411" key="DIALOG_HEIGHT"/>
 		<item value="808" key="DIALOG_X_ORIGIN"/>
-		<item value="410" key="DIALOG_HEIGHT"/>
 		<item value="1|Droid Sans|10.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="iplist" key="selection"/>
+		<item value="_urls" key="selection"/>
 		<list key="findhistory">
+			<item value="_URLS"/>
+			<item value="_CLEAN"/>
+			<item value="_MAX_TRIES"/>
+			<item value="_TIME"/>
+			<item value="_permContr"/>
+			<item value="isBanned"/>
+			<item value="updatePermissions"/>
 			<item value="iplist"/>
-			<item value="ip_list"/>
-			<item value="console"/>
-			<item value="findAllDOcs"/>
-			<item value="#0000FF"/>
-			<item value="#025076"/>
-			<item value="#0404B4"/>
-			<item value="#343434"/>
 		</list>
 		<list key="replacehistory">
+			<item value="_urls"/>
+			<item value="_free_mem"/>
+			<item value="_max_tries"/>
+			<item value="_time"/>
+			<item value="_permissions"/>
+			<item value="_isBanned"/>
+			<item value="_updatePermissions"/>
 			<item value="#343434"/>
-			<item value="#0000FF"/>
-			<item value="#0404B4"/>
-			<item value="#025076"/>
-			<item value="dbHandler"/>
-			<item value="DBHandler"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
