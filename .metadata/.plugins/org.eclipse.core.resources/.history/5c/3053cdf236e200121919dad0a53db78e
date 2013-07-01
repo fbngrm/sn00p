@@ -1,0 +1,23 @@
+
+
+var Snoop = function(permissions){
+	var _permissions = permissions;
+	
+	this.check = function(request, response){
+		
+		if (permissions.isBanned(ip)) {
+			router.drop(response);
+			msg = "ip " + ip + " is banned";
+			sys.log(msg);
+			return;
+		}
+		// check the requests against whitelist
+		if (!permissions.isAllowed(ip)) {
+			msg = "ip " + ip + " is not allowed to use this proxy";
+			router.reject(response, msg);
+			sys.log(msg);
+			return;
+		}
+		
+	};
+};

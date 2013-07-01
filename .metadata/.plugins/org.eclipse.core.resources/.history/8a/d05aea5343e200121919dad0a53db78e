@@ -1,0 +1,14 @@
+var patterns = require('../conf/patterns').patterns;
+
+
+var SQLi = function(){
+	this.check = function(request, response){
+		for (var i = patterns.sql.length -1; i >= 0; --i) {
+			sys.log('sqli check for ip: ' + request.ip);
+			if (patterns.sql[i].test(request.url)) return true;
+		}
+		return false;
+	};
+};
+
+exports.SQLi = SQLi;

@@ -1,0 +1,55 @@
+var sys = require('sys');
+var type = require('./utils/type');
+
+var Snoop = function(router, permissions, snoops){
+	var _router = router;
+	var _permissions = permissions;
+	var _snoops = snoops || [];
+	
+	if (!_permissions) throw 'need permissions to check';
+	if (!_router) throw 'need router to route';
+	
+	
+	this.check = function(request, response){
+		// check if the ip is allowed/banned
+		_checkPermissions(request, response);
+		// check if the data/cookies contain attack signatures
+		_checkPatterns(request, response);
+	};
+	
+	var _checkPermissions = function(request, response){
+		// ip address of the crrent request
+		var ip = request.connection.remoteAddress;
+		
+		// check the requests against blacklist
+		if (permissions.isBanned(ip)) {
+			router.drop(response);
+			msg = "ip " + ip + " is banned";
+			sys.log(msg);
+			return;
+		}
+		// check the requests against whitelist
+		if (!permissions.isAllowed(ip)) {
+			msg = "ip " + ip + " is not allowed to use this proxy";
+			router.reject(response, msg);
+			sys.log(msg);
+			return;
+		}
+	};
+	
+	var _checkPatterns = function(request, response){
+		if (type(_snoop) === '[object Array]') sys.log('_______________ SNOOP _____________');
+		// ip address of the crrent request
+		var ip = request.connection.remoteAddress;
+		// check the request for brute-force attacks
+		if (bruteForce.check(ip, request.url)) {
+			permissions.ban(ip);
+			router.drop(response);
+			msg = "IP " + ip + " is blocked because of too many requests";
+			sys.log(msg);
+			return;
+		}
+	};
+};
+
+exports.Snoop = Snoop;

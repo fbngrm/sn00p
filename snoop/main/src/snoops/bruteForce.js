@@ -7,17 +7,16 @@ BruteForce = function(options) {
 	var _max_tries = _options.max_tries || 10;
 	var _free_mem = _options.free_mem || 120;
 	var _connections = {};
-	var _urls = _options.urls || [];
+	var _urls = _options.urls;
 	
-	if (_urls === []) throw 'no urls supplied';
+	if (!_urls) throw 'no urls supplied';
 	
 	// collect the garbage to release memory
 	var _releaseMem = function(){
-		sys.log('Delete old connections');
+		sys.log('delete old connections');
 		now = Date.now();
 		for (i in _connections) {
 			if (_connections[i]['timestamp'] + _time*1000 < now) {
-				sys.log('Remove IP: ' + i);
 				delete _connections[i]['tries'];
 				delete _connections[i]['timestamp'];
 			}
@@ -32,23 +31,24 @@ BruteForce = function(options) {
 
 	var _addConnection = function(ip){
 		if (_connections[ip]) {
-			sys.log('Increase ' + ip);
 			_connections[ip]['tries'] += 1;
 		} else {
-			sys.log('Add ' + ip + ' to connections');
 			_connections[ip] = {'tries': 1, 'timestamp': Date.now()};
 		}
-		sys.log(_connections[ip]['tries']);
 	};
 	
-	this.check = function(ip, url){
-		sys.log('BruteForce check IP: ' + ip + ' - URL: ' + url);
-		
+	this.check = function(request, response, buffer){
+		// ip address of the crrent request
+		var ip = request.connection.remoteAddress;
+		var url = request.url;		
 		var protect = false;
+		
 		for (i in _urls) {
 			if (_urls[i] === url) protect = true;
 		}
 		if (!protect) return false;
+		
+		sys.log('bruteForce check ip: ' + ip + ' - url: ' + url);
 		
 		if (_connections[ip])  {
 			tries = _connections[ip]['tries'];
@@ -58,10 +58,10 @@ BruteForce = function(options) {
 			in_time  = timestamp + _time*1000 > Date.now();
 			
 			if (too_much && in_time){
-				sys.log('IP: ' + ip + ' blocked');
+				sys.log('ip: ' + ip + ' blocked');
 				return true;
 			} else if (!in_time) {
-				sys.log('Reset counter for IP: ' + ip);
+				sys.log('reset counter for ip: ' + ip);
 				_reset(ip);
 			} else {
 				_addConnection(ip);

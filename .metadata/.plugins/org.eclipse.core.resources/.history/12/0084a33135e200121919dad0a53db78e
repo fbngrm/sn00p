@@ -1,0 +1,6 @@
+
+
+var Snoop = function(permissions){
+	var _permissions = permissions || {};
+
+};

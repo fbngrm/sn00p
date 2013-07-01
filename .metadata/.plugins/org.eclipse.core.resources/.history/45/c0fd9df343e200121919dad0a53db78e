@@ -1,0 +1,16 @@
+var patterns = require('../conf/patterns').patterns;
+var sys = require('sys');
+
+
+var SQLi = function(){
+	this.check = function(request, response, buffer){
+		for (var i = patterns.sql.length -1; i >= 0; --i) {
+			sys.log('sqli check for ip: ' + request.connection.remoteAddress);
+			if (patterns.sql[i].test(request.url)) return true;
+		}
+		sys.log('nothing');
+		return false;
+	};
+};
+
+exports.SQLi = SQLi;

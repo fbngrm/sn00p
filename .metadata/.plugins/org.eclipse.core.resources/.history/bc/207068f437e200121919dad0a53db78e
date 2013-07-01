@@ -1,0 +1,53 @@
+var http = require('http');
+var https = require('https');
+var sys  = require('sys');
+var fs = require('fs');
+var Snoop = require('./snoops/snoop').Snoop;
+var Permissions = require('./snoops/permissions').Permissions;
+var BruteForce = require('./snoops/bruteForce').BruteForce;
+var Router = require('./services/router').Router;
+var Logger = require('./services/logging').Logger;
+
+var bruteOptions = {
+		urls: ['/login', '/sign'],
+		time: 30,
+		max_tries: 10,
+		free_mem: 120
+	};
+
+var permOptions = {
+		blacklist: './conf/blacklist',
+		whitelist: './conf/whitelist',
+		unban: 40
+	};
+
+// detectives
+var permissions = new Permissions(permOptions);
+var bruteForce = new BruteForce(bruteOptions);
+var snoop = new Snoop(permissions, [bruteForce]);
+
+var router = new Router();
+var logger = new Logger();
+
+// create the proxy server
+http.createServer(function(request, response) {
+	sys.log(request.connection.remoteAddress + ": " + request.method + " " + request.url);
+
+	snoop.check(request, response);
+	
+	// if nothing suspicious - forward the request
+	router.forward(request, response);
+	
+}).listen(8081);
+sys.log('Starting http proxy firewall on port 8081');
+
+var options = {
+  key: fs.readFileSync('./keys/key.pem'),
+  cert: fs.readFileSync('./keys/cert.pem')
+};
+
+var a = https.createServer(options, function (req, res) {
+  res.writeHead(200);
+  res.end("hello world\n");
+}).listen(8021);
+sys.log('Starting https proxy firewall on port 8021');

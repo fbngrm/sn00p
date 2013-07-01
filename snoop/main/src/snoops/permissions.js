@@ -1,18 +1,18 @@
 var sys  = require('sys');
 var fs   = require('fs');
 
-Permissions = function() {
-	var _this = this;
+Permissions = function(options) {
    // list all ip addresses that should be blocked
 	var _blacklist = [];
 	// list all ip addresses that should be allowed
 	var _whitelist = [];
 	
-	var _black_path = './conf/blacklist';
-	var _white_path = './conf/whitelist';
+	var _options = options || {};
+	var _blackpath = _options.blacklist;
+	var _whitepath = _options.whitelist;
+	var _unban = _options.unban || 120; 
 	
-	var _UNBLOCK = 120; 
-	
+	if (!_blackpath || !_whitepath) throw ('lists not found');
 	
 	// ban an ip
 	// @param ip: the ip address to ban
@@ -21,15 +21,13 @@ Permissions = function() {
 		var nl = process.platform === 'win32' ? '\r\n' : '\n';
 		// check if ip is already in the blacklist
 		for (i in _blacklist) {
-			if (_blacklist[i] == ip) {
-				return;
-			}
+			if (_blacklist[i] == ip) return;
 		}
 		// blacklist ip in memory
 		_blacklist.push(ip);
 		// blacklist ip in file
-		fs.appendFile(_black_path , ip + nl, encoding='utf8', function (err) {
-			if(err) sys.log('Error in updating blacklist [' + err + ']');
+		fs.appendFile(_blackpath , ip + nl, encoding='utf8', function (err) {
+			if(err) sys.log('error in updating blacklist [' + err + ']');
 		});
 	};
 	
@@ -37,9 +35,7 @@ Permissions = function() {
 	// @param ip: the ip address to check
 	this.isBanned = function(ip){
 		for (i in _blacklist) {
-			if (_blacklist[i] == ip) {
-				return true;
-			}
+			if (_blacklist[i] == ip) return true;
 		} 
 		return false;
 	}
@@ -49,9 +45,7 @@ Permissions = function() {
 	this.isAllowed = function(ip) {
 		if (_whitelist.length == 0) return true;
 		for (i in _whitelist) {
-			if (_whitelist[i] == ip) {
-				return true;
-			}
+			if (_whitelist[i] == ip) return true;
 		}
 		return false;
 	}
@@ -59,15 +53,12 @@ Permissions = function() {
 	// unban all blacklisted ips
 	var _unBan = function() {
 		_blacklist = [];
-		fs.writeFile(_black_path, '', function(err){
-			if (err) {
-				console.log(err);
-			} else {
-				sys.log('Deleting blacklist');			
-			}
+		fs.writeFile(_blackpath, '', function(err){
+			if (err) console.log(err);
+			else sys.log('deleting blacklist');
 		});
 		_blacklist = [];
-		setTimeout(_unBan, _UNBLOCK*1000);
+		setTimeout(_unBan, _unban*1000);
 	};
 	
 	// read the allowed and blocked ip addresses from the config files
@@ -75,13 +66,15 @@ Permissions = function() {
 	var _updatePermissions = function() {
 		sys.log("Updating permissions");
 		try {
-			fs.readFile('./conf/blacklist', encoding='utf8', function(err, data){
-				if (err) sys.log('Error reading blacklist [' + err + ']');
-				else if(data) _blacklist = data.toString().split('\n');
-			});
-			fs.readFile('./conf/whitelist', encoding='utf8', function(err, data){
-				if (err) sys.log('Error reading whitelist [' + err + ']');
+			fs.readFile(_whitepath, encoding='utf8', function(err, data){
+				if (err) sys.log('error reading whitelist [' + err + ']');
 				else if(data) _whitelist = data.toString().split('\n');
+				else _whitelist = [];
+			});
+			fs.readFile(_blackpath, encoding='utf8', function(err, data){
+				if (err) sys.log('error reading blacklistitelist [' + err + ']');
+				else if(data) _blacklist = data.toString().split('\n');
+				else _blacklist = [];
 			});
 		} catch (err) {
 			sys.log(err);
@@ -92,8 +85,8 @@ Permissions = function() {
 	// if a file changes update the list at runtime - no restart required
 	var _watchPermissions = function(){
 		try {
-			fs.watchFile(_black_path, function(c,p) { _updatePermissions(); });
-			fs.watchFile(_white_path, function(c,p) { _updatePermissions(); });
+			fs.watchFile(_blackpath, function(c,p) { _updatePermissions(); });
+			fs.watchFile(_whitepath, function(c,p) { _updatePermissions(); });
 		} catch (err){
 			sys.log(err);
 		}
