@@ -2,7 +2,8 @@
 *.jpg
 *.png
 *.log
-/firewall/node_modules
+/snoop/node_modules
 /blog/node_modules
 .metadata
-
+/blog/.project
+/snoop/.project
