@@ -10,14 +10,14 @@ var Snoop = function(router, permissions, snoops){
 	if (!_router) throw 'need router to route';
 	
 	
-	this.check = function(request, response){
+	this.check = function(request, response, buffer){
 		// check if the ip is allowed/banned
-		_checkPermissions(request, response);
+		if (!_checkPermissions(request, response)) return false;
 		// check if the data/cookies contain attack signatures
-		_checkPatterns(request, response);
+		return _checkPatterns(request, response, buffer);
 	};
 	
-	this.checkPermissions = function(request, response){
+	var _checkPermissions = function(request, response){
 		// ip address of the crrent request
 		var ip = request.connection.remoteAddress;
 		
@@ -26,18 +26,19 @@ var Snoop = function(router, permissions, snoops){
 			router.drop(response);
 			msg = "ip " + ip + " is banned";
 			sys.log(msg);
-			return;
+			return false;
 		}
 		// check the requests against whitelist
 		if (!permissions.isAllowed(ip)) {
 			msg = "ip " + ip + " is not allowed to use this proxy";
 			router.reject(response, msg);
 			sys.log(msg);
-			return;
+			return false;
 		}
+		return true;
 	};
 	
-	this.checkPatterns = function(request, response, buffer) {
+	var _checkPatterns = function(request, response, buffer) {
 		// ip address of the crrent request
 		var ip = request.connection.remoteAddress;
 		if (type.compare(_snoops, [])) {
@@ -49,12 +50,13 @@ var Snoop = function(router, permissions, snoops){
 					permissions.ban(ip);
 					// dropping the request by ending the response
 					router.drop(response);
-					msg = "IP " + ip + " is blocked - suspicious behavoir detected";
+					msg = "ip " + ip + " is blocked - suspicious behavoir detected";
 					sys.log(msg);
-					return;
+					return false;
 				}
 			}
 		}
+		return true;
 	};
 };
 

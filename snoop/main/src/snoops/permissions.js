@@ -2,6 +2,7 @@ var sys  = require('sys');
 var fs   = require('fs');
 
 Permissions = function(options) {
+   
    // list all ip addresses that should be blocked
 	var _blacklist = [];
 	// list all ip addresses that should be allowed
@@ -64,7 +65,7 @@ Permissions = function(options) {
 	// read the allowed and blocked ip addresses from the config files
 	// triggered once when server starts & and everytime the config changes
 	var _updatePermissions = function() {
-		sys.log("Updating permissions");
+		sys.log("updating permissions");
 		try {
 			fs.readFile(_whitepath, encoding='utf8', function(err, data){
 				if (err) sys.log('error reading whitelist [' + err + ']');

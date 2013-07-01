@@ -6,6 +6,7 @@ var Snoop = require('./snoops/snoop').Snoop;
 var Permissions = require('./snoops/permissions').Permissions;
 var BruteForce = require('./snoops/bruteForce').BruteForce;
 var SQLi = require('./snoops/sqli').SQLi;
+var LFI = require('./snoops/lfi').LFI;
 var XSS = require('./snoops/xss').XSS;
 var Router = require('./services/router').Router;
 var Logger = require('./services/logging').Logger;
@@ -20,7 +21,7 @@ var bruteOptions = {
 var permOptions = {
 		blacklist: './conf/blacklist',
 		whitelist: './conf/whitelist',
-		unban: 40
+		unban: 30
 	};
 
 var router = new Router();
@@ -31,17 +32,15 @@ var permissions = new Permissions(permOptions);
 var bruteForce = new BruteForce(bruteOptions);
 var sqli = new SQLi();
 var xss = new XSS();
-var snoop = new Snoop(router, permissions, [bruteForce, sqli, xss]);
-
+var lfi = new LFI();
+var snoop = new Snoop(router, permissions, [bruteForce, sqli, xss, lfi]);
 
 // create the proxy server
 http.createServer(function(request, response) {
 	//sys.log(request.connection.remoteAddress + ": " + request.method + " " + request.url);
-
-	// preform checks on the current request
-	snoop.checkPermissions(request, response);
 	
 	var buffer = '';
+	var proxy = false;
 	
 	// options for the proxy request
 	request.headers.host = '';
@@ -52,11 +51,30 @@ http.createServer(function(request, response) {
 		method: request.method,
 		headers: request.headers
 	};
+	
+	// add the listeners for the requests
+	request.on('data', function(chunk) {
+		buffer += chunk;
+	});
 
+	request.on('end', function() {
+		// preform checks on the current request
+		if (snoop.check(request, response, buffer)) {
+			proxy_request.write(buffer, 'binary');
+			proxy_request.end();
+		} else {
+			proxy_request.end();
+		}
+	});
+	
+	request.on('error', function(error) {
+		sys.log(err);
+	});
+	
 	// create the proxy request object
-	var proxy_request = http.request(options); 
-	// add listeners to the proxy request 
-	proxy_request.addListener('response', function (proxy_response) {
+	var proxy_request = http.request(options);
+	// add listeners to the proxy request
+	proxy_request.on('response', function(proxy_response) {
 	
 		proxy_response.on('data', function(chunk) {
 			response.write(chunk, 'binary');
@@ -69,29 +87,12 @@ http.createServer(function(request, response) {
 		proxy_response.on('error', function(error) {
 			sys.log('request.listener - error: ' + error);
 		});
-			
+
 		response.writeHead(proxy_response.statusCode, proxy_response.headers);
 	});
-		
-	// add the listeners for the requests
-	request.on('data', function(chunk) {
-		buffer += chunk;
-		proxy_request.write(chunk, 'binary');
-	});
-
-	request.on('end', function() {
-		snoop.checkPatterns(request, response, buffer);
-		proxy_request.end();
-	});
-	 
-	request.on('error', function(error) {
-		sys.log(err);
-	});
-	
 	
 }).listen(8081);
 sys.log('starting http proxy firewall on port 8081');
-
 
 
 var options = {

@@ -3,17 +3,18 @@ SHELL := /bin/bash
 
 # The project's root directory
 ROOT_DIR := $(shell echo ${PWD})
-FIREWALL := $(ROOT_DIR)/firewall/node_modules
+SNOOP := $(ROOT_DIR)/snoop/node_modules
 BLOG := $(ROOT_DIR)/blog/node_modules
 
 ################# TARGETS ####################
 
 # Forces the installation of the dependencies
 install-deps-clean:
-	echo installing dependencies in $(FIREWALL)
-	$(VERBOSE)rm -R -f $(FIREWALL)
-	$(VERBOSE)mkdir $(FIREWALL)
-	$(VERBOSE)(cd $(FIREWALL) && npm install)
+	echo installing dependencies in $(SNOOP)
+	$(VERBOSE)mkdir -p $(SNOOP)
+	$(VERBOSE)rm -R -f $(SNOOP)
+	$(VERBOSE)mkdir $(SNOOP)
+	$(VERBOSE)(cd $(SNOOP) && npm install)
 	
 	echo installing dependencies in $(BLOG)
 	$(VERBOSE)rm -R -f $(BLOG)

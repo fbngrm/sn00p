@@ -5,6 +5,7 @@ var Router = function(){
 	
 	// when invalid client deny the response
 	this.drop = function(response) {
+		response.writeHead(403);
 		response.end();
 	}
 	

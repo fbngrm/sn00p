@@ -6,7 +6,7 @@ var XSS = function() {
 	this.check = function(request, response, buffer){
 		
 		for (var i = patterns.xss.length -1; i >= 0; --i) {
-			sys.log('sqli check for ip: ' + request.connection.remoteAddress);
+			sys.log('xss check for ip: ' + request.connection.remoteAddress);
 			// check the data
 			sys.log('checking data ...');
 			if (patterns.xss[i].test(buffer)) return true;
