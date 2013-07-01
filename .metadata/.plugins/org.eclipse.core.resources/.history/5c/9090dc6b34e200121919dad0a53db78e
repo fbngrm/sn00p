@@ -1,7 +1,0 @@
-
-
-var check = funciton(){
-
-};
-
-exports.check = check;

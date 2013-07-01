@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;loose_node/hello-world-server.js&apos; to &apos;server.js&apos;" description="Rename resource &apos;hello-world-server.js&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="hello-world-server.js" name="server.js" stamp="1368361147322" updateReferences="true"/>
-</session>

@@ -1,6 +1,0 @@
-
-
-var Snoop = function(){
-	var _permissions = permissions;
-
-};

@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;blog/public/stylesheets/white.css&apos; to &apos;white.styl&apos;" description="Rename resource &apos;white.css&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="public/stylesheets/white.css" name="white.styl" stamp="1369732624801" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;blog/views/show_user.jade&apos; to &apos;user_nodes.jade&apos;" description="Rename resource &apos;show_user.jade&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="views/show_user.jade" name="user_nodes.jade" stamp="1369749055267" updateReferences="true"/>
-</session>

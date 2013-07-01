@@ -1,6 +1,0 @@
-
-
-
-exports.type = function(obj){
-	return Object.prototype.toString.apply(obj);
-};
