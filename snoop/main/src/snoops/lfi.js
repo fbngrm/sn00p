@@ -9,6 +9,7 @@ var LFI = function() {
 			sys.log('lfi check for ip: ' + request.connection.remoteAddress);
 			// check the url
 			sys.log('checking url ...');
+			sys.log(request.url);
 			if (patterns.lfi[i].test(request.url)) return true;
 		}
 		return false;

@@ -18,7 +18,10 @@ var Router = function(){
 	}
 	
 	this.forward = function(request, response) {
-		
+		response.writeHead(301,{
+		    'Location': "http://" + host
+		  });
+		  response.end();
 	}
 	
 	this.allow = function(response, msg){
