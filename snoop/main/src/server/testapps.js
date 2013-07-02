@@ -7,10 +7,11 @@ var Server = function(){
 	this.startHttp = function(){
 		http.createServer(function (req, res) {
 		  res.writeHead(200, { 'Content-Type': 'text/plain' });
+		  res.write("hello world\n\n");
 		  res.write('request successfully proxied: ' + req.url +'\n' + JSON.stringify(req.headers, true, 2));
 		  res.end();
 		}).listen(9000);
-		sys.log('starting https server on port 8080');
+		sys.log('starting http app on port 9000');
 	};
 	
 	this.startHttps = function(){
@@ -20,10 +21,15 @@ var Server = function(){
 		};
 		
 		https.createServer(options, function (req, res) {
+		for (key in req.headers) 
+			sys.log(key);
+		
 			res.writeHead(200);
-			res.end("hello world\n");
-		}).listen(8021);
-		sys.log('starting https server on port 8021');
+			res.write("hello world\n\n");
+		    res.write('request successfully proxied: ' + req.url +'\n' + JSON.stringify(req.headers, true, 2));
+			res.end();
+		}).listen(9021);
+		sys.log('starting https app on port 9021');
 	};
 };
 

@@ -9,7 +9,8 @@ var XSS = require('./snoops/xss').XSS;
 var Router = require('./services/router').Router;
 var Logger = require('./services/logging').Logger;
 var HttpServer = require('./server/http').Server; 
-var TestServer = require('./server/testserver').Server; 
+var HttpsServer = require('./server/https').Server; 
+var TestApp = require('./server/testapps').Server; 
 
 var bruteOptions = {
 		urls: ['/login', '/sign'],
@@ -28,8 +29,10 @@ var routerOpts = {};
 
 var httpsOpts = {
 		port : 8021,
-		key: fs.readFileSync('./keys/key.pem'),
-		cert: fs.readFileSync('./keys/cert.pem')
+		keys : {
+			key: fs.readFileSync('./keys/key.pem'),
+			cert: fs.readFileSync('./keys/cert.pem')
+		}
 	};
 
 var router = new Router(routerOpts);
@@ -42,9 +45,11 @@ var sqli = new SQLi();
 var xss = new XSS();
 var lfi = new LFI();
 var snoop = new Snoop(router, permissions, [bf, sqli, xss, lfi]);
-var httpServer = new HttpServer(router, snoop);
+var httpServer = new HttpServer(router, snoop, {});
 httpServer.start();
+var httpsServer = new HttpsServer(router, snoop, httpsOpts);
+httpsServer.start();
 
-var testServer = new TestServer();
-testServer.startHttp();
-testServer.startHttps();
+var testApp = new TestApp();
+testApp.startHttp();
+testApp.startHttps();

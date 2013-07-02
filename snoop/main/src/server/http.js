@@ -78,7 +78,7 @@ var Server = function(router, snoop, options){
 					});
 				} else if(!perms) {
 					// reject response
-					msg = ip + 'is banned'
+					msg = ip + ' is banned'
 					_reject(response, msg);
 				} else {
 					// drop response
@@ -89,7 +89,7 @@ var Server = function(router, snoop, options){
 				sys.log('error in request: ' + err);
 			});
 		}).listen(_port);
-		sys.log('starting http proxy firewall on port: ' + _port);
+		sys.log('starting http proxy firewall on port ' + _port);
 	};
 };
 
