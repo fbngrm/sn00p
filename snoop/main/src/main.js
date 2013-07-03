@@ -27,17 +27,25 @@ var permOptions = {
 	};
 
 var routerOpts = {
-	'localhost' : {
-		hostname: 'localhost',
-		port: 8080
+	http : {
+		'localhost' : {
+			hostname: 'localhost',
+			port: 8080
+		}
+	}, 
+	https : {
+		'localhost' : {
+			hostname: 'localhost',
+			port: 9021
+		}
 	}
 };
 
 var httpsOpts = {
 		port : 8021,
 		keys : {
-			key: fs.readFileSync('./keys/key.pem'),
-			cert: fs.readFileSync('./keys/cert.pem')
+			key: './keys/key.pem',
+			cert: './keys/cert.pem'
 		}
 	};
 

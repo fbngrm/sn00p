@@ -7,7 +7,7 @@ var Router = function(options){
 	var _options = options;
 	if (!_options) throw 'need route options';
 	
-	this.getByUrl = function(request) {
+	this.getByUrl = function(request, protocol) {
 		// extract hostname from host
 		if (str.contains(request.headers.host, ':')) {
 			var host = request.headers.host.split(':')[0];
@@ -15,8 +15,8 @@ var Router = function(options){
 			var host = request.headers.host;
 		}
 		try {
-			var hostname = _options[host]['hostname'];
-			var port = _options[host]['port'];
+			var hostname = _options[protocol][host]['hostname'];
+			var port = _options[protocol][host]['port'];
 		} catch (err) {
 			sys.log(host + ' not found in router opts');
 			return {};
