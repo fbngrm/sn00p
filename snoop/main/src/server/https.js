@@ -2,31 +2,29 @@ var https = require('https');
 var sys = require('sys');
 var fs = require('fs');
 
-var Server = function(router, snoop, options) {
+var Server = function(router, snoop, fileServer, options) {
 	var _router = router;
 	var _snoop = snoop;
+	var _fileServer = fileServer;
 	var _options = options || {};
 	var _keys = _options.keys;
 	var _port = _options.port || 8021;
 	
 	if (!_snoop) throw 'need snoop to sniff traffic';
 	if (!_router) throw 'need router';
+	if (!_fileServer) throw 'need fileserver to serve static files';
 	if (! _keys.key || !_keys.cert) throw 'need path to certs';
 	
-	// when invalid client deny the response
+	// when invalid client drop the response
 	var _drop = function(response) {
-		response.writeHead(403);
-		response.end();
+		_fileServer.serve(response, 'forbidden', '');
 	}
 	
 	// when invalid request deny the response
 	// tell the client that the response is denied
 	var _reject = function(response, msg) {
-		response.writeHead(403);
-		response.write(msg);
-		response.end();
+		_fileServer.serve(response, 'banned', msg);
 	}
-	
 	// forward the proxy-response by endind the response 
 	var _forward = function(request, response, buffer, options) {
 		// create the proxy request object
@@ -47,7 +45,6 @@ var Server = function(router, snoop, options) {
 			response.writeHead(proxy_response.statusCode, proxy_response.headers);
 		});
 	}
-	
 	
 	this.allow = function(response, msg) {
 		// TODO: use for outgoing traffic

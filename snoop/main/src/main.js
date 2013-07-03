@@ -30,7 +30,7 @@ var routerOpts = {
 	http : {
 		'localhost' : {
 			hostname: 'localhost',
-			port: 8080
+			port: 9000
 		}
 	}, 
 	https : {
@@ -64,7 +64,7 @@ var snoop = new Snoop(router, permissions, [bf, sqli, xss, lfi]);
 var fileServer = new FileServer();
 var httpServer = new HttpServer(router, snoop, fileServer, {});
 httpServer.start();
-var httpsServer = new HttpsServer(router, snoop, httpsOpts);
+var httpsServer = new HttpsServer(router, snoop, fileServer, httpsOpts);
 httpsServer.start();
 
 var testApp = new TestApp(fileServer);
