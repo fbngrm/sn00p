@@ -1,6 +1,6 @@
 
 
-exports.Type = new function(){
+exports.TypeUtils = new function(){
 
 	this.type = function(obj){
 		return Object.prototype.toString.apply(obj);

@@ -12,6 +12,7 @@ var HttpServer = require('./server/http').Server;
 var HttpsServer = require('./server/https').Server; 
 var TestApp = require('./server/testapps').Server; 
 var FileServer = require('./server/static').FileServer; 
+var config = require('./conf/config.json');
 
 var bruteOptions = {
 		urls: ['/login', '/sign'],
@@ -49,12 +50,12 @@ var httpsOpts = {
 		}
 	};
 
-var router = new Router(routerOpts);
-var logger = new Logger();
+var router = new Router(config.router);
+var logger = new Logger(config.logging);
 
 // detectives
-var permissions = new Permissions(permOptions);
-var bf = new BruteForce(bruteOptions);
+var permissions = new Permissions(config.permissions);
+var bf = new BruteForce(config.bruteforce);
 var sqli = new SQLi();
 var xss = new XSS();
 var lfi = new LFI();
@@ -64,7 +65,7 @@ var snoop = new Snoop(router, permissions, [bf, sqli, xss, lfi]);
 var fileServer = new FileServer();
 var httpServer = new HttpServer(router, snoop, fileServer, {});
 httpServer.start();
-var httpsServer = new HttpsServer(router, snoop, fileServer, httpsOpts);
+var httpsServer = new HttpsServer(router, snoop, fileServer, config.https);
 httpsServer.start();
 
 var testApp = new TestApp(fileServer);

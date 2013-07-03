@@ -1,6 +1,6 @@
 var http = require('http');
 var sys = require('sys');
-var str = require('../utils/str').Str;
+var stringUtils = require('../utils/stringutils').StringUtils;
 
 var Router = function(options){
 
@@ -9,7 +9,7 @@ var Router = function(options){
 	
 	this.getByUrl = function(request, protocol) {
 		// extract hostname from host
-		if (str.contains(request.headers.host, ':')) {
+		if (stringUtils.contains(request.headers.host, ':')) {
 			var host = request.headers.host.split(':')[0];
 		} else {
 			var host = request.headers.host;

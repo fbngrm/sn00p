@@ -1,55 +1,30 @@
 var winston = require('winston');
-var conf = require('../conf/config.js');
+var dateUtils = require('../utils/dateutils').DateUtils;
 
 
-var Logger = function(){
+var Logger = function(conf){
 
-	var _getDate = function(){
-	
-		var _months = new Array ( );
-			_months[_months.length] = "Jan";
-			_months[_months.length] = "Feb";
-			_months[_months.length] = "Mar";
-			_months[_months.length] = "Apr";
-			_months[_months.length] = "May";
-			_months[_months.length] = "Jun";
-			_months[_months.length] = "Jul";
-			_months[_months.length] = "Aug";
-			_months[_months.length] = "Sep";
-			_months[_months.length] = "Oct";
-			_months[_months.length] = "Nov";
-			_months[_months.length] = "Dec";
-			
-		var _d = new Date();
-	    var _date = _d.getDate();
-	    var _month = _d.getMonth();
-	    var _hours = _d.getHours();
-	    var _mins = _d.getMinutes();
-	    var _secs = _d.getSeconds();
-	    
-	    return _date + ' ' + _months[_month] + ' ' + _hours + ':' + _mins + ':' + _secs;
-	};
-
+	var _conf = conf || {};
 	var default_ = {
 			console: {
 				level:"info", 
 				colorize: 'true', 
-				timestamp: _getDate
+				timestamp: dateUtils.getDate
 			},
 			file: {
 				filename:"../../log/server.log", 
 				level:"debug"
 			}
 	};
+	var logging  = _conf.logging || default_ ;
 	
-	var logging  = conf.logging || default_ ;
-	
+	// BUGFIX: check if file exists
 	return new winston.Logger({
 	    transports: [
-	      new (winston.transports.Console)(logging.console),
-	      new (winston.transports.File)(logging.file)
+	      new winston.transports.Console(logging.console),
+	      new winston.transports.File(logging.file)
 	    ]
-	});
+	});	
 }
 
 exports.Logger = Logger;

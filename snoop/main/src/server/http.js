@@ -2,14 +2,17 @@ var http = require('http');
 var sys  = require('sys');
 
 var Server = function(router, snoop, fileServer, options) {
+
 	var _snoop = snoop;
 	var _router = router;
 	var _fileServer = fileServer;
 	var _options = options || {};
 	var _port = _options.port || 8000;
+	
 	if (!_router) throw 'need router';
 	if (!_snoop) throw 'need snoop';
 	if (!_fileServer) throw 'new fileserver'
+	
 	
 	// when invalid client drop the response
 	var _drop = function(response) {
@@ -21,6 +24,7 @@ var Server = function(router, snoop, fileServer, options) {
 	var _reject = function(response, msg) {
 		_fileServer.serve(response, 'banned', msg);
 	}
+	
 	// forward the proxy-response by endind the response 
 	var _forward = function(request, response, buffer, options) {
 		// create the proxy request object

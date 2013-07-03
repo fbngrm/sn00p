@@ -1,5 +1,5 @@
 var sys = require('sys');
-var type = require('../utils/type').Type;
+var typeUtils = require('../utils/typeutils').TypeUtils;
 
 var Snoop = function(router, permissions, snoops){
 	var _router = router;
@@ -31,7 +31,7 @@ var Snoop = function(router, permissions, snoops){
 	this.checkPatterns = function(request, response, buffer) {
 		// ip address of the crrent request
 		var ip = request.connection.remoteAddress;
-		if (type.compare(_snoops, [])) {
+		if (typeUtils.compare(_snoops, [])) {
 			for (var i in _snoops) {
 				var snoop = _snoops[i];
 				// check the request for brute-force attacks

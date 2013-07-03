@@ -1,0 +1,50 @@
+{
+	"logging": {
+		"console" : {
+			"colorize" : true,
+			"timestamp" : true,
+			"level" : "info"
+		},
+		"file" : {
+			"filename" : "../../log/server.log",
+			"json" : false,
+			"timestamp" : true,
+			"level" : "info"
+        }
+	},
+	"bruteforce" : {
+		"urls" : [
+			"/login", 
+			"/sign"
+			],
+		"time" : 30,
+		"max_tries" : 10,
+		"free_mem" : 120
+	},
+	"permissions" : {
+		"blacklist" : "./conf/blacklist",
+		"whitelist" : "./conf/whitelist",
+		"unban" : 30
+	},
+	"router" : {
+		"http" : {
+			"localhost" : {
+				"hostname" : "localhost",
+				"port" : 9000
+			}
+		}, 
+		"https" : {
+			"localhost" : {
+				"hostname" : "localhost",
+				"port" : 9021
+			}
+		}
+	},
+	"https" : {
+		"port" : 8021,
+		"keys" : {
+			"key" : "./keys/key.pem",
+			"cert" : "./keys/cert.pem"
+		}
+	}
+}
