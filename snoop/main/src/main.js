@@ -11,6 +11,7 @@ var Logger = require('./services/logging').Logger;
 var HttpServer = require('./server/http').Server; 
 var HttpsServer = require('./server/https').Server; 
 var TestApp = require('./server/testapps').Server; 
+var FileServer = require('./server/static').FileServer; 
 
 var bruteOptions = {
 		urls: ['/login', '/sign'],
@@ -25,7 +26,12 @@ var permOptions = {
 		unban: 30
 	};
 
-var routerOpts = {};
+var routerOpts = {
+	'localhost' : {
+		hostname: 'localhost',
+		port: 8080
+	}
+};
 
 var httpsOpts = {
 		port : 8021,
@@ -45,11 +51,14 @@ var sqli = new SQLi();
 var xss = new XSS();
 var lfi = new LFI();
 var snoop = new Snoop(router, permissions, [bf, sqli, xss, lfi]);
-var httpServer = new HttpServer(router, snoop, {});
+
+// server
+var fileServer = new FileServer();
+var httpServer = new HttpServer(router, snoop, fileServer, {});
 httpServer.start();
 var httpsServer = new HttpsServer(router, snoop, httpsOpts);
 httpsServer.start();
 
-var testApp = new TestApp();
+var testApp = new TestApp(fileServer);
 testApp.startHttp();
 testApp.startHttps();

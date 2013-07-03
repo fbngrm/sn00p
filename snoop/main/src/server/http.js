@@ -1,37 +1,52 @@
 var http = require('http');
 var sys  = require('sys');
 
-var Server = function(router, snoop, options){
+var Server = function(router, snoop, fileServer, options) {
 	var _snoop = snoop;
 	var _router = router;
+	var _fileServer = fileServer;
 	var _options = options || {};
 	var _port = _options.port || 8000;
 	if (!_router) throw 'need router';
 	if (!_snoop) throw 'need snoop';
+	if (!_fileServer) throw 'new fileserver'
 	
-	// when invalid client deny the response
+	// when invalid client drop the response
 	var _drop = function(response) {
-		response.writeHead(403);
-		response.end();
+		_fileServer.serve(response, 'forbidden', '');
 	}
 	
 	// when invalid request deny the response
 	// tell the client that the response is denied
 	var _reject = function(response, msg) {
-		response.writeHead(403);
-		response.write(msg);
+		_fileServer.serve(response, 'banned', msg);
+	}
+	// forward the proxy-response by endind the response 
+	var _forward = function(request, response, buffer, options) {
+		// create the proxy request object
+		var proxy_request = http.request(options);
+		proxy_request.write(buffer, 'binary');
+		proxy_request.end();
+		// add listeners to the proxy request
+		proxy_request.on('response', function(proxy_response) {
+			proxy_response.on('data', function(chunk) {
+				response.write(chunk, 'binary');
+			});
+			proxy_response.on('end', function() {
 		response.end();
+			});
+			proxy_response.on('error', function(error) {
+				sys.log('proxy_response - error: ' + error);
+			});
+			response.writeHead(proxy_response.statusCode, proxy_response.headers);
+		});
 	}
 	
-	var _forward = function(request, response) {
-		response.end();
-	}
-	
-	this.allow = function(response, msg) {
+	var _allow = function(response, msg) {
 		// TODO: use for outgoing traffic
 	}
 	
-	this.start = function(){
+	this.start = function() {
 		// create the proxy server
 		http.createServer(function(request, response) {
 			// ip address of the crrent request
@@ -39,15 +54,12 @@ var Server = function(router, snoop, options){
 			sys.log(ip + ": " + request.method + " " + request.url);
 
 			// options for the proxy request
-			request.headers.host = '';
-			var options = {
-				hostname: 'localhost',
-				port: 8080,
-				path: request.url,
-				method: request.method,
-				headers: request.headers
-			};
+			var options = router.getByUrl(request);
+			// if no options are found return 404
+			if (options === {}) _fileServer.serve(response, '404', '');
+			// buffer for the request data
 			var buffer = '';
+			// buffer for the proxy-request data
 			var proxy_buffer = '';
 
 			// add the listeners for the requests
@@ -59,24 +71,9 @@ var Server = function(router, snoop, options){
 				var ptrns = _snoop.checkPatterns(request, response, buffer);
 				// preform checks on the current request
 				if (perms && ptrns) {
-					// create the proxy request object
-					var proxy_request = http.request(options);
-					proxy_request.write(buffer, 'binary');
-					proxy_request.end();
-					// add listeners to the proxy request
-					proxy_request.on('response', function(proxy_response) {
-						proxy_response.on('data', function(chunk) {
-							response.write(chunk, 'binary');
-						});
-						proxy_response.on('end', function() {
-							_forward(request, response);
-						});
-						proxy_response.on('error', function(error) {
-							sys.log('proxy_response - error: ' + error);
-						});
-						response.writeHead(proxy_response.statusCode, proxy_response.headers);
-					});
-				} else if(!perms) {
+					// forward the request if nothing suspicious detected
+					_forward(request, response, buffer, options);
+				} else if (!perms) {
 					// reject response
 					msg = ip + ' is banned'
 					_reject(response, msg);

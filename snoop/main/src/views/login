@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		login
+	</title>
+	<link rel="stylesheet" href="/static/stylesheets/style.css">
+</head>
+<body>
+	<div id="wrap">
+		<div class="login">
+			<form method="post">
+				<input type="text" name="username" placeholder="email">
+				<input type="password" name="password" placeholder="password">
+				<input type="submit" value="Send" class="button">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

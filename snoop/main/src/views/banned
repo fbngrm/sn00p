@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>403</title>
+	<style type="text/css">
+		img.center {   display: block;   margin-left: auto;   margin-right: auto; }
+		#msg { width : 300px; margin-left: auto; margin-right: auto; }
+		#msg p {  text-align: center; text-decoration: blink; font-family: helvetica; color: blue; font-size: 30pt;}
+	</style>
+</head>
+<body>
+	
+	<div id="msg"><img class="center" src="./static/imgs/banned.gif"><p>banned</p></div>
+</body>
+
+</html>

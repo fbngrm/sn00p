@@ -11,14 +11,14 @@ BruteForce = function(options) {
 	
 	if (!_urls) throw 'no urls supplied';
 	
-	// collect the garbage to release memory
+	// garbage collection to delete old connections & release memory
 	var _releaseMem = function(){
-		sys.log('delete old connections');
+		sys.log('free memory / delete connections');
 		now = Date.now();
 		for (i in _connections) {
 			if (_connections[i]['timestamp'] + _time*1000 < now) {
-				delete _connections[i]['tries'];
-				delete _connections[i]['timestamp'];
+				// BUGFIX: does deleting elements change length/shift indices?
+				delete _connections[i];
 			}
 		}
 		setTimeout(_releaseMem, _free_mem*1000);
