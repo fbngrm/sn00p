@@ -8,8 +8,8 @@ var LFI = require('./snoops/lfi').LFI;
 var XSS = require('./snoops/xss').XSS;
 var Router = require('./services/router').Router;
 var Logger = require('./services/logging').Logger;
-var HttpServer = require('./server/http').Server; 
-var HttpsServer = require('./server/https').Server; 
+var HttpServer = require('./server/http_proxy').Server; 
+var HttpsServer = require('./server/https_proxy').Server; 
 var TestApps = require('./server/testapps').Server; 
 var FileServer = require('./server/static').FileServer; 
 var config = require('./conf/config.json');
@@ -39,10 +39,10 @@ var fileServer = new FileServer();
 var httpServer = new HttpServer(router, snoop, fileServer, {});
 httpServer.start();
 // https-proxy
-var httpsServer = new HttpsServer(router, snoop, fileServer, config.https);
+var httpsServer = new HttpsServer(router, snoop, fileServer, config.proxy.https);
 httpsServer.start();
 
 // test apps
-var testApp = new TestApp(fileServer);
+var testApps = new TestApps(fileServer);
 testApps.startHttp();
 testApps.startHttps();
