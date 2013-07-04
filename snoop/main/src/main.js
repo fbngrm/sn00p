@@ -1,3 +1,12 @@
+/* 
+ * all objects beeing used are created in this file.
+ * all dependencies of any obejct are also created here
+ * and get supplied to the requiering object as argument.
+ * dependency injection is used as a design principle
+ * to easily replace dependencies by mock objects in tests.
+ */
+ 
+// imports
 var sys  = require('sys');
 var fs  = require('fs');
 var Snoop = require('./snoops/snoop').Snoop;
