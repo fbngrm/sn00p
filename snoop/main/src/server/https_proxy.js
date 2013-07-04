@@ -18,10 +18,11 @@ var Server = function(router, snoop, fileServer, options) {
 	var _snoop = snoop;
 	// serve static files
 	var _fileServer = fileServer;
-	// option to configure the server
+	// options to configure the server
 	var _options = options || {};
 	// certificate & key for to provide ssl/tls functionality
 	var _keys = _options.keys;
+	// get the port the server should listen at
 	var _port = _options.port || 8021;
 	
 	// check if all neccessary objects are provided
