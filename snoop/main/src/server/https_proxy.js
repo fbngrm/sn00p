@@ -79,6 +79,7 @@ var Server = function(router, snoop, fileServer, options) {
 			request.on('error', function(error) {
 				sys.log('error in request: ' + err);
 			});
+		// provide port to listen
 		}).listen(_port);
 		sys.log('starting https proxy firewall on port: ' + _port);
 	};
