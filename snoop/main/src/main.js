@@ -10,64 +10,39 @@ var Router = require('./services/router').Router;
 var Logger = require('./services/logging').Logger;
 var HttpServer = require('./server/http').Server; 
 var HttpsServer = require('./server/https').Server; 
-var TestApp = require('./server/testapps').Server; 
+var TestApps = require('./server/testapps').Server; 
 var FileServer = require('./server/static').FileServer; 
 var config = require('./conf/config.json');
 
-var bruteOptions = {
-		urls: ['/login', '/sign'],
-		time: 30,
-		max_tries: 10,
-		free_mem: 120
-	};
-
-var permOptions = {
-		blacklist: './conf/blacklist',
-		whitelist: './conf/whitelist',
-		unban: 30
-	};
-
-var routerOpts = {
-	http : {
-		'localhost' : {
-			hostname: 'localhost',
-			port: 9000
-		}
-	}, 
-	https : {
-		'localhost' : {
-			hostname: 'localhost',
-			port: 9021
-		}
-	}
-};
-
-var httpsOpts = {
-		port : 8021,
-		keys : {
-			key: './keys/key.pem',
-			cert: './keys/cert.pem'
-		}
-	};
-
+// router to provide options for proxy requests
 var router = new Router(config.router);
+
+// logger to log to console and file
 var logger = new Logger(config.logging);
 
-// detectives
+// module to read permissions from white- & blacklists
 var permissions = new Permissions(config.permissions);
+// module to detect requests at frequent intervals
 var bf = new BruteForce(config.bruteforce);
+// module to detect sql syntax/metachars in request data
 var sqli = new SQLi();
+// module to detect javascript syntax/metachars in request data
 var xss = new XSS();
+// module to detect directory-traversal syntax in url
 var lfi = new LFI();
-var snoop = new Snoop(router, permissions, [bf, sqli, xss, lfi]);
+// load the snoop with permissions & detection modules
+var snoop = new Snoop(permissions, [bf, sqli, xss, lfi]);
 
-// server
+// fileserver to serve static content
 var fileServer = new FileServer();
+// http-proxy
 var httpServer = new HttpServer(router, snoop, fileServer, {});
 httpServer.start();
+// https-proxy
 var httpsServer = new HttpsServer(router, snoop, fileServer, config.https);
 httpsServer.start();
 
+// test apps
 var testApp = new TestApp(fileServer);
-testApp.startHttp();
-testApp.startHttps();
+testApps.startHttp();
+testApps.startHttps();

@@ -40,11 +40,16 @@
 			}
 		}
 	},
-	"https" : {
-		"port" : 8021,
-		"keys" : {
-			"key" : "./keys/key.pem",
-			"cert" : "./keys/cert.pem"
+	"proxy" : {
+		"https" : {
+			"port" : 8021,
+			"keys" : {
+				"key" : "./keys/key.pem",
+				"cert" : "./keys/cert.pem"
+			}
+		},
+		"http" : {
+			"port" : 8000
 		}
 	}
 }

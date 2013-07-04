@@ -13,7 +13,7 @@ var Server = function(router, snoop, fileServer, options) {
 	if (!_snoop) throw 'need snoop to sniff traffic';
 	if (!_router) throw 'need router';
 	if (!_fileServer) throw 'need fileserver to serve static files';
-	if (! _keys.key || !_keys.cert) throw 'need path to certs';
+	if (! _keys.key || !_keys.cert) throw 'need pathes to certs';
 	
 	// when invalid client drop the response
 	var _drop = function(response) {

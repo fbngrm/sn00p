@@ -1,14 +1,11 @@
 var sys = require('sys');
 var typeUtils = require('../utils/typeutils').TypeUtils;
 
-var Snoop = function(router, permissions, snoops){
-	var _router = router;
+var Snoop = function(permissions, snoops) {
 	var _permissions = permissions;
 	var _snoops = snoops || [];
 	
-	if (!_permissions) throw 'need permissions to check';
-	if (!_router) throw 'need router to route';
-	
+	if (!_permissions) throw 'need permissions to check';	
 	
 	this.check = function(request, response, buffer){
 		// check if the ip is allowed/banned

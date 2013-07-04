@@ -11,7 +11,7 @@ Permissions = function(options) {
 	var _options = options || {};
 	var _blackpath = _options.blacklist;
 	var _whitepath = _options.whitelist;
-	var _unban = _options.unban || 120; 
+	var _unban = _options.unban || 120;
 	
 	if (!_blackpath || !_whitepath) throw ('lists not found');
 	
@@ -31,7 +31,7 @@ Permissions = function(options) {
 			if(err) sys.log('error in updating blacklist [' + err + ']');
 		});
 	};
-	
+
 	// check if the ip is blacklisted/banned
 	// @param ip: the ip address to check
 	this.isBanned = function(ip){
@@ -52,6 +52,7 @@ Permissions = function(options) {
 	}
 	
 	// unban all blacklisted ips
+	// BUGFIX: unban clients individually - to ensure ban-time is elapsed 
 	var _unBan = function() {
 		_blacklist = [];
 		fs.writeFile(_blackpath, '', function(err){

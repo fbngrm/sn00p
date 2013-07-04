@@ -60,7 +60,8 @@ var Server = function(router, snoop, fileServer, options) {
 			// options for the proxy request
 			var options = router.getByUrl(request, 'http');
 			// if no options are found return 404
-			if (options === {}) _fileServer.serve(response, '404', '');
+			// BUGFIX: why does this not work?
+			if (options === {}) {_fileServer.serve(response, '404', ''); sys.log('FALSE');}
 			// buffer for the request data
 			var buffer = '';
 			// buffer for the proxy-request data
