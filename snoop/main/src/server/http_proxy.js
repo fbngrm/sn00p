@@ -6,7 +6,7 @@ var sys  = require('sys');
  * requests can be forwarded to multiple applications. the options for 
  * the proxy-requests are provided by the router object.
  * the input data is inspected by the snoop object to identify
- * suspicious signatures loke sql or javascript syntax/meta-character.
+ * suspicious signatures like sql or javascript syntax/meta-character.
  */
 
 var Server = function(router, snoop, fileServer, options) {

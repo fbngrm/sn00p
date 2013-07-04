@@ -1,11 +1,3 @@
-/* 
- * all objects beeing used are created in this file.
- * all dependencies of any obejct are also created here
- * and get supplied to the requiering object as argument.
- * dependency injection is used as a design principle
- * to easily replace dependencies by mock objects in tests.
- */
- 
 // imports
 var sys  = require('sys');
 var fs  = require('fs');
@@ -23,7 +15,16 @@ var TestApps = require('./server/testapps').Server;
 var FileServer = require('./server/static').FileServer; 
 var config = require('./conf/config.json');
 
-// router to provide options for proxy requests
+/* 
+ * all objects beeing used in thsis application are 
+ * created in this file.
+ * all dependencies get supplied to the requiering 
+ * object as arguments.
+ * dependency injection is used as a design principle
+ * to easily replace dependencies by mock objects in tests
+ */
+
+// router to provide address resolution for proxy requests
 var router = new Router(config.router);
 
 // logger to log to console and file
@@ -40,18 +41,23 @@ var xss = new XSS();
 // module to detect directory-traversal syntax in url
 var lfi = new LFI();
 // load the snoop with permissions & detection modules
+// to perform the security checks
 var snoop = new Snoop(permissions, [bf, sqli, xss, lfi]);
 
 // fileserver to serve static content
 var fileServer = new FileServer();
 // http-proxy
 var httpServer = new HttpServer(router, snoop, fileServer, {});
+// start the server
 httpServer.start();
 // https-proxy
 var httpsServer = new HttpsServer(router, snoop, fileServer, config.proxy.https);
+// start the server
 httpsServer.start();
 
 // test apps
 var testApps = new TestApps(fileServer);
+// start the http-test-server
 testApps.startHttp();
+// start the https-test-server
 testApps.startHttps();
