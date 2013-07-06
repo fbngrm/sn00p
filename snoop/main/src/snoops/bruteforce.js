@@ -9,7 +9,7 @@ BruteForce = function(options) {
 	var _connections = {};
 	var _urls = _options.urls;
 	
-	if (!_urls) throw 'no urls supplied';
+	if (!_urls) throw 'no urls to protect supplied';
 	
 	// garbage collection to delete old connections & release memory
 	var _releaseMem = function(){

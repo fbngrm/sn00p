@@ -1,6 +1,6 @@
 /* 
  * patterns to detect sqli-, xss- & lfi-attacks with regular expressions
- * starting point for defining these patterns is:
+ * starting point for defining these patterns was:
  * http://www.symantec.com/connect/articles/detection-sql-injection-and-cross-site-scripting-attacks
  */
 
@@ -121,7 +121,7 @@ var patterns = {};
 patterns.sql = [metaChars, typicalSqli, msSqli, union, select, insert, update, delete_, drop];
 // add xss regexes
 patterns.xss = [simpleXss, imageSrc, paranoid];
-// add lfi regexes - not neccessary in node
+// add lfi regexes
 patterns.lfi = [lfi];
 
 exports.patterns = patterns;
