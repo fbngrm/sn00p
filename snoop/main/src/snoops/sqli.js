@@ -1,9 +1,15 @@
 var patterns = require('../conf/patterns').patterns;
 var sys = require('sys');
 
-
+/*
+ * check if the reuests contains sqli signatures 
+ */
+ 
 var SQLi = function() {
 
+	// check request url, data & cookies(if any) against patterns
+	// return true if detected
+	// else return fase
 	this.check = function(request, response, buffer){
 		
 		for (var i = patterns.sql.length -1; i >= 0; --i) {
