@@ -1,7 +1,11 @@
 
+/*
+ * helper functions to work with date objects
+ */
 
 exports.DateUtils = new function(){
 
+	// get a date in the format: dd mm hh:mm:ss
 	this.getDate = function(){
 		var _months = new Array ( );
 			_months[_months.length] = "Jan";
