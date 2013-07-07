@@ -38,7 +38,7 @@ BruteForce = function(options) {
 	};
 	
 	this.check = function(request, response, buffer){
-		// ip address of the crrent request
+		// ip address of the current request
 		var ip = request.connection.remoteAddress;
 		var url = request.url;		
 		var protect = false;
@@ -50,7 +50,7 @@ BruteForce = function(options) {
 		
 		sys.log('bruteForce check ip: ' + ip + ' - url: ' + url);
 		
-		if (_connections[ip])  {
+		if (_connections[ip]) {
 			tries = _connections[ip]['tries'];
 			timestamp  = _connections[ip]['timestamp'];
 			

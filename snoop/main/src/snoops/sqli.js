@@ -11,7 +11,7 @@ var SQLi = function() {
 			// check the data
 			if (patterns.sql[i].test(buffer)) return true;
 			// check the cookie
-			if (request.headers.cookie ) {
+			if (request.headers.cookie) {
 				if (patterns.sql[i].test(JSON.stringify(request.headers.cookie))) return true;
 			}
 			// check the url

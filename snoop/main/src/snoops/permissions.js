@@ -52,7 +52,7 @@ Permissions = function(options) {
 	}
 	
 	// unban all blacklisted ips
-	// BUGFIX: unban clients individually - to ensure ban-time is elapsed 
+	// BUGFIX: unban clients individually - ensure ban-time has elapsed 
 	var _unBan = function() {
 		_blacklist = [];
 		fs.writeFile(_blackpath, '', function(err){
@@ -64,7 +64,7 @@ Permissions = function(options) {
 	};
 	
 	// read the allowed and blocked ip addresses from the config files
-	// triggered once when server starts & and everytime the config changes
+	// is triggered once when server starts & and everytime the config changes
 	var _updatePermissions = function() {
 		sys.log("updating permissions");
 		try {
