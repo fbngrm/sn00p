@@ -18,7 +18,7 @@
 			"/sign"
 			],
 		"time" : 30,
-		"max_tries" : 10,
+		"max_reqs" : 10,
 		"free_mem" : 120
 	},
 	"permissions" : {

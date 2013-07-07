@@ -1,18 +1,32 @@
 var sys  = require('sys');
 
+/*
+ * counts the request from every client. can be used to 
+ * determine if the defined threshold for requests per client 
+ * in a certain timeframe is reached.
+ */
+
 BruteForce = function(options) {
 
+	// options for defining the thresholds
 	var _options = options || {};	
+	// time(in seconds) to count requests
 	var _time = _options.time || 30;
-	var _max_tries = _options.max_tries || 10;
-	var _free_mem = _options.free_mem || 120;
+	// maximum amount of requests allowed to make by clients in $_time
+	var _max_reqs = _options.max_reqs || 10;
+	// interval(in seconds) to free memory
+	var _free_mem = _options.free_mem || _time;
+	// save the connections
 	var _connections = {};
+	// urls that should be protected/counted
 	var _urls = _options.urls;
 	
+	// check dependencies
 	if (!_urls) throw 'no urls to protect supplied';
 	
-	// garbage collection to delete old connections & release memory
-	var _releaseMem = function(){
+	// delete old connections & free memory recursively in an
+	// interval of $_free_mem
+	var _freeMem = function(){
 		sys.log('free memory / delete connections');
 		now = Date.now();
 		for (i in _connections) {
@@ -21,57 +35,70 @@ BruteForce = function(options) {
 				delete _connections[i];
 			}
 		}
-		setTimeout(_releaseMem, _free_mem*1000);
+		setTimeout(_freeMem, _free_mem*1000);
 	};
 	
-	var _reset = function(ip){
-		_connections[ip]['tries'] = 1;
-		_connections[ip]['timestamp'] = Date.now();
+	// reset the counter for a client
+	var _reset = function(ip) {
+		_connections[ip] = {'tries': 1, 'timestamp': Date.now()};
 	};
 
-	var _addConnection = function(ip){
+	// increment a connection counter
+	var _incConnection = function(ip){
 		if (_connections[ip]) {
 			_connections[ip]['tries'] += 1;
 		} else {
-			_connections[ip] = {'tries': 1, 'timestamp': Date.now()};
+			_reset(ip);
 		}
 	};
 	
+	// detect requests at frequent intervals from a certain ip
 	this.check = function(request, response, buffer){
 		// ip address of the current request
 		var ip = request.connection.remoteAddress;
-		var url = request.url;		
+		// url the request
+		var url = request.url;
+		// flag to determine if this url should be protected
 		var protect = false;
 		
 		for (i in _urls) {
 			if (_urls[i] === url) protect = true;
 		}
-		if (!protect) return false;
 		
 		sys.log('bruteForce check ip: ' + ip + ' - url: ' + url);
 		
-		if (_connections[ip]) {
+		// if this url should be protected and the client 
+		// already mead a requests check if the threashold is reached 
+		// otherwise increment the counter
+		// return true if too many requests are made else return false
+		if (protect && _connections[ip]) {
 			tries = _connections[ip]['tries'];
 			timestamp  = _connections[ip]['timestamp'];
 			
-			too_much = tries >= _max_tries;
+			too_much = tries >= _max_reqs;
 			in_time  = timestamp + _time*1000 > Date.now();
 			
-			if (too_much && in_time){
+			// to much requests - return true 
+			if (too_much && in_time) {
 				sys.log('ip: ' + ip + ' blocked');
 				return true;
+			// timeframe exceeded - reset the counter
 			} else if (!in_time) {
 				sys.log('reset counter for ip: ' + ip);
 				_reset(ip);
+			// timeframe not exceeded - increment the counter
 			} else {
-				_addConnection(ip);
-			} 
-		} else{
-			_addConnection(ip);
+				_incConnection(ip);
+			}
+		// first request in this timeframe
+		} else if (protect && !_connections[ip]) {
+			_incConnection(ip);
 		}
+		// everything is alright - return false
 		return false;
 	};
 	
-	_releaseMem();
+	// initialize garbage collection
+	_freeMem();
 };
 exports.BruteForce = BruteForce;
