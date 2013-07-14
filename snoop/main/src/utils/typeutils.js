@@ -1,4 +1,6 @@
-
+/*
+ * helper functions to work with date objects
+ */
 
 exports.TypeUtils = new function(){
 

@@ -1,8 +1,10 @@
 var http = require('http');
 var sys  = require('sys');
+var config = require('../conf/config.json');
+var logger = require('../services/logging').Logger;
 
 /*
- * the server provides proxy functionality for http request.
+ * the server provides proxy functionality for http requests.
  * requests can be forwarded to multiple applications. the options for 
  * the proxy-requests are provided by the router object.
  * the input data is inspected by the snoop object to identify
@@ -25,7 +27,8 @@ var Server = function(router, snoop, fileServer, options) {
 	// check if all neccessary objects are provided
 	if (!_router) throw 'need router';
 	if (!_snoop) throw 'need snoop';
-	if (!_fileServer) throw 'new fileserver'
+	if (!_fileServer) throw 'need fileserver'
+	if (!logger) throw 'need logger'
 	
 	// start the server
 	this.start = function() {

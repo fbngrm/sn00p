@@ -1,14 +1,12 @@
 var winston = require('winston');
 var dateUtils = require('../utils/dateutils').DateUtils;
-
+var config = require('../conf/config.json');
 /*
  * provide logging to console & file
  * use winston module: 
  * https://github.com/flatiron/winston
  */
-var Logger = function(conf){
-	// get the configuration from param
-	var _conf = conf || {};
+exports.Logger = new function() {
 	// if not supplied use default 
 	var default_ = {
 			console: {
@@ -18,11 +16,13 @@ var Logger = function(conf){
 			},
 			file: {
 				filename:"../../log/server.log", 
-				level:"debug"
+				level:"debug",
+				json : false
 			}
 	};
 	// config
-	var logging  = _conf.logging || default_ ;
+	var conf = config || {};
+	var logging  = conf.logging || default_ ;
 	
 	// BUGFIX: check if file exists
 	return new winston.Logger({
@@ -33,4 +33,3 @@ var Logger = function(conf){
 	});	
 }
 
-exports.Logger = Logger;

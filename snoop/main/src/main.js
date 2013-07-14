@@ -8,7 +8,6 @@ var SQLi = require('./snoops/sqli').SQLi;
 var LFI = require('./snoops/lfi').LFI;
 var XSS = require('./snoops/xss').XSS;
 var Router = require('./services/router').Router;
-var Logger = require('./services/logging').Logger;
 var HttpServer = require('./server/http_proxy').Server; 
 var HttpsServer = require('./server/https_proxy').Server; 
 var TestApps = require('./server/testapps').Server; 
@@ -16,8 +15,8 @@ var FileServer = require('./server/static').FileServer;
 var config = require('./conf/config.json');
 
 /* 
- * all objects beeing used in thsis application are 
- * created in this file.
+ * all objects beeing used in this application are 
+ * created here.
  * all dependencies get supplied to the requiering 
  * object as arguments.
  * dependency injection is used as a design principle
@@ -26,9 +25,6 @@ var config = require('./conf/config.json');
 
 // router to provide address resolution for proxy requests
 var router = new Router(config.router);
-
-// logger to log to console and file
-var logger = new Logger(config.logging);
 
 // module to read permissions from white- & blacklists
 var permissions = new Permissions(config.permissions);
