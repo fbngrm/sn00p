@@ -11,8 +11,7 @@ exports.Logger = new function() {
 	var default_ = {
 			console: {
 				level:"info", 
-				colorize: 'true', 
-				timestamp: dateUtils.getDate
+				colorize: 'true'
 			},
 			file: {
 				filename:"../../log/server.log", 
@@ -23,6 +22,13 @@ exports.Logger = new function() {
 	// config
 	var conf = config || {};
 	var logging  = conf.logging || default_ ;
+	
+	try {
+		logging.console.timestamp = dateUtils.getDate;
+		logging.file.timestamp = dateUtils.getDate;
+	} catch (err) {
+		sys.log('could not set common timestamp');
+	}
 	
 	// BUGFIX: check if file exists
 	return new winston.Logger({

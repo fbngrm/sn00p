@@ -1,6 +1,5 @@
 var http = require('http');
 var sys  = require('sys');
-var config = require('../conf/config.json');
 var logger = require('../services/logging').Logger;
 
 /*
@@ -36,7 +35,7 @@ var Server = function(router, snoop, fileServer, options) {
 		http.createServer(function(request, response) {
 			// ip address of the crrent request
 			var ip = request.connection.remoteAddress;
-			sys.log(ip + ": " + request.method + " " + request.url);
+			logger.info(ip + ": " + request.method + " " + request.url);
 
 			// options for the proxy request
 			var options = router.getByHost(request, 'http');
@@ -77,7 +76,7 @@ var Server = function(router, snoop, fileServer, options) {
 			});
 		// provide port to listen
 		}).listen(_port);
-		sys.log('starting http proxy firewall on port ' + _port);
+		logger.info('starting http proxy firewall on port ' + _port);
 	};
 	
 	//****************************************//
