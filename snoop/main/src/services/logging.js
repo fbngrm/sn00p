@@ -1,6 +1,8 @@
 var winston = require('winston');
 var dateUtils = require('../utils/dateutils').DateUtils;
 var config = require('../conf/config.json');
+var sys = require('sys');
+
 /*
  * provide logging to console & file
  * use winston module: 
@@ -15,7 +17,7 @@ exports.Logger = new function() {
 			},
 			file: {
 				filename:"../../log/server.log", 
-				level:"debug",
+				level:"warn",
 				json : false
 			}
 	};
@@ -28,6 +30,10 @@ exports.Logger = new function() {
 		logging.file.timestamp = dateUtils.getDate;
 	} catch (err) {
 		sys.log('could not set common timestamp');
+	}
+	
+	winston.Logger.prototype.block = function(ip){
+		this.warn('BLOCKED REQUEST FROM IP: ' + ip);
 	}
 	
 	// BUGFIX: check if file exists
