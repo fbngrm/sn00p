@@ -2,6 +2,7 @@ var http = require('http');
 var https = require('https');
 var sys = require('sys');
 var fs = require('fs');
+var logger = require('../services/logging').Logger;
 
 /*
  * create some test apps to test the proxy-functionality
@@ -17,6 +18,7 @@ var Server = function(fileServer) {
 	var _fileServer = fileServer;
 	// check arg
 	if (!fileServer) 'nedd fileserver for test-apps'
+	if (!logger) throw 'need logger'
 
 	// start the http server
 	this.startHttp = function(){
@@ -35,7 +37,7 @@ var Server = function(fileServer) {
 			}
 		// listen on port 9000
 		}).listen(9000);
-		sys.log('starting http app on port 9000');
+		logger.info('starting http app on port 9000');
 	};
 	// start the https server
 	this.startHttps = function(){
@@ -58,7 +60,7 @@ var Server = function(fileServer) {
 			}
 		// listen on port 9021
 		}).listen(9021);
-		sys.log('starting https app on port 9021');
+		logger.info('starting https app on port 9021');
 	};
 };
 

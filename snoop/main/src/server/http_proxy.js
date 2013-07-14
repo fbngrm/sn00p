@@ -1,5 +1,4 @@
 var http = require('http');
-var sys  = require('sys');
 var logger = require('../services/logging').Logger;
 
 /*
@@ -41,7 +40,7 @@ var Server = function(router, snoop, fileServer, options) {
 			var options = router.getByHost(request, 'http');
 			// if no options are found return 404
 			// BUGFIX: why does this not work?
-			if (options === {}) {_fileServer.serve(response, '404', ''); sys.log('FALSE');}
+			if (options === {}) {_fileServer.serve(response, '404', ''); logging.error('FALSE');}
 			// buffer for the request data
 			var buffer = '';
 			// buffer for the proxy-request data
@@ -72,7 +71,7 @@ var Server = function(router, snoop, fileServer, options) {
 			});
 			// error listener for the result
 			request.on('error', function(error) {
-				sys.log('error in request: ' + err);
+				logger.error('error in request: ' + err);
 			});
 		// provide port to listen
 		}).listen(_port);
@@ -110,7 +109,7 @@ var Server = function(router, snoop, fileServer, options) {
 		response.end();
 			});
 			proxy_response.on('error', function(error) {
-				sys.log('proxy_response - error: ' + error);
+				logger.error('proxy_response - error: ' + error);
 			});
 			response.writeHead(proxy_response.statusCode, proxy_response.headers);
 		});

@@ -1,6 +1,6 @@
 var https = require('https');
-var sys = require('sys');
 var fs = require('fs');
+var logger = require('../services/logging').Logger;
 
 /*
  * the server provides proxy functionality for https-request.
@@ -30,6 +30,7 @@ var Server = function(router, snoop, fileServer, options) {
 	if (!_router) throw 'need router';
 	if (!_fileServer) throw 'need fileserver to serve static files';
 	if (! _keys.key || !_keys.cert) throw 'need pathes to certs';
+	if (!logger) throw 'need logger'
 		
 	// start the server
 	this.start = function(){
@@ -42,7 +43,7 @@ var Server = function(router, snoop, fileServer, options) {
 		https.createServer(keys, function (request, response) {
 			// ip address of the crrent request
 			var ip = request.connection.remoteAddress;
-			sys.log(ip + ": " + request.method + " " + request.url);
+			logger.info(ip + ": " + request.method + " " + request.url);
 	
 			// options for the proxy request
 			var options = router.getByHost(request, 'https');
@@ -78,11 +79,11 @@ var Server = function(router, snoop, fileServer, options) {
 			});
 			// error listener for the result
 			request.on('error', function(error) {
-				sys.log('error in request: ' + err);
+				logger.error('error in request: ' + err);
 			});
 		// provide port to listen
 		}).listen(_port);
-		sys.log('starting https proxy firewall on port: ' + _port);
+		logger.info('starting https proxy firewall on port: ' + _port);
 	};
 	
 	//****************************************//
@@ -115,7 +116,7 @@ var Server = function(router, snoop, fileServer, options) {
 				response.end();
 			});
 			proxy_response.on('error', function(error) {
-				sys.log('proxy_response - error: ' + error);
+				logger.error('proxy_response - error: ' + error);
 			});
 			response.writeHead(proxy_response.statusCode, proxy_response.headers);
 		});
