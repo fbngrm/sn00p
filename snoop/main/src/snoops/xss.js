@@ -1,10 +1,13 @@
 var patterns = require('../conf/patterns').patterns;
 var sys = require('sys');
+var logger = require('../services/logging').Logger;
 
 /*
  * check if the reuests contains xss signatures 
  */
 var XSS = function() {
+
+	if (!logger) throw 'need logger'
 
 	// check request url, data & cookies(if any) against patterns
 	// return true if detected
@@ -12,7 +15,7 @@ var XSS = function() {
 	this.check = function(request, response, buffer){
 		
 		for (var i = patterns.xss.length -1; i >= 0; --i) {
-			sys.log('xss check for ip: ' + request.connection.remoteAddress);
+			logger.info('xss check for ip: ' + request.connection.remoteAddress);
 			// check the data
 			if (patterns.xss[i].test(buffer)) return true;
 			// check the cookie

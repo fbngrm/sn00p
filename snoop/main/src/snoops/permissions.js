@@ -1,5 +1,6 @@
 var sys  = require('sys');
 var fs   = require('fs');
+var logger = require('../services/logging').Logger;
 
 /*
  * check if a certain client is allowed to connect by
@@ -30,6 +31,7 @@ Permissions = function(options) {
 	
 	// dependensy check 
 	if (!_blackpath || !_whitepath) throw ('lists not found');
+	if (!logger) throw 'need logger'
 	
 	// ban an ip
 	this.ban = function(ip){
@@ -43,7 +45,7 @@ Permissions = function(options) {
 		_blacklist.push(ip);
 		// blacklist ip in file
 		fs.appendFile(_blackpath , ip + nl, encoding='utf8', function (err) {
-			if(err) sys.log('error in updating blacklist [' + err + ']');
+			if(err) logger.error('error in updating blacklist [' + err + ']');
 		});
 	};
 
@@ -69,8 +71,8 @@ Permissions = function(options) {
 	var _unBan = function() {
 		_blacklist = [];
 		fs.writeFile(_blackpath, '', function(err){
-			if (err) console.log(err);
-			else sys.log('deleting blacklist');
+			if (err) console.error(err);
+			else logger.info('deleting blacklist');
 		});
 		_blacklist = [];
 		setTimeout(_unBan, _unban*1000);
@@ -79,20 +81,20 @@ Permissions = function(options) {
 	// read the allowed and blocked ip addresses from the black- & whitelist
 	// is triggered once when server starts & and everytime the config changes
 	var _updatePermissions = function() {
-		sys.log("updating permissions");
+		logger.info("updating permissions");
 		try {
 			fs.readFile(_whitepath, encoding='utf8', function(err, data){
-				if (err) sys.log('error reading whitelist [' + err + ']');
+				if (err) logger.error('error reading whitelist [' + err + ']');
 				else if(data) _whitelist = data.toString().split('\n');
 				else _whitelist = [];
 			});
 			fs.readFile(_blackpath, encoding='utf8', function(err, data){
-				if (err) sys.log('error reading blacklistitelist [' + err + ']');
+				if (err) logger.error('error reading blacklistitelist [' + err + ']');
 				else if(data) _blacklist = data.toString().split('\n');
 				else _blacklist = [];
 			});
 		} catch (err) {
-			sys.log(err);
+			logger.error(err);
 		}
 	}
 	
@@ -103,7 +105,7 @@ Permissions = function(options) {
 			fs.watchFile(_blackpath, function(c,p) { _updatePermissions(); });
 			fs.watchFile(_whitepath, function(c,p) { _updatePermissions(); });
 		} catch (err){
-			sys.log(err);
+			logger.error(err);
 		}
 	}
 	

@@ -1,4 +1,5 @@
 var sys  = require('sys');
+var logger = require('../services/logging').Logger;
 
 /*
  * counts the request from every client. can be used to 
@@ -23,11 +24,12 @@ BruteForce = function(options) {
 	
 	// check dependencies
 	if (!_urls) throw 'no urls to protect supplied';
+	if (!logger) throw 'need logger'
 	
 	// delete old connections & free memory recursively in an
 	// interval of $_free_mem
 	var _freeMem = function(){
-		sys.log('free memory / delete connections');
+		logger.info('free memory / delete connections');
 		now = Date.now();
 		for (i in _connections) {
 			if (_connections[i]['timestamp'] + _time*1000 < now) {
@@ -65,7 +67,7 @@ BruteForce = function(options) {
 			if (_urls[i] === url) protect = true;
 		}
 		
-		sys.log('bruteForce check ip: ' + ip + ' - url: ' + url);
+		logger.info('bruteForce check ip: ' + ip + ' - url: ' + url);
 		
 		// if this url should be protected and the client 
 		// already mead a requests check if the threashold is reached 
@@ -80,11 +82,11 @@ BruteForce = function(options) {
 			
 			// to much requests - return true 
 			if (too_much && in_time) {
-				sys.log('ip: ' + ip + ' blocked');
+				logger.warn('ip: ' + ip + ' blocked');
 				return true;
 			// timeframe exceeded - reset the counter
 			} else if (!in_time) {
-				sys.log('reset counter for ip: ' + ip);
+				logger.info('reset counter for ip: ' + ip);
 				_reset(ip);
 			// timeframe not exceeded - increment the counter
 			} else {

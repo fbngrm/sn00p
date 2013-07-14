@@ -1,5 +1,6 @@
 var sys = require('sys');
 var typeUtils = require('../utils/typeutils').TypeUtils;
+var logger = require('../services/logging').Logger;
 
 /*
  * perform security checks on a request
@@ -16,6 +17,7 @@ var Snoop = function(permissions, snoops) {
 	
 	// dependency check
 	if (!_permissions) throw 'need permissions to check';	
+	if (!logger) throw 'need logger'
 	
 	// check if ip is allowed/banned
 	// return true if allowed
