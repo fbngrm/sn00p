@@ -40,7 +40,7 @@ var Server = function(router, snoop, fileServer, options) {
 			var options = router.getByHost(request, 'http');
 			// if no options are found return 404
 			// BUGFIX: why does this not work?
-			if (options === {}) {_fileServer.serve(response, '404', ''); logging.error('FALSE');}
+			if (options === {}) {_fileServer.serve(response, '404', ''); logging.error('no options found');}
 			// buffer for the request data
 			var buffer = '';
 			// buffer for the proxy-request data

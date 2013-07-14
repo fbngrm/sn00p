@@ -1,6 +1,7 @@
 var http = require('http');
 var sys = require('sys');
 var stringUtils = require('../utils/stringutils').StringUtils;
+var logger = require('../services/logging').Logger;
 
 /*
  * provide options for proxy-requests
@@ -29,6 +30,7 @@ var Router = function(options){
 	var _options = options;
 	// check if options are provided
 	if (!_options) throw 'need route options';
+	if (!logger) throw 'need logger'
 	
 	// get the proxy-request options by request-host and protocol
 	this.getByHost = function(request, protocol) {
@@ -44,6 +46,7 @@ var Router = function(options){
 		try {
 			var hostname = _options[protocol][host]['hostname'];
 			var port = _options[protocol][host]['port'];
+			logger.info('get options for host: ' + hostname + ':' + port);
 			
 			// overwrite the host header in dev-mode or if localhost should be used as host
 			request.headers.host = '';
@@ -58,6 +61,7 @@ var Router = function(options){
 			};
 		} catch (err) {
 			// BUGFIX: route to 404
+			logger.error('failed to get options for ptotocol: ' + protocol + ', host: ' + host);
 			return {};
 		}
 	};
