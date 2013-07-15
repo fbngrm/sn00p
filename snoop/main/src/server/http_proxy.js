@@ -1,6 +1,7 @@
 var http = require('http');
 var logger = require('../services/logging').Logger;
 
+
 /*
  * the server provides proxy functionality for http requests.
  * requests can be forwarded to multiple applications. the options for 
@@ -9,11 +10,11 @@ var logger = require('../services/logging').Logger;
  * suspicious signatures like sql or javascript syntax/meta-character.
  */
 
-var Server = function(router, snoop, fileServer, options) {
+var Server = function(proxy, router, fileServer, options) {
 
+	// proxy-commons to create the server
+	var _proxy = proxy;
 	// router to get options & adress resolution for proxy-requests
-	var _snoop = snoop;
-	// "snoop" to detect attack-signatures
 	var _router = router;
 	// serve static files
 	var _fileServer = fileServer;
@@ -23,115 +24,33 @@ var Server = function(router, snoop, fileServer, options) {
 	var _port = _options.port || 8000;
 	
 	// check if all neccessary objects are provided
+	if (!_proxy) throw 'need proxy-commons';
+	if (!_fileServer) throw 'need fileserver';
+	if (!logger) throw 'need logger';
 	if (!_router) throw 'need router';
-	if (!_snoop) throw 'need snoop';
-	if (!_fileServer) throw 'need fileserver'
-	if (!logger) throw 'need logger'
 	
 	// start the server
 	this.start = function() {
 		// create the proxy server
 		http.createServer(function(request, response) {
-			// ip address of the crrent request
-			var ip = request.connection.remoteAddress;
-			logger.info(ip + ": " + request.method + " " + request.url);
-
-			// options for the proxy request
-			var options = router.getByHost(request, 'http');
-			// if no options are found return 404
-			// BUGFIX: why does this not work?
-			if (options === null) {
+			
+			try {
+				// options for the proxy request
+				var options = _router.getByHost(request, 'http');
+				// create the proxy request object
+				var proxy_request = http.request(options);
+				// create the http server
+				_proxy.createServer(request, response, proxy_request);
+			} catch (err) {
+				// if no options are found return 404
 				_fileServer.serve(response, '404', ''); 
-				logger.error('no options found'); 
-				return
+				logger.error('failed to create http server - ' + err);
 			}
-			// buffer for the request data
-			var buffer = '';
-			// buffer for the proxy-request data
-			var proxy_buffer = '';
-
-			// add the listeners for the requests
-			request.on('data', function(chunk) {
-				buffer += chunk;
-			});
-			request.on('end', function() {
-				// check if the connecting client is allowed to use the proxy
-				var perms = _snoop.checkPermissions(request);
-				// check if the request data contains suspicious signatures
-				var ptrns = _snoop.checkPatterns(request, response, buffer);
 				
-				// handle the request according to the check results
-				if (perms && ptrns) {
-					// forward the request if nothing suspicious is detected
-					_forward(request, response, buffer, options);
-				} else if (!perms) {
-					// reject response
-					msg = ip + ' is banned'
-					_reject(response, msg);
-				} else {
-					// drop response
-					_drop(response);
-				}
-			});
-			// error listener for the result
-			request.on('error', function(error) {
-				logger.error('error in request: ' + err);
-			});
 		// provide port to listen
 		}).listen(_port);
 		logger.info('starting http proxy firewall on port ' + _port);
 	};
-	
-	//****************************************//
-	// functions to handle requests properly  //
-	// drop, deny, forward, allow             //
-	//****************************************//
-	 
-	// when the client is not valid drop the response
-	var _drop = function(response) {
-		// ip address of the current request
-		var ip = response.connection.remoteAddress;
-		// header 403
-		_fileServer.serve(response, 'forbidden', '');
-		logger.drop('drop request from ip: ' + ip);
-	}
-	
-	// when the request is not valid deny the response
-	// tell the client that the response is denied
-	var _reject = function(response, msg) {
-		// ip address of the current request
-		var ip = response.connection.remoteAddress;
-		// header 403
-		_fileServer.serve(response, 'banned', msg);
-		logger.reject('reject request from ip: ' + ip);
-	}
-	
-	// forward the proxy-response by endind the response 
-	var _forward = function(request, response, buffer, options) {
-		// create the proxy request object
-		var proxy_request = http.request(options);
-		proxy_request.write(buffer, 'binary');
-		proxy_request.end();
-		// add listeners to the proxy request
-		proxy_request.on('response', function(proxy_response) {
-			// add headers
-			response.writeHead(proxy_response.statusCode, proxy_response.headers);
-			// add listener
-			proxy_response.on('data', function(chunk) {
-				response.write(chunk, 'binary');
-			});
-			proxy_response.on('end', function() {
-				response.end();
-			});
-			proxy_response.on('error', function(error) {
-				logger.error('proxy_response - error: ' + error);
-			});
-		});
-	}
-	
-	var _allow = function(response, msg) {
-		// TODO: use for outgoing traffic
-	}
 };
 
 exports.Server = Server;

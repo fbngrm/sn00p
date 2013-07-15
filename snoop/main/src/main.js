@@ -8,6 +8,7 @@ var SQLi = require('./snoops/sqli').SQLi;
 var LFI = require('./snoops/lfi').LFI;
 var XSS = require('./snoops/xss').XSS;
 var Router = require('./services/router').Router;
+var Proxy = require('./server/proxy_commons').Proxy; 
 var HttpServer = require('./server/http_proxy').Server; 
 var HttpsServer = require('./server/https_proxy').Server; 
 var TestApps = require('./server/testapps').Server; 
@@ -42,8 +43,10 @@ var snoop = new Snoop(permissions, [bf, sqli, xss, lfi]);
 
 // fileserver to serve static content
 var fileServer = new FileServer();
+// proxy-commons to create http/https server
+var proxy = new Proxy(snoop, fileServer);
 // http-proxy
-var httpServer = new HttpServer(router, snoop, fileServer, {});
+var httpServer = new HttpServer(proxy, router, fileServer, {});
 // start the server
 httpServer.start();
 // https-proxy

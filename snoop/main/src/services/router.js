@@ -43,27 +43,21 @@ var Router = function(options){
 		}
 		
 		// get hostname and port from the request
-		try {
-			var hostname = _options[protocol][host]['hostname'];
-			var port = _options[protocol][host]['port'];
-			logger.info('get options for host: ' + hostname + ':' + port);
+		var hostname = _options[protocol][host]['hostname'];
+		var port = _options[protocol][host]['port'];
+		logger.info('get options for host: ' + hostname + ':' + port);
 			
-			// overwrite the host header in dev-mode or if localhost should be used as host
-			request.headers.host = '';
+		// overwrite the host header in dev-mode or if localhost should be used as host
+		request.headers.host = '';
 			
-			// options for the proxy request
-			return options = {
-				hostname: hostname,
-				port: port,
-				path: request.url,
-				method: request.method,
-				headers: request.headers
-			};
-		} catch (err) {
-			// BUGFIX: route to 404
-			logger.error('failed to get options for ptotocol: ' + protocol + ', host: ' + host);
-			return null;
-		}
+		// options for the proxy request
+		return options = {
+			hostname: hostname,
+			port: port,
+			path: request.url,
+			method: request.method,
+			headers: request.headers
+		};
 	};
 };
 
