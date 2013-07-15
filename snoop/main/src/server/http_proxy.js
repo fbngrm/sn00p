@@ -85,13 +85,19 @@ var Server = function(router, snoop, fileServer, options) {
 	 
 	// when the client is not valid drop the response
 	var _drop = function(response) {
+		// ip address of the crrent request
+		var ip = response.connection.remoteAddress;
 		_fileServer.serve(response, 'forbidden', '');
+		logger.drop('DROP REQUEST FROM IP: ' + ip);
 	}
 	
 	// when the request is not valid deny the response
 	// tell the client that the response is denied
 	var _reject = function(response, msg) {
+		// ip address of the crrent request
+		var ip = response.connection.remoteAddress;
 		_fileServer.serve(response, 'banned', msg);
+		logger.reject('REJECT REQUEST FROM IP: ' + ip);
 	}
 	
 	// forward the proxy-response by endind the response 

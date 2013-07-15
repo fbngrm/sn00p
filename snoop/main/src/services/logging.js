@@ -32,16 +32,38 @@ exports.Logger = new function() {
 		sys.log('could not set common timestamp');
 	}
 	
+	// extend winston logger with block method
 	winston.Logger.prototype.block = function(ip){
-		this.warn('BLOCKED REQUEST FROM IP: ' + ip);
+		this.warn('BLOCK REQUEST FROM IP: ' + ip);
 	}
+	
+	// custom log levels
+	var customLevels = {
+	    levels: {
+	    	info: 0,
+			warn: 1,
+			error: 2,
+			drop: 3,
+			reject: 4
+	    },
+	    colors: {
+			info: 'green',
+			warn: 'yellow',
+			error: 'red',
+			drop: 'blue',
+			reject: 'blue'
+	    }
+	};
+	// make winston aware of the colors
+	winston.addColors(customLevels.colors);
 	
 	// BUGFIX: check if file exists
 	return new winston.Logger({
 	    transports: [
 	      new winston.transports.Console(logging.console),
 	      new winston.transports.File(logging.file)
-	    ]
+	    ], 
+	    levels: customLevels.levels
 	});	
 }
 
