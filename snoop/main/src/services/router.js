@@ -62,7 +62,7 @@ var Router = function(options){
 		} catch (err) {
 			// BUGFIX: route to 404
 			logger.error('failed to get options for ptotocol: ' + protocol + ', host: ' + host);
-			return {};
+			return null;
 		}
 	};
 };

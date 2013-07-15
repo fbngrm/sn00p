@@ -11,7 +11,7 @@
 </head>
 <body>
 	
-	<div id="msg"><img class="center" src="./static/imgs/banned.gif"><p>banned</p></div>
+	<div id="msg"><p>banned</p></div>
 </body>
 
 </html>

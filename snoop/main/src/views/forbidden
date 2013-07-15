@@ -10,7 +10,7 @@
 	</style>
 </head>
 <body>
-	<div id="msg"><img class="center" src="./static/imgs/forbidden.gif"><p>forbidden</p></div>
+	<div id="msg"><p>forbidden</p></div>
 </body>
 
 </html>

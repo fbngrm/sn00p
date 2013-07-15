@@ -41,8 +41,8 @@ exports.Logger = new function() {
 	var customLevels = {
 	    levels: {
 	    	info: 0,
-			warn: 1,
-			check: 2,
+			check: 1,
+			warn: 2,
 			error: 3,
 			drop: 4,
 			reject: 5

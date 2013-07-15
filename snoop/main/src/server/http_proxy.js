@@ -40,7 +40,11 @@ var Server = function(router, snoop, fileServer, options) {
 			var options = router.getByHost(request, 'http');
 			// if no options are found return 404
 			// BUGFIX: why does this not work?
-			if (options === {}) {_fileServer.serve(response, '404', ''); logging.error('no options found');}
+			if (options === null) {
+				_fileServer.serve(response, '404', ''); 
+				logger.error('no options found'); 
+				return
+			}
 			// buffer for the request data
 			var buffer = '';
 			// buffer for the proxy-request data
@@ -87,6 +91,7 @@ var Server = function(router, snoop, fileServer, options) {
 	var _drop = function(response) {
 		// ip address of the current request
 		var ip = response.connection.remoteAddress;
+		// header 403
 		_fileServer.serve(response, 'forbidden', '');
 		logger.drop('drop request from ip: ' + ip);
 	}
@@ -96,6 +101,7 @@ var Server = function(router, snoop, fileServer, options) {
 	var _reject = function(response, msg) {
 		// ip address of the current request
 		var ip = response.connection.remoteAddress;
+		// header 403
 		_fileServer.serve(response, 'banned', msg);
 		logger.reject('reject request from ip: ' + ip);
 	}
@@ -108,16 +114,18 @@ var Server = function(router, snoop, fileServer, options) {
 		proxy_request.end();
 		// add listeners to the proxy request
 		proxy_request.on('response', function(proxy_response) {
+			// add headers
+			response.writeHead(proxy_response.statusCode, proxy_response.headers);
+			// add listener
 			proxy_response.on('data', function(chunk) {
 				response.write(chunk, 'binary');
 			});
 			proxy_response.on('end', function() {
-		response.end();
+				response.end();
 			});
 			proxy_response.on('error', function(error) {
 				logger.error('proxy_response - error: ' + error);
 			});
-			response.writeHead(proxy_response.statusCode, proxy_response.headers);
 		});
 	}
 	

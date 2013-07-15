@@ -13,19 +13,29 @@ var SQLi = function() {
 	// check request url, data & cookies(if any) against patterns
 	// return true if detected
 	// else return fase
-	this.check = function(request, response, buffer){
+	this.check = function(request, response, buffer) {
+		logger.check('sqli check for ip: ' + request.connection.remoteAddress);
 		
 		for (var i = patterns.sql.length -1; i >= 0; --i) {
-			logger.info('sqli check for ip: ' + request.connection.remoteAddress);
 			// check the data
-			if (patterns.sql[i].test(buffer)) return true;
+			if (patterns.sql[i].test(buffer)) {
+				logger.warn('sqli found for ip: ' + request.connection.remoteAddress);
+				return true;
+			}
 			// check the cookie
 			if (request.headers.cookie) {
-				if (patterns.sql[i].test(JSON.stringify(request.headers.cookie))) return true;
+				if (patterns.sql[i].test(JSON.stringify(request.headers.cookie))) {
+					logger.warn('sqli found for ip: ' + request.connection.remoteAddress);
+					return true;
+				}
 			}
 			// check the url
-			if (patterns.sql[i].test(request.url)) return true;
+			if (patterns.sql[i].test(request.url)) {
+				logger.warn('sqli found for ip: ' + request.connection.remoteAddress);
+				return true;
+			}
 		}
+		logger.check('sqli check ok - ip: ' + request.connection.remoteAddress);
 		return false;
 	};
 };

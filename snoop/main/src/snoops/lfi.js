@@ -20,7 +20,7 @@ var LFI = function() {
 				return true;
 			}
 		}
-		logger.check('finish lfi check for ip: ' + request.connection.remoteAddress);
+		logger.check('lfi check ok for ip: ' + request.connection.remoteAddress);
 		return false;
 	};
 };

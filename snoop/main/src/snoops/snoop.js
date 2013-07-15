@@ -22,7 +22,7 @@ var Snoop = function(permissions, snoops) {
 	// check if ip is allowed/banned
 	// return true if allowed
 	// lese return falses
-	this.checkPermissions = function(request, response){
+	this.checkPermissions = function(request, response) {
 		// ip address of the crrent request
 		var ip = request.connection.remoteAddress;
 		
@@ -54,7 +54,7 @@ var Snoop = function(permissions, snoops) {
 	};
 	
 	// call check functions
-	this.check = function(request, response, buffer){
+	this.check = function(request, response, buffer) {
 		// check if the ip is allowed/banned
 		if (!_checkPermissions(request, response)) return false;
 		// check if the data/cookies contain attack signatures

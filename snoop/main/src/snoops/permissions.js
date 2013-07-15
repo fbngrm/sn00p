@@ -50,9 +50,12 @@ Permissions = function(options) {
 	};
 
 	// check if the ip is blacklisted/banned
-	this.isBanned = function(ip){
+	this.isBanned = function(ip) {
 		for (i in _blacklist) {
-			if (_blacklist[i] == ip) return true;
+			if (_blacklist[i] == ip) {
+				logger.warn('ip: ' + ip + ' is banned');
+				return true;
+			}
 		} 
 		return false;
 	}
@@ -63,6 +66,7 @@ Permissions = function(options) {
 		for (i in _whitelist) {
 			if (_whitelist[i] == ip) return true;
 		}
+		logger.warn('ip: ' + ip + 'is not allowed');
 		return false;
 	}
 	

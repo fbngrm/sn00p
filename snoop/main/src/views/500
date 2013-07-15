@@ -10,7 +10,7 @@
 	</style>
 </head>
 <body>
-	<div id="msg"><img class="center" src="./views/static/imgs/500.gif"><p>500</p></div>
+	<div id="msg"><p>500</p></div>
 </body>
 
 </html>
