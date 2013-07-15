@@ -50,7 +50,7 @@ var httpServer = new HttpServer(proxy, router, fileServer, {});
 // start the server
 httpServer.start();
 // https-proxy
-var httpsServer = new HttpsServer(router, snoop, fileServer, config.proxy.https);
+var httpsServer = new HttpsServer(proxy, router, fileServer, config.proxy.https);
 // start the server
 httpsServer.start();
 

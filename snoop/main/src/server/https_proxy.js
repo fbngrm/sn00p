@@ -10,12 +10,12 @@ var logger = require('../services/logging').Logger;
  * suspicious signatures like sql or javascript syntax/meta-characters.
  */
  
-var Server = function(router, snoop, fileServer, options) {
+var Server = function(proxy, router, fileServer, options) {
 
+	// proxy-commons to create the server
+	var _proxy = proxy;
 	// router to get options & adress resolution for proxy-requests
 	var _router = router;
-	// "snoop" to detect attack-signatures
-	var _snoop = snoop;
 	// serve static files
 	var _fileServer = fileServer;
 	// options to configure the server
@@ -26,14 +26,13 @@ var Server = function(router, snoop, fileServer, options) {
 	var _port = _options.port || 8021;
 	
 	// check if all neccessary objects are provided
-	if (!_snoop) throw 'need snoop to sniff traffic';
 	if (!_router) throw 'need router';
 	if (!_fileServer) throw 'need fileserver to serve static files';
 	if (! _keys.key || !_keys.cert) throw 'need pathes to certs';
 	if (!logger) throw 'need logger'
 		
 	// start the server
-	this.start = function(){
+	this.start = function() {
 		// load the key files for ssl/tls support
 		var keys = {
 			key: fs.readFileSync(_keys.key),
@@ -41,97 +40,22 @@ var Server = function(router, snoop, fileServer, options) {
 		};
 		// create the server
 		https.createServer(keys, function (request, response) {
-			// ip address of the crrent request
-			var ip = request.connection.remoteAddress;
-			logger.info(ip + ": " + request.method + " " + request.url);
-	
-			// options for the proxy request
-			var options = router.getByHost(request, 'https');
-			// if no options are found return 404 - address is not supported/configured
-			if (options === {}) _fileServer.serve(response, '404', '');
-			// buffer for the request data
-			var buffer = '';
-			// buffer for the proxy-request data
-			var proxy_buffer = '';
-
-			// add the listeners for the requests
-			request.on('data', function(chunk) {
-				buffer += chunk;
-			});
-			request.on('end', function() {
-				// check if the connecting client is allowed to use the proxy
-				var perms = _snoop.checkPermissions(request);
-				// check if the request data contains suspicious signatures
-				var ptrns = _snoop.checkPatterns(request, response, buffer);
-				
-				// handle the request according to the check results
-				if (perms && ptrns) {
-					// forward the request if nothing suspicious detected
-					_forward(request, response, buffer, options);
-				} else if(!perms) {
-					// reject response
-					msg = ip + 'is banned'
-					_reject(response, msg);
-				} else {
-					// drop response
-					_drop(response);
-				}
-			});
-			// error listener for the result
-			request.on('error', function(error) {
-				logger.error('error in request: ' + err);
-			});
+			try {
+				// options for the proxy request
+				var options = _router.getByHost(request, 'https');
+				// create the proxy request object
+				var proxy_request = https.request(options);
+				// create the http server
+				_proxy.createServer(request, response, proxy_request);
+			} catch (err) {
+				// if no options are found return 404
+				_fileServer.serve(response, '404', ''); 
+				logger.error('failed to get options for proxy request - ' + err);
+			}
 		// provide port to listen
 		}).listen(_port);
 		logger.info('starting https proxy firewall on port: ' + _port);
 	};
-	
-	//****************************************//
-	// functions to handle requests properly  //
-	// drop, deny, forward, allow             //
-	//****************************************//
-	 
-	// when the client is not valid drop the response
-	var _drop = function(response) {
-		// ip address of the current request
-		var ip = response.connection.remoteAddress;
-		_fileServer.serve(response, 'forbidden', '');
-		logger.drop('drop request from ip: ' + ip);
-	}
-	
-	// when the request is not valid deny the response
-	// tell the client that the response is denied
-	var _reject = function(response, msg) {
-		// ip address of the current request
-		var ip = response.connection.remoteAddress;
-		_fileServer.serve(response, 'banned', msg);
-		logger.reject('reject request from ip: ' + ip);
-	}
-	
-	// forward the proxy-response by ending the response 
-	var _forward = function(request, response, buffer, options) {
-		// create the proxy request object
-		var proxy_request = https.request(options);
-		proxy_request.write(buffer, 'binary');
-		proxy_request.end();
-		// add listeners to the proxy request
-		proxy_request.on('response', function(proxy_response) {
-			proxy_response.on('data', function(chunk) {
-				response.write(chunk, 'binary');
-			});
-			proxy_response.on('end', function() {
-				response.end();
-			});
-			proxy_response.on('error', function(error) {
-				logger.error('proxy_response - error: ' + error);
-			});
-			response.writeHead(proxy_response.statusCode, proxy_response.headers);
-		});
-	}
-	
-	this.allow = function(response, msg) {
-		// TODO: use for outgoing traffic
-	}
 };
 
 exports.Server = Server;

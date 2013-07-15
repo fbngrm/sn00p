@@ -47,16 +47,17 @@ var Server = function(fileServer) {
 		  cert: fs.readFileSync('./keys/cert.pem')
 		};
 		// create the server
-		https.createServer(options, function (req, res) {	
+		https.createServer(options, function (req, res) {
+			// serve file by url param or write request headers to response
 			if (req.url != '/') {
 				// serve files
 				_fileServer.serve(res, req.url, '');
-			} else {	
+			} else {
 				// write headers to response
-				res.writeHead(200);
-				res.write("hello world\n\n");
-			    res.write('request successfully proxied: ' + req.url +'\n' + JSON.stringify(req.headers, true, 2));
-				res.end();
+				res.writeHead(200, { 'Content-Type': 'text/plain' });
+			  	res.write("hello world\n\n");
+			 	res.write('request successfully proxied: ' + req.url +'\n' + JSON.stringify(req.headers, true, 2));
+			  	res.end();
 			}
 		// listen on port 9021
 		}).listen(9021);
