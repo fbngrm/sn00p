@@ -43,13 +43,12 @@ var Server = function(proxy, router, fileServer, options) {
 				_proxy.createServer(request, response, proxy_request);
 			} catch (err) {
 				// if no options are found return 404
-				_fileServer.serve(response, '404', ''); 
+				_fileServer.serve(response, '404', '404');
 				logger.error('failed to get options for proxy request - ' + err);
 			}
-				
 		// provide port to listen
 		}).listen(_port);
-		logger.info('starting http proxy firewall on port ' + _port);
+		logger.info('start http proxy firewall on port ' + _port);
 	};
 };
 

@@ -19,7 +19,7 @@
 			],
 		"time" : 30,
 		"max_reqs" : 10,
-		"free_mem" : 120
+		"free_mem" : 30
 	},
 	"permissions" : {
 		"blacklist" : "./conf/blacklist",

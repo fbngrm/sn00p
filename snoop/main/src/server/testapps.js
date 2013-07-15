@@ -27,7 +27,7 @@ var Server = function(fileServer) {
 			// serve file by url param or write request headers to response
 			if (req.url != '/') {
 				// serve files
-				_fileServer.serve(res, req.url, '');
+				_fileServer.serve(res, '200', req.url);
 			} else {
 				// write headers to response
 				res.writeHead(200, { 'Content-Type': 'text/plain' });
@@ -51,7 +51,7 @@ var Server = function(fileServer) {
 			// serve file by url param or write request headers to response
 			if (req.url != '/') {
 				// serve files
-				_fileServer.serve(res, req.url, '');
+				_fileServer.serve(res, '200', req.url);
 			} else {
 				// write headers to response
 				res.writeHead(200, { 'Content-Type': 'text/plain' });

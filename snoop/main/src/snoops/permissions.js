@@ -76,7 +76,7 @@ Permissions = function(options) {
 		_blacklist = [];
 		fs.writeFile(_blackpath, '', function(err){
 			if (err) console.error(err);
-			else logger.info('deleting blacklist');
+			else logger.info('delete blacklist');
 		});
 		_blacklist = [];
 		setTimeout(_unBan, _unban*1000);
@@ -85,7 +85,7 @@ Permissions = function(options) {
 	// read the allowed and blocked ip addresses from the black- & whitelist
 	// is triggered once when server starts & and everytime the config changes
 	var _updatePermissions = function() {
-		logger.info("updating permissions");
+		logger.info("update permissions");
 		try {
 			fs.readFile(_whitepath, encoding='utf8', function(err, data){
 				if (err) logger.error('error reading whitelist [' + err + ']');
