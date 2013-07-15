@@ -42,14 +42,16 @@ exports.Logger = new function() {
 	    levels: {
 	    	info: 0,
 			warn: 1,
-			error: 2,
-			drop: 3,
-			reject: 4
+			check: 2,
+			error: 3,
+			drop: 4,
+			reject: 5
 	    },
 	    colors: {
 			info: 'green',
 			warn: 'yellow',
 			error: 'red',
+			check: 'green',
 			drop: 'blue',
 			reject: 'blue'
 	    }

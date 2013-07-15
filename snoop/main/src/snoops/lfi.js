@@ -11,12 +11,16 @@ var LFI = function() {
 	if (!logger) throw 'need logger'
 	// perform the check
 	// return true if patterns are detected else false
-	this.check = function(request, response, buffer){
+	this.check = function(request, response, buffer) {
+		logger.check('lfi check for ip: ' + request.connection.remoteAddress);
 		
 		for (var i = patterns.lfi.length -1; i >= 0; --i) {
-			logger.info('lfi check for ip: ' + request.connection.remoteAddress);
-			if (patterns.lfi[i].test(request.url)) return true;
+			if (patterns.lfi[i].test(request.url)) {
+				logger.warn('found lfi patterns - ip: ' + request.connection.remoteAddress);
+				return true;
+			}
 		}
+		logger.check('finish lfi check for ip: ' + request.connection.remoteAddress);
 		return false;
 	};
 };
