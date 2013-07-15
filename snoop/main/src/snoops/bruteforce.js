@@ -82,7 +82,7 @@ BruteForce = function(options) {
 			
 			// to much requests - return true 
 			if (too_much && in_time) {
-				logger.block(ip);
+				logger.warn('blcok request from ip: ' + ip);
 				return true;
 			// timeframe exceeded - reset the counter
 			} else if (!in_time) {
