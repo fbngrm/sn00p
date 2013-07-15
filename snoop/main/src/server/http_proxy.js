@@ -33,7 +33,6 @@ var Server = function(proxy, router, fileServer, options) {
 	this.start = function() {
 		// create the proxy server
 		http.createServer(function(request, response) {
-			
 			try {
 				// options for the proxy request
 				var options = _router.getByHost(request, 'http');
