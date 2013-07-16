@@ -1,6 +1,6 @@
 var logger = require('../services/logging').Logger;
  
-var Proxy = function(snoop, fileServer) {
+var Proxy = function(fileServer, snoop) {
 
 	// "snoop" to detect attack-signatures
 	var _snoop = snoop;
@@ -8,10 +8,9 @@ var Proxy = function(snoop, fileServer) {
 	var _fileServer = fileServer;
 	
 	// check if all neccessary objects are provided
-	if (!_snoop) throw 'need snoop';
 	if (!_fileServer) throw 'need fileserver';
 	if (!logger) throw 'need logger';
-	
+
 	this.createServer = function(request, response, proxy_request) {
 		// ip address of the crrent request
 		var ip = request.connection.remoteAddress;
@@ -27,10 +26,16 @@ var Proxy = function(snoop, fileServer) {
 			buffer += chunk;
 		});
 		request.on('end', function() {
-			// check if the connecting client is allowed to use the proxy
-			var perms = _snoop.checkPermissions(request);
-			// check if the request data contains suspicious signatures
-			var ptrns = _snoop.checkPatterns(request, response, buffer);
+			var perms = true;
+			var ptrns = true;
+			
+			// if a snoop is provided
+			if (_snoop) {
+				// check if the connecting client is allowed to use the proxy
+				var perms = _snoop.checkPermissions(request);
+				// check if the request data contains suspicious signatures
+				var ptrns = _snoop.checkPatterns(request, response, buffer);
+			}
 			
 			// handle the request according to the check results
 			if (perms && ptrns) {
@@ -79,10 +84,10 @@ var Proxy = function(snoop, fileServer) {
 		_fileServer.serve(response, '403', 'banned');
 		logger.reject('reject request from ip: ' + ip);
 	}
-	
+
 	// forward the proxy-response by endind the response
 	var _forward = function(request, response, proxy_request, buffer) {
-	
+
 		proxy_request.write(buffer, 'binary');
 		proxy_request.end();
 		// add listeners to the proxy request
@@ -101,7 +106,7 @@ var Proxy = function(snoop, fileServer) {
 			});
 		});
 	}
-	
+
 	var _allow = function(response, msg) {
 		// TODO: use for outgoing traffic
 	}

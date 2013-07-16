@@ -44,7 +44,7 @@ var snoop = new Snoop(permissions, [bf, sqli, xss, lfi]);
 // fileserver to serve static content
 var fileServer = new FileServer();
 // proxy-commons to create http/https server
-var proxy = new Proxy(snoop, fileServer);
+var proxy = new Proxy(fileServer, snoop);
 // http-proxy
 var httpServer = new HttpServer(proxy, router, fileServer, {});
 // start the server
