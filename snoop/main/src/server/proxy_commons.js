@@ -34,7 +34,7 @@ var Proxy = function(fileServer, snoop) {
 				// check if the connecting client is allowed to use the proxy
 				var perms = _snoop.checkPermissions(request);
 				// check if the request data contains suspicious signatures
-				var ptrns = _snoop.checkPatterns(request, response, buffer);
+				var ptrns = _snoop.analyze(request, response, buffer);
 			}
 			
 			// handle the request according to the check results

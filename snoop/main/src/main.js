@@ -3,6 +3,7 @@ var sys  = require('sys');
 var fs  = require('fs');
 var Snoop = require('./snoops/snoop').Snoop;
 var Permissions = require('./snoops/permissions').Permissions;
+var Analyzer = require('./snoops/analyzer').Analyzer;
 var BruteForce = require('./snoops/bruteforce').BruteForce;
 var SQLi = require('./snoops/sqli').SQLi;
 var LFI = require('./snoops/lfi').LFI;
@@ -37,9 +38,11 @@ var sqli = new SQLi();
 var xss = new XSS();
 // module to detect directory-traversal syntax in url
 var lfi = new LFI();
+// check for malicious patterns
+var analyzer = new Analyzer([bf, sqli, xss, lfi]);
 // load the snoop with permissions & detection modules
 // to perform the security checks
-var snoop = new Snoop(permissions, [bf, sqli, xss, lfi]);
+var snoop = new Snoop(permissions, analyzer);
 
 // fileserver to serve static content
 var fileServer = new FileServer();

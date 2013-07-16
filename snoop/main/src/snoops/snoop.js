@@ -1,5 +1,3 @@
-var sys = require('sys');
-var typeUtils = require('../utils/typeutils').TypeUtils;
 var logger = require('../services/logging').Logger;
 
 /*
@@ -9,11 +7,11 @@ var logger = require('../services/logging').Logger;
  * given pattern detection modules
  */
  
-var Snoop = function(permissions, snoops) {
+var Snoop = function(permissions, analyzer) {
 	// permission module to check if ip is allowed to connect
 	var _permissions = permissions;
-	// pattern detection modules to search for malicious signatures
-	var _snoops = snoops || [];
+	// analyze the incoming requests for malicious patterns
+	var _analyzer = analyzer;
 	
 	// dependency check
 	if (!_permissions) throw 'need permissions to check';	
@@ -36,29 +34,22 @@ var Snoop = function(permissions, snoops) {
 	// check for malicious signatures
 	// return true if not detected
 	// else return false
-	this.checkPatterns = function(request, response, buffer) {
+	this.analyze = function(request, response, buffer){
 		// ip address of the crrent request
 		var ip = request.connection.remoteAddress;
-		if (typeUtils.compare(_snoops, [])) {
-			for (var i in _snoops) {
-				var snoop = _snoops[i];
-				// check the request for brute-force attacks
-				if (snoop.check(request, response, buffer)) {
-					// add ip to the blacklist
-					permissions.ban(ip);
-					return false;
-				}
-			}
-		}
-		return true;
+		// flag for determining if patterns havbeen found
+		var found = _analyzer.checkPatterns(request, response, buffer);
+		// add ip to the blacklist if neccessary
+		if (found === false) permissions.ban(ip);
+		return found;
 	};
 	
 	// call check functions
 	this.check = function(request, response, buffer) {
 		// check if the ip is allowed/banned
-		if (!_checkPermissions(request, response)) return false;
+		if (!checkPermissions(request, response)) return false;
 		// check if the data/cookies contain attack signatures
-		return _checkPatterns(request, response, buffer);
+		return analyze(request, response, buffer);
 	};
 };
 
