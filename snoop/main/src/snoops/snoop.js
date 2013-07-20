@@ -4,7 +4,7 @@ var logger = require('../services/logging').Logger;
  * perform security checks on a request
  * check if the ip is allowed to connect by using "permissions" module
  * check if the request contains malicious signatures by using the
- * given pattern detection modules
+ * "analyzer" module
  */
  
 var Snoop = function(permissions, analyzer) {

@@ -7,7 +7,6 @@ var logger = require('../services/logging').Logger;
  * checking its ip against a black- & whitelist.
  * delete the blacklist after a defined timeinterval
  * to unblock ips.
- * add ips to the blacklist to block them.
  * changes in the black- & whitelist files will be 
  * updated automatically. restart is not required.
  *
@@ -29,7 +28,7 @@ Permissions = function(options) {
 	// delete the blacklist after $_unban (seconds)
 	var _unban = _options.unban || 120;
 	
-	// dependensy check 
+	// dependency check 
 	if (!_blackpath || !_whitepath) throw ('lists not found');
 	if (!logger) throw 'need logger'
 	

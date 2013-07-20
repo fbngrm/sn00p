@@ -19,7 +19,7 @@
 			],
 		"time" : 30,
 		"max_reqs" : 10,
-		"free_mem" : 30
+		"free_mem" : 60
 	},
 	"permissions" : {
 		"blacklist" : "./conf/blacklist",
@@ -42,14 +42,14 @@
 	},
 	"proxy" : {
 		"https" : {
-			"port" : 8021,
+			"port" : 8080,
 			"keys" : {
 				"key" : "./keys/key.pem",
 				"cert" : "./keys/cert.pem"
 			}
 		},
 		"http" : {
-			"port" : 8000
+			"port" : 8043
 		}
 	}
 }

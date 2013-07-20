@@ -16,7 +16,7 @@ BruteForce = function(options) {
 	// maximum amount of requests allowed to make by clients in $_time
 	var _max_reqs = _options.max_reqs || 10;
 	// interval(in seconds) to free memory
-	var _free_mem = _options.free_mem || _time;
+	var _free_mem = (_options.free_mem > _time) ? _options.free_mem : _time;
 	// save the connections
 	var _connections = {};
 	// urls that should be protected/counted
@@ -75,7 +75,7 @@ BruteForce = function(options) {
 		// return true if too many requests are made else return false
 		if (protect && _connections[ip]) {
 			tries = _connections[ip]['tries'];
-			timestamp  = _connections[ip]['timestamp'];
+			timestamp = _connections[ip]['timestamp'];
 			
 			too_much = tries >= _max_reqs;
 			in_time  = timestamp + _time*1000 > Date.now();

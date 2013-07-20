@@ -1,5 +1,5 @@
 /* 
- * patterns to detect sqli-, xss- & lfi-attacks with regular expressions
+ * patterns to detect sqli-, xss- & lfi-attacks
  * starting point for defining these patterns was:
  * http://www.symantec.com/connect/articles/detection-sql-injection-and-cross-site-scripting-attacks
  */
