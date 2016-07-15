@@ -1,0 +1,16 @@
+15 Jul 15:41:7 - error: /favicon.ico - 404 not found
+
+15 Jul 15:41:7 - error: /favicon.ico - 404 not found
+
+15 Jul 15:42:17 - error: /&''==! - 404 not found
+
+15 Jul 15:42:43 - error: /login/ - 404 not found
+
+15 Jul 15:45:53 - warn: block request from ip: ::ffff:127.0.0.1
+15 Jul 15:45:53 - drop: drop request from ip: ::ffff:127.0.0.1
+15 Jul 15:46:3 - warn: block request from ip: ::ffff:127.0.0.1
+15 Jul 15:46:3 - drop: drop request from ip: ::ffff:127.0.0.1
+15 Jul 15:46:28 - warn: sqli found for ip: ::ffff:127.0.0.1
+15 Jul 15:46:28 - drop: drop request from ip: ::ffff:127.0.0.1
+15 Jul 15:46:37 - warn: ip: ::ffff:127.0.0.1 is banned
+15 Jul 15:46:37 - reject: reject request from ip: ::ffff:127.0.0.1
