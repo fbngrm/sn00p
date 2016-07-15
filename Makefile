@@ -14,5 +14,6 @@ install-deps-clean:
 	$(VERBOSE)rm -R -f $(SNOOP)
 	$(VERBOSE)mkdir $(SNOOP)
 	$(VERBOSE)(cd $(SNOOP) && npm install)
-	
+
+# not a file target
 .PHONY: install-deps-clean
