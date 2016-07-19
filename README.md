@@ -101,7 +101,7 @@ var lfi = /\.\.\//;
 
 **Bruteforce Attacks**
 
-The count of allowed requests in certain timespan and failed login requests can be configured.
+The count of allowed requests as well as failed login attempts in a certain timespan can be configured.
 
 
 #License
