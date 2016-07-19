@@ -1,7 +1,3 @@
-*.gif
-*.jpg
-*.png
-*.log
 /snoop/node_modules
 /blog/node_modules
 .metadata
