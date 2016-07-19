@@ -1,6 +1,6 @@
 #sn00py
 
-<img src="/snoop/px/sn00py.png" ></img>
+<img src="snoop/px/sn00py.jpg" ></img>
 
 sn00py is a proof of concept application firewall written in node.js. Although it is recognizing harmul patterns in network traffic it is not meant to be used in production environments. 
 
