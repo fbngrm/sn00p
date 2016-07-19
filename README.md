@@ -1,8 +1,10 @@
-#sn00py
+#sn00p
 
 <img src="snoop/px/sn00py.jpg" width="400px"></img>
 
-sn00py is a proof of concept application firewall written in node.js. Although it is recognizing harmul patterns in network traffic it is not meant to be used in production environments. 
+sn00p is a proof of concept application firewall written in node.js. Although it is recognizing harmul patterns in network traffic it is not meant to be used in production environments. 
+
+Inspired by [Contra](https://github.com/contra)
 
 #Modus Operandi
 
@@ -10,7 +12,7 @@ sn00py runs as a proxy in front of one or several apps. The incoming traffic is 
 
 #Usage
 
-In the default configuration sn00py runs on port 8000 for http and 8080 for https. The repository contains a test app running on port 9000 for http and 9090 for https traffic as well as the required certs for https. After cloning the repo install the dependencies via `npm install`. You can start the app by running `node snoop/main/src/main.js`. Navigate to `localhost:9000/login/` and try to bypass the login form. 
+In the default configuration sn00py runs on port 8000 for http and 8080 for https. The repository contains a test app running on port 9000 for http and 9090 for https traffic as well as the required certs for https. After cloning the repo install the dependencies via `npm install`. You can start the app by running `node snoop/main/src/main.js`. Navigate to `localhost:9000/login/` and start hacking. 
 
 #Attack Vectors
 
@@ -100,6 +102,7 @@ var lfi = /\.\.\//;
 **Bruteforce Attacks**
 
 The count of allowed requests in certain timespan and failed login requests can be configured.
+
 
 #License
 
