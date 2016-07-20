@@ -4,8 +4,6 @@
 
 sn00p is a proof of concept application firewall written in node.js. Although it is recognizing harmul patterns in network traffic it is not meant to be used in production environments. 
 
-Inspired by [Contra](https://github.com/contra)
-
 #Modus Operandi
 
 sn00py runs as a proxy in front of one or several apps. The incoming traffic is analyzed with regular expressions for several harmful patterns. If an IP is identified to send attack vectors it is blocked for future requests. The timespan of blocking can be configured. Patterns are searched in the URL, Cookies and POST data. IPs can be blacklisted and whitelisted.
@@ -102,6 +100,10 @@ var lfi = /\.\.\//;
 **Bruteforce Attacks**
 
 The count of allowed requests as well as failed login attempts in a certain timespan can be configured.
+
+#Credits
+
+Strongly inspired by [Contra](https://github.com/contra). Lost the link to the repo :(
 
 
 #License
